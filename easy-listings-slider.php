@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function activate_easy_listings_slider() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-els-activator.php';
-	Easy_Listings_Slider_Activator::activate();
+	ELS_Activator::activate();
 }
 
 /**
@@ -45,7 +45,7 @@ function activate_easy_listings_slider() {
  */
 function deactivate_easy_listings_slider() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-els-deactivator.php';
-	Easy_Listings_Slider_Deactivator::deactivate();
+	ELS_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_easy_listings_slider' );
@@ -67,9 +67,15 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-easy-listings-slider.php';
  * @since    1.0.0
  */
 function run_easy_listings_slider() {
-
-	$plugin = new Easy_Listings_Slider();
-	$plugin->run();
-
+	if ( ! class_exists( 'Easy_Property_Listings' ) ) {
+		if ( ! class_exists( 'EPL_Extension_Activation' ) ) {
+			require_once plugin_dir_path( __FILE__ ) . 'includes/class-epl-extension-activation.php';
+		}
+		$activation = new EPL_Extension_Activation( plugin_basename( __FILE__ ) );
+		$activation = $activation->run();
+	} else {
+		$plugin = new Easy_Listings_Slider();
+		$plugin->run();
+	}
 }
 add_action( 'plugins_loaded', 'run_easy_listings_slider' );
