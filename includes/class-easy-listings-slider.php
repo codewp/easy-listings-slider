@@ -115,6 +115,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-ioc.php';
 
 		/**
+		 * The class that contains functions that are common between listings.
+		 */
+		require_once $this->get_path() . 'includes/class-els-listings.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once $this->get_path() . 'admin/class-els-admin.php';
@@ -234,6 +239,7 @@ class Easy_Listings_Slider {
 	 * @return void
 	 */
 	private function define_globals() {
+		ELS_IOC::bind( 'listings', new ELS_Listings() );
 		ELS_IOC::bind( 'plugin_admin', new ELS_Admin( $this->plugin_name, $this->version, $this->loader ) );
 		ELS_IOC::bind( 'plugin_public', new ELS_Public( $this->plugin_name, $this->version, $this->loader ) );
 	}

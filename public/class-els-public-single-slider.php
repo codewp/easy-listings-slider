@@ -36,13 +36,9 @@ class ELS_Public_Single_Slider {
 	}
 
 	public function display_single_listing_slider() {
-		$attachments = get_children( array(
-			'post_parent'    => get_the_ID(),
-			'post_type'      => 'attachment',
-			'post_mime_type' => 'image',
-		) );
-		if ( count( $attachments ) ) {
-			$jssor_slider = new ELS_Public_Jssor_Slider();
+		$listing_gallery = ELS_IOC::make( 'listings' )->get_gallery( get_the_ID() );
+		if ( count( $listing_gallery ) ) {
+			$jssor_slider = new ELS_Public_Jssor_Slider( array( 'image_ids' => $listing_gallery ) );
 			$jssor_slider->display();
 		}
 	}

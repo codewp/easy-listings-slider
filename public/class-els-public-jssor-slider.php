@@ -24,7 +24,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 */
 	protected $data = array(
 		'theme'     => 'thumbnail',
-		'image_ids' => '',
+		'image_ids' => array(),
 	);
 
 	/**
@@ -61,7 +61,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 */
 	public function display() {
 		$this->register_dependencies();
-		$this->render_view( 'slider.jssor.' . $this->data['theme'] );
+		$this->render_view( 'slider.jssor.' . $this->data['theme'], array( 'image_ids' => $this->data['image_ids'] ) );
 	}
 
 }
