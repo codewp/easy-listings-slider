@@ -72,6 +72,7 @@ class Easy_Listings_Slider {
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
+		$this->define_globals();
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
@@ -100,24 +101,29 @@ class Easy_Listings_Slider {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-els-loader.php';
+		require_once $this->get_path() . 'includes/class-els-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-els-i18n.php';
+		require_once $this->get_path() . 'includes/class-els-i18n.php';
+
+		/**
+		 * The class responsible for inversion of control (IOC) of the plugin.
+		 */
+		require_once $this->get_path() . 'includes/class-els-ioc.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-els-admin.php';
+		require_once $this->get_path() . 'admin/class-els-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-els-public.php';
+		require_once $this->get_path() . 'public/class-els-public.php';
 
 		$this->loader = new ELS_Loader();
 
@@ -149,12 +155,11 @@ class Easy_Listings_Slider {
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
-
-		$plugin_admin = new ELS_Admin( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		/**
+		 * All of admin hooks are defined in define_hooks() of ELS_Admin.
+		 */
+		$plugin_admin = ELS_IOC::make( 'plugin_admin' );
+		$plugin_admin->define_hooks();
 	}
 
 	/**
@@ -165,12 +170,11 @@ class Easy_Listings_Slider {
 	 * @access   private
 	 */
 	private function define_public_hooks() {
-
-		$plugin_public = new ELS_Public( $this->get_plugin_name(), $this->get_version() );
-
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		/**
+		 * All of public hooks are defined in define_hooks() of ELS_Public.
+		 */
+		$plugin_public = ELS_IOC::make( 'plugin_public' );
+		$plugin_public->define_hooks();
 	}
 
 	/**
@@ -211,6 +215,27 @@ class Easy_Listings_Slider {
 	 */
 	public function get_version() {
 		return $this->version;
+	}
+
+	/**
+	 * Getting path of include area.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
+	public function get_path() {
+		return plugin_dir_path( dirname( __FILE__ ) );
+	}
+
+	/**
+	 * Defining objects that should be accessed globally.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	private function define_globals() {
+		ELS_IOC::bind( 'plugin_admin', new ELS_Admin( $this->plugin_name, $this->version, $this->loader ) );
+		ELS_IOC::bind( 'plugin_public', new ELS_Public( $this->plugin_name, $this->version, $this->loader ) );
 	}
 
 }

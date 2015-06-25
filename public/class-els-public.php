@@ -41,17 +41,55 @@ class ELS_Public {
 	private $version;
 
 	/**
+	 * The loader that's responsible for maintaining and registering all hooks that power
+	 * the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      ELS_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 */
+	private $loader;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
+	 * @param      ELS_Loader $loader
 	 */
-	public function __construct( $plugin_name, $version ) {
-
+	public function __construct( $plugin_name, $version, ELS_Loader $loader ) {
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
+		$this->loader      = $loader;
 
+		$this->load_dependencies();
+	}
+
+	/**
+	 * Loading dependencies that required in public-facing area.
+	 *
+	 * @since 1.0.0
+	 */
+	private function load_dependencies() {
+		/**
+		 * The class responsible for displaying slider in single listing page.
+		 */
+		require_once $this->get_path() . 'class-els-public-single-slider.php';
+	}
+
+	/**
+	 * Defining hooks of plugin public-facing.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	public function define_hooks() {
+		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_scripts' );
+
+		// Hook for single listing page slider.
+		new ELS_Public_Single_Slider( $this );
 	}
 
 	/**
@@ -98,6 +136,46 @@ class ELS_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+	/**
+	 * Getting version.
+	 *
+	 * @since   1.0.0
+	 * @return  string
+	 */
+	public function get_version() {
+		return $this->version;
+	}
+
+	/**
+	 * Getting loader of ELS.
+	 *
+	 * @since 1.0.0
+	 * @return ELS_Loader
+	 */
+	public function get_loader() {
+		return $this->loader;
+	}
+
+	/**
+	 * Getting url of public-facing area.
+	 *
+	 * @since   1.0.0
+	 * @return  string
+	 */
+	public function get_url() {
+		return plugin_dir_url( __FILE__ );
+	}
+
+	/**
+	 * Getting path of public-facing area.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
+	public function get_path() {
+		return plugin_dir_path( __FILE__ );
 	}
 
 }
