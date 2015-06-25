@@ -42,7 +42,8 @@ class ELS_Public_Single_Slider {
 			'post_mime_type' => 'image',
 		) );
 		if ( count( $attachments ) ) {
-			echo 'display single listing slider test';
+			$jssor_slider = new ELS_Public_Jssor_Slider();
+			$jssor_slider->display();
 		}
 	}
 

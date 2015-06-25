@@ -73,6 +73,18 @@ class ELS_Public {
 	 */
 	private function load_dependencies() {
 		/**
+		 * The controller class of public-facing area.
+		 */
+		require_once $this->get_path() . 'class-els-public-controller.php';
+		/**
+		 * Base class for sliders.
+		 */
+		require_once $this->get_path() . 'class-els-public-slider-base.php';
+		/**
+		 * PHP class for Jssor javascript slider plugin.
+		 */
+		require_once $this->get_path() . 'class-els-public-jssor-slider.php';
+		/**
 		 * The class responsible for displaying slider in single listing page.
 		 */
 		require_once $this->get_path() . 'class-els-public-single-slider.php';
