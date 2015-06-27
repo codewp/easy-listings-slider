@@ -23,8 +23,13 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 * @var array
 	 */
 	protected $data = array(
-		'theme'     => 'thumbnail',
-		'image_ids' => array(),
+		'image_ids'          => array(),
+		'theme'              => 'thumbnail',
+		'auto_play'          => true,
+		'loop'               => 1, 				// Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind
+		'auto_play_interval' => 4000,
+		'slide_duration'     => 500,
+		'drag_orientation'   => 3, 				// 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1
 	);
 
 	/**
@@ -60,8 +65,16 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 * @return void
 	 */
 	public function display() {
-		$this->register_dependencies();
-		$this->render_view( 'slider.jssor.' . $this->data['theme'], array( 'image_ids' => $this->data['image_ids'] ) );
+		// Displaying slider only when it has images.
+		if ( count( $this->data['image_ids'] ) ) {
+			$this->register_dependencies();
+			$this->render_view( 'slider.jssor.' . $this->data['theme'], array(
+				'data'       => $this->data,
+				'css_url'    => plugin_dir_url( __FILE__ ) . 'css/',
+				'js_url'     => plugin_dir_url( __FILE__ ) . 'js/',
+				'images_url' => plugin_dir_url( __FILE__ ) . 'images/',
+			) );
+		}
 	}
 
 }
