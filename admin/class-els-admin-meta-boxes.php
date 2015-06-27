@@ -5,25 +5,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * The class responsible for adding meta boxes.
+ *
+ * @package    Easy_Listings_Slider
+ * @subpackage Easy_Listings_Slider/admin
+ * @author     Taher Atashbar <taher.atashbar@gmail.com>
+ */
+
 class ELS_Admin_Meta_Boxes {
 
-	private $gallery_meta_box;
+	private $gallery_meta_box;			// Listings Gallery Meta Box
+	private $slider_data_meta_box;		// Slider Data Meta Box
 
+	/**
+	 * constructor of the class.
+	 *
+	 * @since 1.0.0
+	 * @param ELS_Loader $loader
+	 */
 	public function __construct( ELS_Loader $loader ) {
 		// loading dependencies.
 		$this->load_dependencies();
 		// Gallery meta box instance.
-		$this->gallery_meta_box = new ELS_Meta_Box_Listing_Gallery( $loader );
+		$this->gallery_meta_box     = new ELS_Meta_Box_Listing_Gallery( $loader );
+		// Slider Data meta box instance.
+		$this->slider_data_meta_box = new ELS_Meta_Box_Slider_Data( $loader );
 
 		// Actions for meta boxes.
 		$loader->add_action( 'add_meta_boxes', $this, 'add_meta_boxes' );
 		$loader->add_action( 'save_post', $this, 'save_meta_boxes', 1, 2 );
 	}
 
+	/**
+	 * loading class dependencies.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	private function load_dependencies() {
 		require_once plugin_dir_path( __FILE__ ) . 'metaboxes/class-els-meta-box-listing-gallery.php';
+		require_once plugin_dir_path( __FILE__ ) . 'metaboxes/class-els-meta-box-slider-data.php';
 	}
 
+	/**
+	 * Adding plugin meta boxes.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function add_meta_boxes() {
 		// Adding meta boxes to activated listing types.
 		$listing_types = epl_get_active_post_types();
@@ -32,6 +62,8 @@ class ELS_Admin_Meta_Boxes {
 				add_meta_box( 'els_listing_gallery', __( 'Listing Gallery', 'els' ), array( $this->gallery_meta_box, 'output' ), $listing_type, 'side', 'low' );
 			}
 		}
+		// Adding slider data meta box to Slider type.
+		add_meta_box( 'els_slider_data', __( 'Slider Data', 'els' ), array( $this->slider_data_meta_box, 'output' ), 'els_slider', 'normal', 'high' );
 	}
 
 	/**
