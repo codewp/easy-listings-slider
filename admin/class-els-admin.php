@@ -77,6 +77,10 @@ class ELS_Admin {
 		 */
 		require_once $this->get_path() . 'class-els-admin-controller.php';
 		/**
+		 * The class responsible for Post Types related functionalities of the plugin.
+		 */
+		require_once $this->get_path() . 'class-els-admin-post-types.php';
+		/**
 		 * The class responsible for Meta Boxes of the plugin.
 		 */
 		require_once $this->get_path() . 'class-els-admin-meta-boxes.php';
@@ -92,6 +96,8 @@ class ELS_Admin {
 		$this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
 
+		// Hooks for post types.
+		new ELS_Admin_Post_types( $this->loader );
 		// Hooks for meta boxes.
 		new ELS_Admin_Meta_Boxes( $this->loader );
 	}
