@@ -40,4 +40,24 @@ class ELS_Admin_Controller {
 		}
 	}
 
+	/**
+	 * Getting admin-side js directory url.
+	 *
+	 * @since 1.0.0
+	 * @return string url of js directory.
+	 */
+	protected function get_js_url() {
+		return plugin_dir_url( __FILE__ ) . 'js/';
+	}
+
+	/**
+	 * Getting admin-side css directory url.
+	 *
+	 * @since 1.0.0
+	 * @return string url of css directory
+	 */
+	protected function get_css_url() {
+		return plugin_dir_url( __FILE__ ) . 'css/';
+	}
+
 }
