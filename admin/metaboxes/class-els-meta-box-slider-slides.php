@@ -28,7 +28,18 @@ class ELS_Meta_Box_Slider_Slides extends ELS_Admin_Controller {
 	 * @return void
 	 */
 	public function output( $post ) {
-		$this->render_view( 'metaboxes.slider-slides', array( 'post' => $post ) );
+		$slider      = new ELS_Slider( $post->ID );
+		$slides      = $slider->get_slides();
+		$attachments = array();
+		if ( strlen( $slides ) ) {
+			$attachments = array_filter( explode( ',', $slides ) );
+		}
+		$this->render_view( 'metaboxes.slider-slides',
+			array(
+				'slides'      => $slides,
+				'attachments' => $attachments,
+			)
+		);
 	}
 
 	/**
@@ -40,7 +51,10 @@ class ELS_Meta_Box_Slider_Slides extends ELS_Admin_Controller {
 	 * @return void
 	 */
 	public function save( $post_id, $post ) {
+		$attachment_ids = isset( $_POST['els_slider_images'] ) ?
+			array_filter( explode( ',', sanitize_text_field( $_POST['els_slider_images'] ) ) ) : array();
 
+		update_post_meta( $post_id, 'slides', implode( ',', $attachment_ids ) );
 	}
 
 }

@@ -72,7 +72,7 @@ class ELS_Slider {
 	 * @param  int|boolean $id
 	 * @return ELS_Slider|false
 	 */
-	public function get_instance( $id = false ) {
+	protected function get_instance( $id = false ) {
 
 		global $wpdb;
 
@@ -120,10 +120,14 @@ class ELS_Slider {
 	 * Getting slides of slider.
 	 *
 	 * @since 1.0.0
-	 * @return [type] [description]
+	 * @return string
 	 */
 	public function get_slides() {
+		if ( ! isset( $this->slides ) ) {
+			$this->slides = get_post_meta( $this->ID, 'slides', true );
+		}
 
+		return trim( $this->slides );
 	}
 
 	/**

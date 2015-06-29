@@ -126,6 +126,12 @@ class ELS_Admin {
 				$return = true;
 			}
 		}
+
+		// Slider type admin page.
+		if ( 'els_slider' === $typenow ) {
+			$return = true;
+		}
+
 		/*$pages = apply_filters( 'els_admin_pages', $this->menu->get_menus() );
 		if ( in_array( $screen->id, $pages ) ) {
 			return true;
