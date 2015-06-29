@@ -35,7 +35,8 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 	 */
 	public function output( $post ) {
 		$this->register_scripts();
-		$this->render_view( 'metaboxes.slider-data', array( 'post' => $post ) );
+		$slider = new ELS_Slider( $post->ID );
+		$this->render_view( 'metaboxes.slider-data', array( 'slider' => $slider ) );
 	}
 
 	/**
@@ -62,7 +63,35 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 	 * @return void
 	 */
 	public function save( $post_id, $post ) {
+		$fields = $this->get_fields();
+		foreach ( $fields as $field ) {
+			if ( isset( $_POST[ $field ] ) ) {
+				update_post_meta( $post_id, $field, trim( $_POST[ $field ] ) );
+			}
+		}
+	}
 
+	/**
+	 * Getting slider data meta box fields that should be save.
+	 *
+	 * @since 1.0.0
+	 * @return array array of slider data meta box fields
+	 */
+	private function get_fields() {
+		return
+			apply_filters( 'els_slider_data_meta_box_fields',
+				array(
+					'slider_type',
+					'slider_width',
+					'slider_height',
+					'slider_auto_crop_resize',
+					'auto_play',
+					'autoplay_interval',
+					'slide_duration',
+					'loop',
+					'drag_orientation',
+				)
+			);
 	}
 
 }
