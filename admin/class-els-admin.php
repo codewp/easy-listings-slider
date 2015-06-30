@@ -81,6 +81,10 @@ class ELS_Admin {
 		 */
 		require_once $this->get_path() . 'class-els-admin-post-types.php';
 		/**
+		 * The class responsible for list Listings.
+		 */
+		require_once $this->get_path() . 'class-els-admin-listings-list.php';
+		/**
 		 * The class responsible for Meta Boxes of the plugin.
 		 */
 		require_once $this->get_path() . 'class-els-admin-meta-boxes.php';

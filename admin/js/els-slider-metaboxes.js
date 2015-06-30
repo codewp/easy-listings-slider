@@ -27,7 +27,7 @@
  	var $image_ids = $('#els_slider_images');
  	var $slider_images = $('#els-slider-slides-container ul.slider_images');
 
- 	$('.add_slider_images').on( 'click', 'a', function( event ) {
+ 	$('.add_slider_images').on( 'click', 'a.images_loader', function( event ) {
  		var $el = $(this);
  		var attachment_ids = $image_ids.val();
 
