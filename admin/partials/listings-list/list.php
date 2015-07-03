@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var string $current_listing_type
  * @var string $current_listing_status
  * @var string $current_listing_special
+ * @var int $current_posts_per_page
  */
 ?>
 <table class="wp-list-table widefat fixed striped posts">
@@ -36,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<tr id="post-<?php the_ID() ?>" class="iedit author-self level-0 post-<?php the_ID() ?> type-listing has-post-thumbnail hentry">
 				<th class="check-column" scope="row">
-					<label for="cb-select-<?php the_ID() ?>" class="screen-reader-text"><?php _e( 'Select', 'els' ) . the_title() ?></label>
+					<label for="cb-select-<?php the_ID() ?>" class="screen-reader-text"><?php echo __( 'Select', 'els' ) . ' ' . get_the_title() ?></label>
 					<input type="checkbox" value="<?php the_ID() ?>" name="post[]" id="cb-select-<?php the_ID() ?>">
 					<div class="locked-indicator"></div>
 				</th>
@@ -102,7 +103,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</tr>
 			<?php
 		}
-		wp_reset_postdata();
 		?>
 	</tbody>
 	<tfoot>
@@ -118,3 +118,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</tr>
 	</tfoot>
 </table>
+<?php
+// Pagination output.
+$big            = 999999999; // need an unlikely integer
+$search_for     = array( $big, '#038;' );
+$replace_with   = array( '%#%', '&' );
+$paginate_links = paginate_links( array(
+	'base'     => str_replace( $search_for, $replace_with, esc_url( get_pagenum_link( $big ) ) ),
+	'format'   => '?paged=%#%',
+	'current'  => max( 1, $listings->get( 'paged' ) ),
+	'total'    => $listings->max_num_pages,
+	'add_args' => array(
+		'listing_type'    => $current_listing_type,
+		'listing_status'  => $current_listing_status,
+		'posts_per_page'  => $current_posts_per_page,
+		'listing_special' => $current_listing_special,
+	),
+) );
+if ( $paginate_links ) {
+	echo '<div class="tablenav bottom">' . $paginate_links . '</div>';
+}
+
+wp_reset_postdata();

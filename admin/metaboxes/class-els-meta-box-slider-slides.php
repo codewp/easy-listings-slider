@@ -82,10 +82,11 @@ class ELS_Meta_Box_Slider_Slides extends ELS_Admin_Controller {
 	 */
 	public function load_listings_list() {
 		$list_listings = new ELS_Admin_Listings_List();
-		$list_listings->set_posts_per_page( (int) $_POST['posts_per_page'] );
-		$list_listings->set_listing_type( $_POST['listing_type'] );
-		$list_listings->set_listing_status( $_POST['listing_status'] );
-		$list_listings->set_listing_special( $_POST['listing_special'] );
+		$list_listings->set_posts_per_page( absint( $_REQUEST['posts_per_page'] ) );
+		$list_listings->set_paged( absint( $_REQUEST['paged'] ) );
+		$list_listings->set_listing_type( $_REQUEST['listing_type'] );
+		$list_listings->set_listing_status( $_REQUEST['listing_status'] );
+		$list_listings->set_listing_special( $_REQUEST['listing_special'] );
 		$list_listings->display();
 
 		die(); // Required for ajax requests.

@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 
 	private $posts_per_page;	// Number of listings for each page.
+	private $paged;				// Page number that should be shown.
 	private $listing_type;		// Type of listings to load.
 	private $listing_status;	// Status of listings to load.
 	private $listing_special;	// Special listings to load like( featured ) listings.
@@ -26,16 +27,20 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 *
 	 * @since 1.0.0
 	 * @param integer $posts_per_page
+	 * @param integer $paged
 	 * @param string  $listing_type
 	 * @param string  $listing_status
 	 * @param string  $listing_special
 	 */
-	public function __construct( $posts_per_page = 10, $listing_type = 'all', $listing_status = 'all',
+	public function __construct( $posts_per_page = 4, $paged = 1, $listing_type = 'all', $listing_status = 'all',
 		$listing_special = 'featured' ) {
-		$this->posts_per_page  = (int) $posts_per_page;
+
+		$this->posts_per_page  = absint( $posts_per_page );
+		$this->paged           = absint( $paged );
 		$this->listing_type    = $listing_type;
 		$this->listing_status  = $listing_status;
 		$this->listing_special = $listing_special;
+
 	}
 
 	/**
@@ -45,9 +50,22 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 * @param int $posts_per_page
 	 */
 	public function set_posts_per_page( $posts_per_page ) {
-		$this->posts_per_page = 10;
+		$this->posts_per_page = 4;
 		if ( (int) $posts_per_page > 0 ) {
 			$this->posts_per_page = (int) $posts_per_page;
+		}
+	}
+
+	/**
+	 * Setting page number that should be load.
+	 *
+	 * @since 1.0.0
+	 * @param int $paged
+	 */
+	public function set_paged( $paged ) {
+		$this->paged = 1;
+		if ( absint( $paged ) > 0 ) {
+			$this->paged = absint( $paged );
 		}
 	}
 
@@ -107,7 +125,7 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 				'posts_per_page' => $this->posts_per_page,
 				'orderby'        => 'date',
 				'order'          => 'ASC',
-				'paged'			 => get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1,
+				'paged'			 => $this->paged,
 			);
 
 			// Setting post_type of WP_Query
@@ -162,6 +180,7 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 			'current_listing_type'    => $this->listing_type,
 			'current_listing_status'  => $this->listing_status,
 			'current_listing_special' => $this->listing_special,
+			'current_posts_per_page'  => $this->posts_per_page,
 		);
 		// Rendering header.
 		$this->render_view( 'listings-list.header', array( 'css_url' => $this->get_css_url() ) );
