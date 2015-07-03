@@ -35,4 +35,32 @@ class ELS_Listings {
 		return array();
 	}
 
+	/**
+	 * Getting all of listings status of Easy Property Listings.
+	 *
+	 * @since 1.0.0
+	 * @return array
+	 */
+	public function get_listings_status() {
+		$listings_status = apply_filters( 'epl_opts_property_status_filter', array(
+			'current'	=>	__( 'Current', 'epl' ),
+			'withdrawn'	=>	__( 'Withdrawn', 'epl' ),
+			'offmarket'	=>	__( 'Off Market', 'epl' ),
+			'sold'		=>	array(
+				'label'		=>	__( 'Sold', 'epl' ),
+				'exclude'	=>	array( 'rental' )
+			),
+			'leased'	=>	array(
+				'label'		=>	__( 'Leased', 'epl' ),
+				'include'	=>	array( 'rental', 'commercial', 'commercial_land', 'business' )
+			)
+		) );
+		foreach ( $listings_status as $key => $value ) {
+			if ( is_array( $value ) ) {
+				$listings_status[ $key ] = $value['label'];
+			}
+		}
+		return apply_filters( 'els_listings_status', $listings_status );
+	}
+
 }

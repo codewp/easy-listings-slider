@@ -10,6 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @var WP_Query $listings
  * @var array $listings_status
+ * @var array $listings_type
+ * @var string $current_listing_type
+ * @var string $current_listing_status
+ * @var string $current_listing_special
  */
 ?>
 <table class="wp-list-table widefat fixed striped posts">
@@ -39,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<td class="listing_thumb column-listing_thumb">
 					<?php
 					if ( has_post_thumbnail() ) {
-						the_post_thumbnail( array( 100, 100 ), array( 'class' => 'attachment-admin-list-thumb wp-post-image' ) );
+						the_post_thumbnail( array( 100, 100 ), array( 'class' => 'attachment-admin-list-thumb wp-post-image', 'data-id' => get_post_thumbnail_id() ) );
 					}
 					?>
 				</td>

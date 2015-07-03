@@ -59,7 +59,9 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 */
 	public function set_listing_type( $listing_type ) {
 		$this->listing_type = 'all';
-		if ( ! empty( $listing_type ) ) {
+		$listing_types = epl_get_active_post_types();
+		$listing_types = array_keys( $listing_types );
+		if ( ! empty( $listing_type ) && in_array( $listing_type, $listing_types ) ) {
 			$this->listing_type = $listing_type;
 		}
 	}
@@ -72,7 +74,9 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 */
 	public function set_listing_status( $listing_status ) {
 		$this->listing_status = 'all';
-		if ( ! empty( $listing_status ) ) {
+		$listings_status = ELS_IOC::make( 'listings' )->get_listings_status();
+		$listings_status = array_keys( $listings_status );
+		if ( ! empty( $listing_status ) && in_array( $listing_status, $listings_status ) ) {
 			$this->listing_status = $listing_status;
 		}
 	}
@@ -107,7 +111,8 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 			);
 
 			// Setting post_type of WP_Query
-			$filter_args['post_type'] = 'all' === $this->listing_type ? array_keys( $listing_types ) : $this->listing_type;
+			$filter_args['post_type'] = 'all' === $this->listing_type ?
+				array_keys( $listing_types ) : $this->listing_type;
 
 			// Loading special listings if it is not all.
 			if ( 'all' !== $this->listing_special ) {
@@ -150,33 +155,22 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 			}
 		}
 
-		$args = array();
-		if ( 'empty' !== $view ) {
-			$listings_status = apply_filters( 'epl_opts_property_status_filter', array(
-				'current'	=>	__( 'Current', 'epl' ),
-				'withdrawn'	=>	__( 'Withdrawn', 'epl' ),
-				'offmarket'	=>	__( 'Off Market', 'epl' ),
-				'sold'		=>	array(
-					'label'		=>	__( 'Sold', 'epl' ),
-					'exclude'	=>	array( 'rental' )
-				),
-				'leased'	=>	array(
-					'label'		=>	__( 'Leased', 'epl' ),
-					'include'	=>	array( 'rental', 'commercial', 'commercial_land', 'business' )
-				)
-			) );
-			foreach ( $listings_status as $key => $value ) {
-				if ( is_array( $value ) ) {
-					$listings_status[ $key ] = $value['label'];
-				}
-			}
-
-			$args = array(
-				'listings'        => $this->listings,
-				'listings_status' => $listings_status,
-			);
-		}
-		$this->render_view( "listings-list.$view", $args );
+		$args = array(
+			'listings_status'         => ELS_IOC::make( 'listings' )->get_listings_status(),
+			'listings_type'           => epl_get_active_post_types(),
+			'listings'                => $this->listings,
+			'current_listing_type'    => $this->listing_type,
+			'current_listing_status'  => $this->listing_status,
+			'current_listing_special' => $this->listing_special,
+		);
+		// Rendering header.
+		$this->render_view( 'listings-list.header', array( 'css_url' => $this->get_css_url() ) );
+		// Rendering filter bar for filtering listings.
+		$this->render_view( 'listings-list.filter', $args );
+		// Rendering list view or empty view.
+		$this->render_view( "listings-list.$view", ( 'empty' !== $view ? $args : array() ) );
+		// Rendering footer.
+		$this->render_view( 'listings-list.footer' );
 	}
 
 }

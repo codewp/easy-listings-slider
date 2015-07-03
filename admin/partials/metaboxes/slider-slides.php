@@ -36,5 +36,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 	<a class="images_loader" href="#" data-choose="<?php _e( 'Add Images to Slider', 'els' ); ?>"
 	data-update="<?php _e( 'Add to slider', 'els' ); ?>" data-delete="<?php _e( 'Delete image', 'els' ); ?>"
 	data-text="<?php _e( 'Delete', 'els' ); ?>"><?php _e( 'Add slider images', 'els' ); ?></a>
-	<a class="thickbox" href="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ) ?>?action=load_listings_list"  title="<?php _e( 'Listings', 'els' ) ?>"><?php _e( 'Load Featured Listings', 'els' ) ?></a>
+	<a class="listings_loader" href="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ) ?>?action=load_listings_list&amp;TB_iframe=true"
+	title="<?php _e( 'Listings', 'els' ) ?>" data-delete="<?php _e( 'Delete image', 'els' ); ?>"
+	data-text="<?php _e( 'Delete', 'els' ); ?>"><?php _e( 'Load Featured Listings', 'els' ) ?></a>
 </p>
