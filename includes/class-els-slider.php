@@ -139,14 +139,29 @@ class ELS_Slider {
 	public function get_type() {
 		if ( ! isset( $this->type ) ) {
 			$this->type = get_post_meta( $this->ID, 'slider_type', true );
+			$slider_types = array_keys( $this->get_types() );
 			// Sanitize the type.
-			if ( ! in_array( $this->type, array( 'featured', 'image', 'featured_image' ) ) ) {
+			if ( ! in_array( $this->type, $slider_types ) ) {
 				// Using default value for type.
-				$this->type = 'featured';
+				$this->type = 'images';
 			}
 		}
 
 		return $this->type;
+	}
+
+	/**
+	 * Getting all possible types of slider.
+	 *
+	 * @since 1.0.0
+	 * @return array
+	 */
+	public function get_types() {
+		return apply_filters( 'els_slider_types', array(
+			'images'          => __( 'Images', 'els' ),
+			'listings'        => __( 'Listings', 'els' ),
+			'listings_images' => __( 'Listings And Images', 'els' )
+		) );
 	}
 
 	/**
