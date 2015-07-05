@@ -32,7 +32,7 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 * @param string  $listing_status
 	 * @param string  $listing_special
 	 */
-	public function __construct( $posts_per_page = 4, $paged = 1, $listing_type = 'all', $listing_status = 'all',
+	public function __construct( $posts_per_page = 3, $paged = 1, $listing_type = 'all', $listing_status = 'all',
 		$listing_special = 'featured' ) {
 
 		$this->posts_per_page  = absint( $posts_per_page );
@@ -50,7 +50,7 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 * @param int $posts_per_page
 	 */
 	public function set_posts_per_page( $posts_per_page ) {
-		$this->posts_per_page = 4;
+		$this->posts_per_page = 3;
 		if ( (int) $posts_per_page > 0 ) {
 			$this->posts_per_page = (int) $posts_per_page;
 		}
@@ -189,7 +189,10 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 		// Rendering list view or empty view.
 		$this->render_view( "listings-list.$view", ( 'empty' !== $view ? $args : array() ) );
 		// Rendering footer.
-		$this->render_view( 'listings-list.footer' );
+		$this->render_view( 'listings-list.footer', array(
+			'js_url' => $this->get_js_url(),
+			'includes_url' => includes_url()
+		) );
 	}
 
 }

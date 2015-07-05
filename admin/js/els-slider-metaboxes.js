@@ -1,3 +1,5 @@
+var tb_position;
+
 (function( $ ) {
 	'use strict';
 
@@ -140,7 +142,7 @@
 	    $('body').on('click', '.listings_loader', function(e) {
 	        e.preventDefault();
 	        $els_slider_images = $( '#els_slider_images' );
-	        tb_show( els_slider.add_listings, ajaxurl + '?action=load_listings_list&TB_iframe=true' );
+	        tb_show( els_slider.add_listings, ajaxurl + '?action=load_listings_list&width=800&height=500&TB_iframe=true' );
 	    });
 
 	    window.add_listings = function() {
@@ -163,6 +165,20 @@
 	        }
 	        $els_slider_images = '';
 	    };
+	}
+
+	/**
+	 * Quick fix for thickbox issue with width and height in admin.
+	 * @refer https://core.trac.wordpress.org/ticket/27473
+	 *
+	 * @return void
+	 */
+	tb_position = function() {
+		var isIE6 = typeof document.body.style.maxHeight === "undefined";
+		jQuery("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
+		if ( ! isIE6 ) { // take away IE6
+			jQuery("#TB_window").css({marginTop: '-' + parseInt((TB_HEIGHT / 2),10) + 'px'});
+		}
 	}
 
 })( jQuery );

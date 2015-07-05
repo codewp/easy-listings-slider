@@ -1,0 +1,121 @@
+form {
+	display: inline;
+	float: left;
+	margin-left: 5px;
+}
+
+#add_listings {
+	display: inline;
+	float: right;
+	margin-right: 5px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: auto;
+}
+
+/* table */
+.tablenav.top {
+	margin-bottom: 10px;
+}
+
+.tablenav.bottom {
+	float: right;
+	margin-right: 10px;
+	height: 10px;
+}
+
+/* buttons */
+.button, .button-secondary {
+	color: #555;
+	border-color: #cccccc;
+	background: #f7f7f7;
+	-webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba( 0, 0, 0, 0.08 );
+	box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba( 0, 0, 0, 0.08 );
+	vertical-align: top;
+}
+.button.button-large, .button-group.button-large .button {
+	height: 30px;
+	line-height: 28px;
+	padding: 0 12px 2px;
+}
+a.button-primary, a.button-primary:hover {
+	color: #fff;
+}
+.button-primary {
+	background: #00a0d2 none repeat scroll 0 0;
+	border-color: #0073aa;
+	box-shadow: 0 1px 0 rgba(120, 200, 230, 0.5) inset, 0 1px 0 rgba(0, 0, 0, 0.15);
+	color: #fff;
+	text-decoration: none;
+}
+.button-primary, .button-secondary {
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	height: 28px;
+	line-height: 26px;
+	margin: 0;
+	padding: 0 10px 1px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+.button, .button-primary, .button-secondary {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 13px;
+	line-height: 26px;
+	height: 28px;
+	margin: 0;
+	padding: 0 10px 1px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-appearance: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	white-space: nowrap;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input[type="button" i], input[type="submit" i], input[type="reset" i], input[type="file" i]::-webkit-file-upload-button, button {
+	align-items: flex-start;
+	text-align: center;
+	cursor: default;
+	color: buttontext;
+	padding: 2px 6px 3px;
+	border: 2px outset buttonface;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	background-color: buttonface;
+	box-sizing: border-box;
+}
+textarea, input, select, button {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+/* type of listings */
+.type_current {
+	font-weight:normal;
+	color:green;
+}
+.type_sold, .type_leased {
+	font-weight:bold;
+	color:red;
+}
+.type_under_offer {
+	font-weight:bold;
+	color:#FFA500;
+}

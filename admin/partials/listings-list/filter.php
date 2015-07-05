@@ -44,7 +44,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 		if ( $listings instanceof WP_Query ) {
 			if ( $listings->have_posts() ) {
-				echo '<input type="button" class="button" id="add_listings" onclick="parent.window.add_listings();" value="' . __( 'Add', 'els' ) . '" name="' . __( 'Add', 'els' ) . '">';
+				echo '<a href="#" id="add_listings" onclick="parent.window.add_listings();" class="button media-button button-primary button-large media-button-select">' . __( 'Add to slider', 'els' ) . '</a>';
 			}
 		}
 		?>
