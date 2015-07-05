@@ -21,9 +21,12 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 			<p>
 				<label for="slider_type"><?php _e( 'Slider type', 'els' ) ?></label>
 				<select id="slider_type" name="slider_type">
-					<option value="featured" <?php selected( 'featured', $slider->get_type() ) ?>><?php _e( 'Featured Listings', 'els' ) ?></option>
-					<option value="image" <?php selected( 'image', $slider->get_type() ) ?>><?php _e( 'Images', 'els' ) ?></option>
-					<option value="featured_image" <?php selected( 'featured_image', $slider->get_type() ) ?>><?php _e( 'Featured Listings And Images', 'els' ) ?></option>
+					<?php
+					$slider_types = $slider->get_types();
+					foreach ( $slider_types as $id => $name ) {
+						echo '<option value="' . esc_attr( $id ) . '" ' . selected( $slider->get_type(), $id, false ) . '>' . $name . '</option>';
+					}
+					?>
 				</select>
 			</p>
 			<p>

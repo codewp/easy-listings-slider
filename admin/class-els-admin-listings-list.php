@@ -33,7 +33,7 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 * @param string  $listing_special
 	 */
 	public function __construct( $posts_per_page = 3, $paged = 1, $listing_type = 'all', $listing_status = 'all',
-		$listing_special = 'featured' ) {
+		$listing_special = 'all' ) {
 
 		$this->posts_per_page  = absint( $posts_per_page );
 		$this->paged           = absint( $paged );
@@ -106,7 +106,7 @@ class ELS_Admin_Listings_List extends ELS_Admin_Controller {
 	 * @param string $listing_special
 	 */
 	public function set_listing_special( $listing_special ) {
-		$this->listing_special = 'featured';
+		$this->listing_special = 'all';
 		if ( ! empty( $listing_special ) && in_array( $listing_special, array( 'all', 'featured' ) ) ) {
 			$this->listing_special = $listing_special;
 		}
