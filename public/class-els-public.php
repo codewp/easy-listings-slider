@@ -88,6 +88,10 @@ class ELS_Public {
 		 * The class responsible for displaying slider in single listing page.
 		 */
 		require_once $this->get_path() . 'class-els-public-single-slider.php';
+		/**
+		 * Slider shortcode.
+		 */
+		require_once $this->get_path() . 'shortcodes/class-els-shortcode-slider.php';
 	}
 
 	/**
@@ -102,6 +106,9 @@ class ELS_Public {
 
 		// Hook for single listing page slider.
 		new ELS_Public_Single_Slider( $this );
+
+		// Shortcodes.
+		$this->loader->add_shortcode( 'els_slider', new ELS_Shortcode_Slider(), 'output' );
 	}
 
 	/**
