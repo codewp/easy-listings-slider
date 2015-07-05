@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * @var string $slider_type
  * @var string $slides
  * @var array $attachments
  */
@@ -35,8 +36,11 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 <p class="add_slider_images hide-if-no-js">
 	<a class="images_loader" href="#" data-choose="<?php _e( 'Add Images to Slider', 'els' ); ?>"
 	data-update="<?php _e( 'Add to slider', 'els' ); ?>" data-delete="<?php _e( 'Delete image', 'els' ); ?>"
-	data-text="<?php _e( 'Delete', 'els' ); ?>"><?php _e( 'Add Images', 'els' ); ?></a>
+	data-text="<?php _e( 'Delete', 'els' ); ?>"
+	style="<?php echo 'listings' === $slider_type ? 'display:none;' : '' ?>">
+	<?php _e( 'Add Images', 'els' ); ?></a>
 	<a class="listings_loader" href="#" title="<?php _e( 'Listings', 'els' ) ?>"
-	data-delete="<?php _e( 'Delete image', 'els' ); ?>" data-text="<?php _e( 'Delete', 'els' ); ?>">
+	data-delete="<?php _e( 'Delete image', 'els' ); ?>" data-text="<?php _e( 'Delete', 'els' ); ?>"
+	style="<?php echo 'images' === $slider_type ? 'display:none;' : '' ?>">
 	<?php _e( 'Add Listings', 'els' ) ?></a>
 </p>

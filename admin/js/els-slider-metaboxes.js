@@ -23,6 +23,20 @@ var tb_position;
 	 $( "#slider-data-container .tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
 	 $( "#slider-data-container .tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 
+	 // Controlling slider type and allowing only for adding selected type.
+	 $( '#slider_type' ).on( 'change', function() {
+	 	if ( 'images' === $( this ).val() ) {
+	 		$( '.add_slider_images .images_loader' ).show();
+	 		$( '.add_slider_images .listings_loader' ).hide();
+	 	} else if ( 'listings' === $( this ).val() ) {
+	 		$( '.add_slider_images .images_loader' ).hide();
+	 		$( '.add_slider_images .listings_loader' ).show();
+	 	} else {
+	 		$( '.add_slider_images .images_loader' ).show();
+	 		$( '.add_slider_images .listings_loader' ).show();
+	 	}
+	 });
+
 	 // slides file uploads
 	 var slides_frame;
 	 var $image_ids = $('#els_slider_images');
