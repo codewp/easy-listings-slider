@@ -106,6 +106,10 @@ class ELS_Admin {
 		 * The class responsible for creating menus of the plugin.
 		 */
 		require_once $this->get_path() . 'class-els-admin-menu.php';
+		/**
+		 * The class responsible for showing notices in admin area.
+		 */
+		require_once $this->get_path() . 'class-els-admin-notices.php';
 	}
 
 	/**
@@ -122,6 +126,8 @@ class ELS_Admin {
 		new ELS_Admin_Post_types( $this->loader );
 		// Hooks for meta boxes.
 		new ELS_Admin_Meta_Boxes( $this->loader );
+		// Hooks for admin notices.
+		new ELS_Admin_Notices( $this->loader );
 		// Hooks for plugin admin menus.
 		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
 	}

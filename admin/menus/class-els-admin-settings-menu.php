@@ -60,6 +60,12 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 		return apply_filters( 'els_settings_tabs', $tabs );
 	}
 
+	/**
+	 * Add all settings sections and fields.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
 	public function register_settings() {
 		if ( false === get_option( 'els_settings' ) ) {
 			add_option( 'els_settings' );
@@ -109,7 +115,22 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 	 * @return  array
 	 */
 	public function get_registered_settings() {
-		$els_settings = array();
+		$els_settings = array(
+			/** General Settings */
+			'general' => array(
+				'slider_in_single_page' => array(
+					'id'      => 'slider_in_single_page',
+					'name'    => __( 'Display slider in single listing page', 'els' ),
+					'desc'    => __( 'This option will shows the slider in single listing page if enabled.', 'els' ),
+					'type'    => 'radio',
+					'std'     => 'enabled',
+					'options' => array(
+						'enabled'  => __( 'Enabled', 'els' ),
+						'disabled' => __( 'Disabled', 'els' )
+					)
+				),
+			),
+		);
 
 		return apply_filters( 'els_registered_settings', $els_settings );
 	}
@@ -126,8 +147,53 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 	 *
 	 * @return string $input Sanitizied value
 	 */
-	public function els_settings_sanitize() {
+	public function els_settings_sanitize( $input = array() ) {
+		$els_settings = ELS_IOC::make( 'settings' )->get_settings();
 
+		if ( empty( $_POST['_wp_http_referer'] ) ) {
+			return $input;
+		}
+
+		$settings = $this->get_registered_settings();
+		$tab      = isset( $referrer['tab'] ) ? $referrer['tab'] : 'general';
+
+		$input = apply_filters( 'els_settings_' . $tab . '_sanitize', $input );
+		// Loop through each setting being saved and pass it through a sanitization filter
+		foreach ( $input as $key => $value ) {
+
+			// Get the setting type (checkbox, select, etc)
+			$type = isset( $settings[ $tab ][ $key ]['type'] ) ? $settings[ $tab ][ $key ]['type'] : false;
+
+			if ( $type ) {
+				// Field type specific filter
+				$input[ $key ] = apply_filters( 'els_settings_sanitize_' . $type, $value, $key );
+			}
+
+			// General filter
+			$input[ $key ] = apply_filters( 'els_settings_sanitize', $input[ $key ], $key );
+		}
+
+		// Loop through the whitelist and unset any that are empty for the tab being saved
+		if ( ! empty( $settings[ $tab ] ) ) {
+			foreach ( $settings[ $tab ] as $key => $value ) {
+
+				// settings used to have numeric keys, now they have keys that match the option ID. This ensures both methods work
+				if ( is_numeric( $key ) ) {
+					$key = $value['id'];
+				}
+
+				if ( empty( $input[ $key ] ) && isset( $els_settings[ $key ] ) ) {
+					unset( $els_settings[ $key ] );
+				}
+			}
+		}
+
+		// Merge our new settings with the existing
+		$output = array_merge( $els_settings, $input );
+
+		add_settings_error( 'els-notices', '', __( 'Settings updated.', 'els' ), 'updated' );
+
+		return $output;
 	}
 
 }

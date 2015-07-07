@@ -16,21 +16,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ELS_Admin_Menu {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin
-	 *
-	 * @since 1.0.0
-	 * @var ELS_Loader
-	 */
-	private $loader;
-
-	/**
 	 * array of plugin menus.
 	 *
 	 * @since 1.0.0
 	 * @var array
 	 */
 	private $menus;
+
+	/**
+	 * settings menu of the plugin.
+	 *
+	 * @since 1.0.0
+	 * @var ELS_Admin_Settings_Menu
+	 */
+	private $settings_menu;
 
 	/**
 	 * Constructor of the class.
@@ -41,9 +40,10 @@ class ELS_Admin_Menu {
 	public function __construct( ELS_Loader $loader ) {
 		$this->load_dependencies();
 
-		$this->loader = $loader;
 		$this->menus  = array();
 
+		// Settings menu of the plugin containing actions for registering settings.
+		$this->settings_menu = new ELS_Admin_Settings_Menu( $loader, ELS_IOC::make( 'admin_html_element' ) );
 		// Actions for creating menus of the plugin
 		$loader->add_action( 'admin_menu', $this, 'settings_menu' );
 	}
@@ -67,7 +67,7 @@ class ELS_Admin_Menu {
 	public function settings_menu() {
 		$this->menus[] = add_submenu_page( 'edit.php?post_type=els_slider', __( 'Easy Listings Slider Settings', 'els' ),
 			__( 'Settings', 'els' ), 'manage_options', 'els-settings',
-			array( new ELS_Admin_Settings_Menu( $this->loader, ELS_IOC::make( 'admin_html_element' ) ), 'create_menu' ) );
+			array( $this->settings_menu, 'create_menu' ) );
 	}
 
 	/**

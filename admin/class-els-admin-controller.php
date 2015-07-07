@@ -60,4 +60,14 @@ class ELS_Admin_Controller {
 		return plugin_dir_url( __FILE__ ) . 'css/';
 	}
 
+	/**
+	 * Getting admin-side images directory url.
+	 *
+	 * @since 1.0.0
+	 * @return string url of images directory
+	 */
+	protected function get_images_url() {
+		return plugin_dir_url( __FILE__ ) . 'images/';
+	}
+
 }
