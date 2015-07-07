@@ -15,8 +15,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 
+	/**
+	 * Rendering content of menu.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
 	public function create_menu() {
+		$this->render_view( 'menus.settings-menu', array( 'tabs' => $this->get_settings_tabs() ) );
+	}
 
+	/**
+	 * Retrieve settings tabs
+	 *
+	 * @since   1.0.0
+	 * @return  array $tabs
+	 */
+	public function get_settings_tabs() {
+		$tabs = array(
+			'general' => __( 'General', 'els' )
+		);
+
+		return apply_filters( 'els_settings_tabs', $tabs );
 	}
 
 }
