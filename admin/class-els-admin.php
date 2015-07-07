@@ -51,6 +51,15 @@ class ELS_Admin {
 	private $loader;
 
 	/**
+	 * Menu manger of the plugin admin area.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 * @var ELS_Admin_Menu
+	 */
+	private $menu_manager;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -88,6 +97,10 @@ class ELS_Admin {
 		 * The class responsible for Meta Boxes of the plugin.
 		 */
 		require_once $this->get_path() . 'class-els-admin-meta-boxes.php';
+		/**
+		 * The class responsible for creating menus of the plugin.
+		 */
+		require_once $this->get_path() . 'class-els-admin-menu.php';
 	}
 
 	/**
@@ -104,6 +117,8 @@ class ELS_Admin {
 		new ELS_Admin_Post_types( $this->loader );
 		// Hooks for meta boxes.
 		new ELS_Admin_Meta_Boxes( $this->loader );
+		// Hooks for plugin admin menus.
+		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
 	}
 
 	/**
