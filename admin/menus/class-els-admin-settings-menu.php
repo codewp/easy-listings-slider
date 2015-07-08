@@ -129,6 +129,85 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 						'disabled' => __( 'Disabled', 'els' )
 					)
 				),
+				'single_page_slider_width' => array(
+					'id'   => 'single_page_slider_width',
+					'name' => __( 'Width of single page slider', 'els' ),
+					'desc' => __( 'Single listing page slider width in pixels.', 'els' ),
+					'type' => 'number',
+					'size' => 'small',
+					'std'  => '600',
+				),
+				'single_page_slider_height' => array(
+					'id'   => 'single_page_slider_height',
+					'name' => __( 'Height of single page slider', 'els' ),
+					'desc' => __( 'Single listing page slider height in pixels.', 'els' ),
+					'type' => 'number',
+					'size' => 'small',
+					'std'  => '480',
+				),
+				'single_page_slider_auto_crop_resize' => array(
+					'id' => 'single_page_slider_auto_crop_resize',
+					'name' => __( 'Slider autocrop resize feature', 'els' ),
+					'desc' => __( 'Automatically crop and resize slider images based on above size in single listing page.', 'els' ),
+					'type' => 'radio',
+					'std' => 'disabled',
+					'options' => array(
+						'enabled'  => __( 'Enabled', 'els' ),
+						'disabled' => __( 'Disabled', 'els' )
+					)
+				),
+				'single_page_slider_autoplay' => array(
+					'id' => 'single_page_slider_autoplay',
+					'name' => __( 'Autoplay', 'els' ),
+					'desc' => __( 'This feature will automatically playes slides if enabled in single listing page.', 'els' ),
+					'type' => 'radio',
+					'std' => 'enabled',
+					'options' => array(
+						'enabled'  => __( 'Enabled', 'els' ),
+						'disabled' => __( 'Disabled', 'els' )
+					)
+				),
+				'single_page_slider_autoplay_interval' => array(
+					'id'   => 'single_page_slider_autoplay_interval',
+					'name' => __( 'Autoplay interval', 'els' ),
+					'desc' => __( 'Interval of autoplay in single listing page.', 'els' ),
+					'type' => 'number',
+					'size' => 'small',
+					'std'  => '4000',
+				),
+				'single_page_slider_slide_duration' => array(
+					'id'   => 'single_page_slider_slide_duration',
+					'name' => __( 'Slide duration', 'els' ),
+					'desc' => __( 'Duration of slide in single listing page.', 'els' ),
+					'type' => 'number',
+					'size' => 'small',
+					'std'  => '500',
+				),
+				'single_page_slider_loop'	 => array(
+					'id'      => 'single_page_slider_loop',
+					'name'    => __( 'Single listing page slider loop', 'els' ),
+					'desc'    => __( 'Slider loop type in single listing page.', 'els' ),
+					'type'    => 'select',
+					'std'     => '1',
+					'options' => array(
+						'0' => __( 'Stop', 'els' ),
+						'1' => __( 'Loop', 'els' ),
+						'2' => __( 'Rewind', 'els' ),
+					)
+				),
+				'single_page_slider_drag_orientation'	 => array(
+					'id'      => 'single_page_slider_drag_orientation',
+					'name'    => __( 'Single listing page drag orientation', 'els' ),
+					'desc'    => __( 'Drag orientation type in single listing page.', 'els' ),
+					'type'    => 'select',
+					'std'     => '3',
+					'options' => array(
+						'0' => __( 'No drag', 'els' ),
+						'1' => __( 'Horizental', 'els' ),
+						'2' => __( 'Vertical', 'els' ),
+						'3' => __( 'Either', 'els' ),
+					)
+				),
 			),
 		);
 
