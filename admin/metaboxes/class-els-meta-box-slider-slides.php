@@ -42,7 +42,7 @@ class ELS_Meta_Box_Slider_Slides extends ELS_Admin_Controller {
 
 		$this->render_view( 'metaboxes.slider-slides',
 			array(
-				'slider_type'		  => $slider->get_type(),
+				'slider_type' => $slider->get_type(),
 				'slides'      => $slides,
 				'attachments' => $attachments,
 			)

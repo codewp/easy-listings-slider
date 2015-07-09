@@ -18,6 +18,7 @@ class ELS_Admin_Meta_Boxes {
 	private $gallery_meta_box;			// Listings Gallery Meta Box
 	private $slider_data_meta_box;		// Slider Data Meta Box
 	private $slider_slides_meta_box;	// Slider Slides Meta Box
+	private $slider_captions_meta_box;  // Slider Captions Meta Box
 
 	/**
 	 * constructor of the class.
@@ -29,11 +30,13 @@ class ELS_Admin_Meta_Boxes {
 		// loading dependencies.
 		$this->load_dependencies();
 		// Gallery meta box instance.
-		$this->gallery_meta_box       = new ELS_Meta_Box_Listing_Gallery( $loader );
+		$this->gallery_meta_box         = new ELS_Meta_Box_Listing_Gallery( $loader );
 		// Slider Data meta box instance.
-		$this->slider_data_meta_box   = new ELS_Meta_Box_Slider_Data( $loader );
+		$this->slider_data_meta_box     = new ELS_Meta_Box_Slider_Data( $loader );
 		// Slider Slides meta box instance.
-		$this->slider_slides_meta_box = new ELS_Meta_Box_Slider_Slides( $loader );
+		$this->slider_slides_meta_box   = new ELS_Meta_Box_Slider_Slides( $loader );
+		// Slider Captions meta box instance.
+		$this->slider_captions_meta_box = new ELS_Meta_Box_Slider_Captions( $loader );
 
 		// Actions for meta boxes.
 		$loader->add_action( 'add_meta_boxes', $this, 'add_meta_boxes' );
@@ -50,6 +53,7 @@ class ELS_Admin_Meta_Boxes {
 		require_once plugin_dir_path( __FILE__ ) . 'metaboxes/class-els-meta-box-listing-gallery.php';
 		require_once plugin_dir_path( __FILE__ ) . 'metaboxes/class-els-meta-box-slider-data.php';
 		require_once plugin_dir_path( __FILE__ ) . 'metaboxes/class-els-meta-box-slider-slides.php';
+		require_once plugin_dir_path( __FILE__ ) . 'metaboxes/class-els-meta-box-slider-captions.php';
 	}
 
 	/**
@@ -69,7 +73,9 @@ class ELS_Admin_Meta_Boxes {
 		// Adding slider data meta box to Slider type.
 		add_meta_box( 'els_slider_data', __( 'Slider Data', 'els' ), array( $this->slider_data_meta_box, 'output' ), 'els_slider', 'normal', 'high' );
 		// Adding slider slides meta box to Slider type.
-		add_meta_box( 'els_slider_slides', __( 'Slides', 'els' ), array( $this->slider_slides_meta_box, 'output' ), 'els_slider', 'normal', 'high' );
+		add_meta_box( 'els_slider_slides', __( 'Slider Slides', 'els' ), array( $this->slider_slides_meta_box, 'output' ), 'els_slider', 'normal', 'high' );
+		// Adding slider captions meta box to Slider type.
+		add_meta_box( 'els_slider_captions', __( 'Slider Captions', 'els' ), array( $this->slider_captions_meta_box, 'output' ), 'els_slider', 'normal', 'high' );
 	}
 
 	/**
