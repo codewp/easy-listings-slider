@@ -16,24 +16,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 
 	/**
-	 * Object for rendering html elements.
-	 *
-	 * @since 1.0.0
-	 * @var ELS_Admin_HTML_Element
-	 */
-	private $html_element;
-
-	/**
 	 * Constructor of the class.
 	 *
 	 * @since 1.0.0
 	 * @param ELS_Loader             $loader
-	 * @param ELS_Admin_HTML_Element $html_element
 	 */
-	public function __construct( ELS_Loader $loader, ELS_Admin_HTML_Element $html_element ) {
-		$this->html_element = $html_element;
+	public function __construct( ELS_Loader $loader ) {
+		$this->load_dependencies();
 		// Registering settings.
 		$loader->add_action( 'admin_init', $this, 'register_settings' );
+	}
+
+	/**
+	 * Loading dependencies of the class.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	private function load_dependencies() {
+		/**
+		 * The class responsible for rendering HTML elements in settings pages.
+		 */
+		require_once $this->get_path() . 'class-els-admin-settings-html-elements.php';
 	}
 
 	/**
@@ -73,6 +77,8 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 
 		$els_settings = $this->get_registered_settings();
 		if ( count( $els_settings ) ) {
+			// Getting an instance of settings HTML elements class.
+			$html_elements = new ELS_Admin_Settings_HTML_Elements();
 			foreach ( $els_settings as $tab => $settings ) {
 				add_settings_section( 'els_settings_' . $tab, null, '__return_false', 'els_settings_' . $tab );
 
@@ -82,8 +88,8 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 					add_settings_field(
 						'els_settings[' . $option['id'] . ']',
 						$name,
-						method_exists( $this->html_element, $option['type'] ) ?
-							array( $this->html_element, $option['type'] ) : array( $this->html_element, 'missing' ),
+						method_exists( $html_elements, $option['type'] ) ?
+							array( $html_elements, $option['type'] ) : array( $html_elements, 'missing' ),
 						'els_settings_' . $tab,
 						'els_settings_' . $tab,
 						array(

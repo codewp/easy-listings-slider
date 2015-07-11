@@ -43,7 +43,7 @@ class ELS_Admin_Menu {
 		$this->menus  = array();
 
 		// Settings menu of the plugin containing actions for registering settings.
-		$this->settings_menu = new ELS_Admin_Settings_Menu( $loader, ELS_IOC::make( 'admin_html_element' ) );
+		$this->settings_menu = new ELS_Admin_Settings_Menu( $loader );
 		// Actions for creating menus of the plugin
 		$loader->add_action( 'admin_menu', $this, 'settings_menu' );
 	}

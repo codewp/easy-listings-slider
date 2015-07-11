@@ -72,7 +72,6 @@ class ELS_Admin {
 		$this->loader      = $loader;
 
 		$this->load_dependencies();
-		$this->define_globals();
 	}
 
 	/**
@@ -86,10 +85,6 @@ class ELS_Admin {
 		 * The controller class of admin area.
 		 */
 		require_once $this->get_path() . 'class-els-admin-controller.php';
-		/**
-		 * The class responsible for rendering HTML elements.
-		 */
-		require_once $this->get_path() . 'class-els-admin-html-element.php';
 		/**
 		 * The class responsible for Post Types related functionalities of the plugin.
 		 */
@@ -130,16 +125,6 @@ class ELS_Admin {
 		new ELS_Admin_Notices( $this->loader );
 		// Hooks for plugin admin menus.
 		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
-	}
-
-	/**
-	 * Defining admin area globals.
-	 *
-	 * @since  1.0.0
-	 * @return void
-	 */
-	private function define_globals() {
-		ELS_IOC::bind( 'admin_html_element', new ELS_Admin_HTML_Element() );
 	}
 
 	/**

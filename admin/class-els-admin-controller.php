@@ -70,4 +70,14 @@ class ELS_Admin_Controller {
 		return plugin_dir_url( __FILE__ ) . 'images/';
 	}
 
+	/**
+	 * Getting path of admin area.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
+	protected function get_path() {
+		return plugin_dir_path( __FILE__ );
+	}
+
 }

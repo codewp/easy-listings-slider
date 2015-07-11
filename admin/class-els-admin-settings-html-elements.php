@@ -6,14 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * The admin-facing HTML elements.
+ * The class responsible for rendering HTML elements in settings pages.
  *
  * @package    Easy_Listings_Slider
  * @subpackage Easy_Listings_Slider/admin
  * @author     Taher Atashbar <taher.atashbar@gmail.com>
  */
 
-class ELS_Admin_HTML_Element extends ELS_Admin_Controller {
+class ELS_Admin_Settings_HTML_Elements extends ELS_Admin_Controller {
 
 	/**
 	 * Callback that called when rendering callback not found for element type.
