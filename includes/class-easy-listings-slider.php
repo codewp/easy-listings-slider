@@ -120,6 +120,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-settings.php';
 
 		/**
+		 * The class responsible for plugin HTML elements render.
+		 */
+		require_once $this->get_path() . 'includes/class-els-html-elements.php';
+
+		/**
 		 * The class that contains functions that are common between listings.
 		 */
 		require_once $this->get_path() . 'includes/class-els-listings.php';
@@ -249,6 +254,7 @@ class Easy_Listings_Slider {
 	 * @return void
 	 */
 	private function define_globals() {
+		ELS_IOC::bind( 'html', new ELS_HTML_Elements() );
 		ELS_IOC::bind( 'settings', new ELS_Settings() );
 		ELS_IOC::bind( 'listings', new ELS_Listings() );
 		ELS_IOC::bind( 'plugin_admin', new ELS_Admin( $this->plugin_name, $this->version, $this->loader ) );
