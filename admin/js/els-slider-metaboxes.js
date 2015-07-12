@@ -90,6 +90,10 @@ var tb_position;
 	 							<li><a href="#" class="delete" title="' + $el.data('delete') + '">' + $el.data('text') + '</a></li>\
 	 						</ul>\
 	 					</li>');
+	 				// Increasing number of slides in captions.
+	 				$( '.els_repeatable_slide_number_field' ).each( function() {
+	 					$(this).append( '<option value="' + $('option', this).length + '">' + $('option', this).length + '</option>' );
+	 				});
 	 			}
 
 	 		});
@@ -131,6 +135,9 @@ var tb_position;
 
 	 // Remove images
 	 $('#els-slider-slides-container').on( 'click', 'a.delete', function() {
+	 	// Finding deleted slide number.
+	 	var slide_number = $( '#els-slider-slides-container .slider_images' ).children( 'li' ).index( $(this).closest('li.image') ) + 1;
+
 	 	$(this).closest('li.image').remove();
 
 	 	var attachment_ids = '';
@@ -145,6 +152,22 @@ var tb_position;
 	 	// remove any lingering tooltips
 	 	$( '#tiptip_holder' ).removeAttr( 'style' );
 	 	$( '#tiptip_arrow' ).removeAttr( 'style' );
+
+	 	// Removing all of captions that relates to removed slide.
+	 	$( '.els_repeatable_slide_number_field' ).each( function() {
+	 		if ( $( this ).val() == slide_number ) {
+	 			ElsCaptionConfiguration.removeRow( $( this ).closest('tr') );
+	 		}
+	 	});
+
+	 	// Decreasing number of slides in captions slide_number select.
+	 	$( '.els_repeatable_slide_number_field' ).each( function() {
+	 		if ( $( this ).val() > slide_number ) {
+	 			// Decreasing slide numbers that are greater than removed slide number.
+	 			$( this ).val( $( this ).val() - 1 );
+	 		}
+	 		$( 'option:last', this ).remove();
+	 	});
 
 	 	return false;
 	 });
@@ -173,6 +196,10 @@ var tb_position;
 	 								<li><a href="#" class="delete" title="' + $( '.listings_loader' ).data('delete') + '">' + $( '.listings_loader' ).data('text') + '</a></li>\
 	 							</ul>\
 	 						</li>');
+		            	// Increasing number of slides in captions.
+		            	$( '.els_repeatable_slide_number_field' ).each( function() {
+		            		$(this).append( '<option value="' + $('option', this).length + '">' + $('option', this).length + '</option>' );
+		            	});
 	            	}
 	            } );
 	            tb_remove();
@@ -180,6 +207,97 @@ var tb_position;
 	        $els_slider_images = '';
 	    };
 	}
+
+	// Slider captions configurations.
+	var ElsCaptionConfiguration = {
+		init : function() {
+			this.add();
+			this.remove();
+		},
+
+		clone_repeatable : function( row ) {
+			// Retrieve the highest current key
+			var key = 1, highest = 1;
+			row.parent().find( 'tr.els_repeatable_row' ).each(function() {
+				var current = $(this).data( 'key' );
+				if( parseInt( current ) > highest ) {
+					highest = current;
+				}
+			});
+			key = highest += 1;
+
+			var clone = row.clone();
+
+			/** manually update any select box values */
+			clone.find( 'select' ).each(function() {
+				$( this ).val( row.find( 'select[name="' + $( this ).attr( 'name' ) + '"]' ).val() );
+			});
+
+			clone.removeClass( 'els_add_blank' );
+
+			clone.attr( 'data-key', key );
+			clone.find( 'td input, td select' ).val( '' );
+			clone.find( 'input, select, textarea' ).each(function() {
+				var name = $( this ).attr( 'name' );
+
+				name = name.replace( /\[(\d+)\]/, '[' + parseInt( key ) + ']');
+
+				$( this ).attr( 'name', name ).attr( 'id', name );
+			});
+
+			return clone;
+		},
+
+		add: function() {
+			$( 'body' ).on( 'click', '.submit .els_add_repeatable', function(e) {
+				e.preventDefault();
+				var button = $( this ),
+				row = button.parent().parent().prev( 'tr' ),
+				clone = ElsCaptionConfiguration.clone_repeatable( row );
+				clone.insertAfter( row ).find('input, textarea, select').filter(':visible').eq(0).focus();
+			});
+		},
+
+		remove : function() {
+			$( 'body' ).on( 'click', '.els_remove_repeatable', function(e) {
+				e.preventDefault();
+
+				var row   = $(this).parent().parent( 'tr' ),
+					count = row.parent().find( 'tr' ).length - 1,
+					type  = $(this).data('type'),
+					repeatable = 'tr.els_repeatable_' + type + 's';
+
+				if( count > 1 ) {
+					$( 'input, select', row ).val( '' );
+					row.fadeOut( 'fast' ).remove();
+				} else {
+					$( 'input, select', row ).val( '' );
+				}
+
+				/* re-index after deleting */
+				$(repeatable).each( function( rowIndex ) {
+					$(this).find( 'input, select' ).each(function() {
+						var name = $( this ).attr( 'name' );
+						name = name.replace( /\[(\d+)\]/, '[' + rowIndex+ ']');
+						$( this ).attr( 'name', name ).attr( 'id', name );
+					});
+				});
+			});
+		},
+
+		removeRow: function( row ) {
+			if ( row.length ) {
+				var rowCount = row.closest('tbody').find( 'tr' ).length - 1;
+				if ( rowCount > 1 ) {
+					$( 'input, select', row ).val( '' );
+					row.fadeOut( 'fast' ).remove();
+				} else {
+					$( 'input', row ).val( '' );
+				}
+			}
+		}
+	}
+	ElsCaptionConfiguration.init();
 
 	/**
 	 * Quick fix for thickbox issue with width and height in admin.
