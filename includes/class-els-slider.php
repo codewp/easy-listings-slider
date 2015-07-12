@@ -45,6 +45,7 @@ class ELS_Slider {
 	public $filter;
 
 	private $slides;
+	private $captions;
 	private $type;
 	private $width;
 	private $height;
@@ -128,6 +129,23 @@ class ELS_Slider {
 		}
 
 		return trim( $this->slides );
+	}
+
+	/**
+	 * Getting captions of slider.
+	 *
+	 * @since  1.0.0
+	 * @return array
+	 */
+	public function get_captions() {
+		if ( ! isset( $this->captions ) ) {
+			$this->captions = get_post_meta( $this->ID, 'captions', true );
+			if ( ! is_array( $this->captions ) ) {
+				$this->captions = array();
+			}
+		}
+
+		return $this->captions;
 	}
 
 	/**
