@@ -47,6 +47,7 @@ class ELS_Slider {
 	private $slides;
 	private $captions;
 	private $type;
+	private $theme;
 	private $width;
 	private $height;
 	private $auto_crop_resize;
@@ -180,6 +181,24 @@ class ELS_Slider {
 			'listings'        => __( 'Listings', 'els' ),
 			'listings_images' => __( 'Listings And Images', 'els' )
 		) );
+	}
+
+	/**
+	 * Getting theme of slider.
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public function get_theme() {
+		if ( ! isset( $this->theme ) ) {
+			$this->theme = get_post_meta( $this->ID, 'slider_width', true );
+			if ( empty( $this->theme ) ) {
+				// Using full-width as default slider theme.
+				$this->theme = 'full-width';
+			}
+		}
+
+		return $this->theme;
 	}
 
 	/**
