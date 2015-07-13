@@ -191,7 +191,7 @@ class ELS_Slider {
 	 */
 	public function get_theme() {
 		if ( ! isset( $this->theme ) ) {
-			$this->theme = get_post_meta( $this->ID, 'slider_width', true );
+			$this->theme = get_post_meta( $this->ID, 'slider_theme', true );
 			if ( empty( $this->theme ) ) {
 				// Using full-width as default slider theme.
 				$this->theme = 'full-width';
