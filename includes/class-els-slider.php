@@ -209,8 +209,9 @@ class ELS_Slider {
 	 */
 	public function get_themes() {
 		return apply_filters( 'els_slider_themes', array(
-			'thumbnail'  => __( 'Thumbnail', 'els' ),
-			'full-width' => __( 'Full Width', 'els' ),
+			'thumbnail'    => __( 'Thumbnail', 'els' ),
+			'full-width'   => __( 'Full Width', 'els' ),
+			'introduction' => __( 'Introduction', 'els' ),
 		) );
 	}
 

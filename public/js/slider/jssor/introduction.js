@@ -19,7 +19,6 @@
 	 */
 
 	 var options = {
-	 	$FillMode: 2,
 	 	$ArrowKeyNavigation: true,
 	 	$SlideEasing: $JssorEasing$.$EaseOutQuint,
 	 	$MinDragOffsetToSlide: 20,
@@ -35,8 +34,8 @@
 	        $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
 	        $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
 	        $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
-	        $SpacingX: 8,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
-	        $SpacingY: 8,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+	        $SpacingX: 4,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+	        $SpacingY: 4,                                   //[Optional] Vertical space between each item in pixel, default value is 0
 	        $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
 	    },
 
@@ -53,9 +52,9 @@
 	 //responsive code begin
 	 //you can remove responsive code if you don't want the slider scales while window resizes
 	 function ScaleSlider() {
-	     var bodyWidth = document.body.clientWidth;
-	     if (bodyWidth)
-	         jssor_slider.$ScaleWidth(Math.min(bodyWidth, 1920));
+	     var parentWidth = jssor_slider.$Elmt.parentNode.clientWidth;
+	     if (parentWidth)
+	         jssor_slider.$ScaleWidth(Math.max(Math.min(parentWidth, 980), 300));
 	     else
 	         window.setTimeout(ScaleSlider, 30);
 	 }
