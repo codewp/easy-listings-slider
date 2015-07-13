@@ -202,6 +202,19 @@ class ELS_Slider {
 	}
 
 	/**
+	 * Getting all of slider themes.
+	 *
+	 * @since  1.0.0
+	 * @return array
+	 */
+	public function get_themes() {
+		return apply_filters( 'els_slider_themes', array(
+			'thumbnail'  => __( 'Thumbnail', 'els' ),
+			'full-width' => __( 'Full Width', 'els' ),
+		) );
+	}
+
+	/**
 	 * Getting width of slider.
 	 *
 	 * @since 1.0.0

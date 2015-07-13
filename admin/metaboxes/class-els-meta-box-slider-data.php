@@ -82,6 +82,7 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 		return
 			apply_filters( 'els_slider_data_meta_box_fields',
 				array(
+					'slider_theme',
 					'slider_type',
 					'slider_width',
 					'slider_height',
