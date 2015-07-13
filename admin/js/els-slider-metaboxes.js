@@ -271,7 +271,8 @@ var tb_position;
 					$( 'input, select', row ).val( '' );
 					row.fadeOut( 'fast' ).remove();
 				} else {
-					$( 'input, select', row ).val( '' );
+					$( 'input', row ).val( '' );
+					$( 'select', row ).val( 'all' );
 				}
 
 				/* re-index after deleting */
@@ -293,6 +294,7 @@ var tb_position;
 					row.fadeOut( 'fast' ).remove();
 				} else {
 					$( 'input', row ).val( '' );
+					$( 'select', row ).val( 'all' );
 				}
 			}
 		}

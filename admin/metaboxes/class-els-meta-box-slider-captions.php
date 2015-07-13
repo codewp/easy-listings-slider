@@ -36,7 +36,6 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 	public function output( $post ) {
 		$slider      = new ELS_Slider( $post->ID );
 		$slides      = $slider->get_slides();
-		$captions    = $slider->get_captions();
 		$attachments = $slide_numbers = array();
 		if ( strlen( $slides ) ) {
 			$attachments = array_filter( explode( ',', $slides ) );
@@ -49,7 +48,7 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				'html'          => ELS_IOC::make( 'html' ),
 				'images_url'    => $this->get_images_url(),
 				'slide_numbers' => $slide_numbers,
-				'captions'		=> $captions,
+				'captions'		=> $slider->get_captions(),
 			)
 		);
 	}
