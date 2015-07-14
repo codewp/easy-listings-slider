@@ -22,6 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<thead>
 				<tr>
 					<th><?php _e( 'Caption', 'els' ) ?></th>
+					<th style="width: 10%"><?php _e( 'Offsetx', 'els' ) ?> (px)</th>
+					<th style="width: 10%"><?php _e( 'Offsety', 'els' ) ?> (px)</th>
+					<th style="width: 10%"><?php _e( 'Width', 'els' ) ?> (px)</th>
+					<th style="width: 10%"><?php _e( 'Height', 'els' ) ?> (px)</th>
 					<th style="width: 20%;"><?php _e( 'Slide number', 'els' ) ?></th>
 					<th style="width: 2%"></th>
 				</tr>
@@ -30,8 +34,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				if ( count( $captions ) ) {
 					$captions_count = 0;
-					foreach ( $captions as $slide_number => $caption_names ) {
-						foreach ( $caption_names as $caption_name ) {
+					foreach ( $captions as $slide_number => $caption_details ) {
+						foreach ( $caption_details as $caption_detail ) {
 							$captions_count++;
 							?>
 							<tr class="els_repeatable_row" data-key="<?php echo $captions_count ?>">
@@ -39,9 +43,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 									<?php
 									echo $html->text( array(
 											'name'        => 'els_slider_captions[' . $captions_count . '][name]',
-											'value'		  => sanitize_text_field( $caption_name ),
+											'value'		  => sanitize_text_field( $caption_detail['name'] ),
 											'placeholder' => __( 'Caption name', 'els' ),
 											'class'       => 'els_repeatable_name_field large-text',
+										)
+									);
+									?>
+								</td>
+								<td>
+									<?php
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][offsetx]',
+											'value' => (int) $caption_detail['offsetx'],
+											'class' => 'els_repeatable_name_field large-text',
+										)
+									);
+									?>
+								</td>
+								<td>
+									<?php
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][offsety]',
+											'value' => (int) $caption_detail['offsety'],
+											'class' => 'els_repeatable_name_field large-text',
+										)
+									);
+									?>
+								</td>
+								<td>
+									<?php
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][width]',
+											'value' => absint( $caption_detail['width'] ),
+											'min'   => 0,
+											'class' => 'els_repeatable_name_field large-text',
+										)
+									);
+									?>
+								</td>
+								<td>
+									<?php
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][height]',
+											'value' => absint( $caption_detail['height'] ),
+											'min'   => 0,
+											'class' => 'els_repeatable_name_field large-text',
 										)
 									);
 									?>
@@ -74,6 +120,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'name'        => 'els_slider_captions[0][name]',
 									'placeholder' => __( 'Caption name', 'els' ),
 									'class'       => 'els_repeatable_name_field large-text',
+								)
+							);
+							?>
+						</td>
+						<td>
+							<?php
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][offsetx]',
+									'value' => 0,
+									'class' => 'els_repeatable_name_field large-text',
+								)
+							);
+							?>
+						</td>
+						<td>
+							<?php
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][offsety]',
+									'value' => 0,
+									'class' => 'els_repeatable_name_field large-text',
+								)
+							);
+							?>
+						</td>
+						<td>
+							<?php
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][width]',
+									'min'   => 0,
+									'class' => 'els_repeatable_name_field large-text',
+								)
+							);
+							?>
+						</td>
+						<td>
+							<?php
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][height]',
+									'min'   => 0,
+									'class' => 'els_repeatable_name_field large-text',
 								)
 							);
 							?>
