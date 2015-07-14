@@ -18,6 +18,9 @@
      * ... and so on.
 	 */
 
+	 var _CaptionTransitions = [];
+	 _CaptionTransitions["CLIP|LR"] = { $Duration: 900, $Clip: 3, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+
 	 var options = {
 	 	$ArrowKeyNavigation: true,
 	 	$SlideEasing: $JssorEasing$.$EaseOutQuint,
@@ -27,6 +30,13 @@
 	    $AutoPlayInterval: parseInt( data.auto_play_interval ),     //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
 	    $SlideDuration: parseInt( data.slide_duration ),            //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
 	    $DragOrientation: parseInt( data.drag_orientation ),        //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+	    $CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
+	        $Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption
+	        $CaptionTransitions: _CaptionTransitions,       //[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
+	        $PlayInMode: 1,                                 //[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
+	        $PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
+	    },
 
 	    $BulletNavigatorOptions: {                          //[Optional] Options to specify and enable navigator or not
 	        $Class: $JssorBulletNavigator$,                 //[Required] Class to create navigator instance
