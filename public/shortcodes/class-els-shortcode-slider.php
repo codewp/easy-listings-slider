@@ -35,6 +35,7 @@ class ELS_Shortcode_Slider {
 					if ( count( $slides ) ) {
 						$jssor_slider                     = new ELS_Public_Jssor_Slider();
 						$jssor_slider->image_ids          = $slides;
+						$jssor_slider->captions 		  = $slider->get_captions();
 						$jssor_slider->theme			  = $slider->get_theme();
 						$jssor_slider->auto_play          = $slider->get_auto_play();
 						$jssor_slider->loop               = $slider->get_loop();

@@ -24,6 +24,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 */
 	protected $data = array(
 		'image_ids'          => array(),
+		'captions'			 => array(),
 		'theme'              => 'thumbnail',
 		'auto_play'          => true,
 		'loop'               => 1, 				// Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind
