@@ -145,6 +145,7 @@ class ELS_HTML_Elements {
 
 		$defaults = array(
 			'name'         => 'text',
+			'type'		   => 'text',
 			'value'        => null,
 			'label'        => null,
 			'desc'         => null,
@@ -153,6 +154,8 @@ class ELS_HTML_Elements {
 			'disabled'     => false,
 			'autocomplete' => '',
 			'data'         => false,
+			'min'		   => null,
+			'max'		   => null,
 		);
 
 		$args = wp_parse_args( $args, $defaults );
@@ -177,11 +180,29 @@ class ELS_HTML_Elements {
 			$output .= '<span class="els-description">' . esc_html( $args['desc'] ) . '</span>';
 		}
 
-		$output .= '<input type="text" name="' . esc_attr( $args['name'] ) . '" id="' . esc_attr( $args['name'] )  . '" autocomplete="' . esc_attr( $args['autocomplete'] )  . '" value="' . esc_attr( $args['value'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '" class="' . $args['class'] . '" ' . $data . '' . $disabled . '/>';
+		$output .= '<input type="' . esc_attr( $args['type'] ) . '" name="' .
+			esc_attr( $args['name'] ) . '" id="' . esc_attr( $args['name'] )  .
+			'" autocomplete="' . esc_attr( $args['autocomplete'] )  . '" value="' .
+			esc_attr( $args['value'] ) . '" placeholder="' . esc_attr( $args['placeholder'] ) . '"' .
+			( ! is_null( $args['min'] ) ? 'min="' . esc_attr( $args['min'] ) . '"' : '' ) .
+			( ! is_null( $args['max'] ) ? 'max="' . esc_attr( $args['max'] ) . '"' : '' ) .
+			' class="' . $args['class'] . '" ' . $data . '' . $disabled . '/>';
 
 		$output .= '</span>';
 
 		return $output;
+	}
+
+	/**
+	 * Renders an HTML Number field
+	 *
+	 * @since  1.0.0
+	 * @param  array  $args
+	 * @return string
+	 */
+	public function number( $args = array() ) {
+		$args['type'] = 'number';
+		return $this->text( $args );
 	}
 
 	/**
