@@ -65,10 +65,15 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 		if ( count( $_POST['els_slider_captions'] ) ) {
 			$captions = array();
 			foreach ( $_POST['els_slider_captions'] as $caption ) {
-				$caption['name'] = sanitize_text_field( $caption['name'] );
-				$caption['slide_number'] = absint( $caption['slide_number'] );
-				if ( strlen( $caption['name'] ) ) {
-					$captions[ $caption['slide_number'] ][] = $caption['name'];
+				$sanitized_caption                 = array();
+				$sanitized_caption['name']         = sanitize_text_field( $caption['name'] );
+				$sanitized_caption['slide_number'] = absint( $caption['slide_number'] );
+				$sanitized_caption['offsetx']      = (int) $caption['offsetx'];
+				$sanitized_caption['offsety']      = (int) $caption['offsety'];
+				$sanitized_caption['width']        = absint( $caption['width'] );
+				$sanitized_caption['height']       = absint( $caption['height'] );
+				if ( strlen( $sanitized_caption['name'] ) ) {
+					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;
 				}
 			}
 			update_post_meta( $post_id, 'captions', $captions );
