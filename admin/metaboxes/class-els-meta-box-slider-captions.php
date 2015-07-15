@@ -66,7 +66,7 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 			$captions = array();
 			foreach ( $_POST['els_slider_captions'] as $caption ) {
 				$sanitized_caption                 = array();
-				$sanitized_caption['name']         = sanitize_text_field( $caption['name'] );
+				$sanitized_caption['name']         = wp_kses_post( $caption['name'] );
 				$sanitized_caption['slide_number'] = absint( $caption['slide_number'] );
 				$sanitized_caption['offsetx']      = (int) $caption['offsetx'];
 				$sanitized_caption['offsety']      = (int) $caption['offsety'];

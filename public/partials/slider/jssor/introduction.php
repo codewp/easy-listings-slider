@@ -28,7 +28,7 @@ wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduc
 
                 background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;">
             </div>
-            <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+            <div style="position: absolute; display: block; background: url(<?php echo esc_url( $images_url ) . 'jssor/loading.gif' ?>) no-repeat center center;
 
                 top: 0px; left: 0px;width: 100%;height:100%;">
             </div>
@@ -44,7 +44,7 @@ wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduc
                     if ( count( $data['captions'][0] ) ) {
                         foreach ( $data['captions'][0] as $caption ) {
                             echo '<div u="caption" t="CLIP|LR" du="1500" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
-                            echo esc_html( $caption['name'] );
+                            echo $caption['name'];
                             echo '</div>';
                         }
                     }
@@ -52,7 +52,7 @@ wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduc
                     if ( count( $data['captions'][ $i + 1 ] ) ) {
                         foreach ( $data['captions'][ $i + 1 ] as $caption ) {
                             echo '<div u="caption" t="CLIP|LR" du="1500" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
-                            echo esc_html( $caption['name'] );
+                            echo $caption['name'];
                             echo '</div>';
                         }
                     }

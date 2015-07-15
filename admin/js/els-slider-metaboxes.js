@@ -210,9 +210,11 @@ var tb_position;
 
 	// Slider captions configurations.
 	var ElsCaptionConfiguration = {
+
 		init : function() {
 			this.add();
 			this.remove();
+			this.showCaptionSpecification();
 		},
 
 		clone_repeatable : function( row ) {
@@ -297,7 +299,22 @@ var tb_position;
 					$( 'select', row ).val( 'all' );
 				}
 			}
+		},
+
+		showCaptionSpecification: function() {
+			// jQuery tabs for caption_spec_tabs.
+			$( '.caption_spec_tabs' ).tabs();
+			// Showing first caption specification on init.
+			$( '.caption_specification .caption_spec_tabs:nth-child(1)' ).show();
+			// Showing selected caption specification.
+			$( '.els_repeatable_table tbody tr' ).on('click', function(event) {
+				event.preventDefault();
+				var key = $( this ).data( 'key' ) > 0 ? $( this ).data( 'key' ) : 0;
+				$( '.caption_specification' ).children().hide();
+				$( '.caption_specification #caption_spec_' + key ).show();
+			});
 		}
+
 	}
 	ElsCaptionConfiguration.init();
 

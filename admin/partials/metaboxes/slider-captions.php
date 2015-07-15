@@ -16,17 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p>
 		<strong><?php _e( 'Slider captions:', 'els' ); ?></strong>
 	</p>
-	<input type="hidden" id="els_slider_captions" value=""/>
 	<div id="els_captoins" class="edd_meta_table_wrap">
 		<table class="widefat els_repeatable_table" width="100%" cellpadding="0" cellspacing="0">
 			<thead>
 				<tr>
-					<th><?php _e( 'Caption', 'els' ) ?></th>
-					<th style="width: 10%"><?php _e( 'Offsetx', 'els' ) ?> (px)</th>
-					<th style="width: 10%"><?php _e( 'Offsety', 'els' ) ?> (px)</th>
-					<th style="width: 10%"><?php _e( 'Width', 'els' ) ?> (px)</th>
-					<th style="width: 10%"><?php _e( 'Height', 'els' ) ?> (px)</th>
-					<th style="width: 20%;"><?php _e( 'Slide number', 'els' ) ?></th>
+					<th><?php _e( 'Caption Type', 'els' ) ?></th>
+					<th style="width: 50%;"><?php _e( 'Slide number', 'els' ) ?></th>
 					<th style="width: 2%"></th>
 				</tr>
 			</thead>
@@ -40,57 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							?>
 							<tr class="els_repeatable_row" data-key="<?php echo $captions_count ?>">
 								<td>
-									<?php
-									echo $html->text( array(
-											'name'        => 'els_slider_captions[' . $captions_count . '][name]',
-											'value'		  => sanitize_text_field( $caption_detail['name'] ),
-											'placeholder' => __( 'Caption name', 'els' ),
-											'class'       => 'els_repeatable_name_field large-text',
-										)
-									);
-									?>
-								</td>
-								<td>
-									<?php
-									echo $html->number( array(
-											'name'  => 'els_slider_captions[' . $captions_count . '][offsetx]',
-											'value' => (int) $caption_detail['offsetx'],
-											'class' => 'els_repeatable_name_field large-text',
-										)
-									);
-									?>
-								</td>
-								<td>
-									<?php
-									echo $html->number( array(
-											'name'  => 'els_slider_captions[' . $captions_count . '][offsety]',
-											'value' => (int) $caption_detail['offsety'],
-											'class' => 'els_repeatable_name_field large-text',
-										)
-									);
-									?>
-								</td>
-								<td>
-									<?php
-									echo $html->number( array(
-											'name'  => 'els_slider_captions[' . $captions_count . '][width]',
-											'value' => absint( $caption_detail['width'] ),
-											'min'   => 0,
-											'class' => 'els_repeatable_name_field large-text',
-										)
-									);
-									?>
-								</td>
-								<td>
-									<?php
-									echo $html->number( array(
-											'name'  => 'els_slider_captions[' . $captions_count . '][height]',
-											'value' => absint( $caption_detail['height'] ),
-											'min'   => 0,
-											'class' => 'els_repeatable_name_field large-text',
-										)
-									);
-									?>
+									<span><?php _e( 'Text', 'els' ) ?></span>
 								</td>
 								<td>
 									<?php
@@ -115,54 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 					<tr class="els_repeatable_row">
 						<td>
-							<?php
-							echo $html->text( array(
-									'name'        => 'els_slider_captions[0][name]',
-									'placeholder' => __( 'Caption name', 'els' ),
-									'class'       => 'els_repeatable_name_field large-text',
-								)
-							);
-							?>
-						</td>
-						<td>
-							<?php
-							echo $html->number( array(
-									'name'  => 'els_slider_captions[0][offsetx]',
-									'value' => 0,
-									'class' => 'els_repeatable_name_field large-text',
-								)
-							);
-							?>
-						</td>
-						<td>
-							<?php
-							echo $html->number( array(
-									'name'  => 'els_slider_captions[0][offsety]',
-									'value' => 0,
-									'class' => 'els_repeatable_name_field large-text',
-								)
-							);
-							?>
-						</td>
-						<td>
-							<?php
-							echo $html->number( array(
-									'name'  => 'els_slider_captions[0][width]',
-									'min'   => 0,
-									'class' => 'els_repeatable_name_field large-text',
-								)
-							);
-							?>
-						</td>
-						<td>
-							<?php
-							echo $html->number( array(
-									'name'  => 'els_slider_captions[0][height]',
-									'min'   => 0,
-									'class' => 'els_repeatable_name_field large-text',
-								)
-							);
-							?>
+							<span><?php _e( 'Text', 'els' ) ?></span>
 						</td>
 						<td>
 							<?php
@@ -190,5 +88,180 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</tr>
 			</tbody>
 		</table>
+	</div>
+	<p>
+		<strong><?php _e( 'Caption specification:', 'els' ); ?></strong>
+	</p>
+	<div class="caption_specification">
+		<?php
+		if ( count( $captions ) ) {
+			$captions_count = 0;
+			foreach ( $captions as $slide_number => $caption_details ) {
+				foreach ( $caption_details as $caption_detail ) {
+					$captions_count++;
+					?>
+					<div class="caption_spec_tabs" id="caption_spec_<?php echo $captions_count ?>" style="display: none;">
+						<ul>
+							<li><a href="#caption_content_<?php echo $captions_count ?>"><?php _e( 'Content', 'els' ) ?></a></li>
+							<li><a href="#caption_transition_<?php echo $captions_count ?>"><?php _e( 'Transition', 'els' ) ?></a></li>
+							<li><a href="#caption_style_<?php echo $captions_count ?>"><?php _e( 'Style', 'els' ) ?></a></li>
+						</ul>
+						<div id="caption_content_<?php echo $captions_count ?>">
+							<?php
+							wp_editor( stripslashes( $caption_detail['name'] ), 'caption_editor_' . $captions_count,
+								array(
+									'media_buttons' => false,
+									'textarea_rows' => 5,
+									'textarea_name' => 'els_slider_captions[' . $captions_count . '][name]',
+									'teeny'			=> true,
+									'wpautop'		=> false,
+								)
+							);
+							?>
+						</div>
+						<div id="caption_transition_<?php echo $captions_count ?>">
+							<?php echo 'transition_' . $captions_count; ?>
+						</div>
+						<div id="caption_style_<?php echo $captions_count ?>">
+							<p>
+								<label>
+									<?php
+									echo __( 'OffsetX', 'els' ) . ' : ';
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][offsetx]',
+											'value' => (int) $caption_detail['offsetx'],
+											'class' => 'els_repeatable_name_field',
+										)
+									);
+									?>
+								</label>
+							</p>
+							<p>
+								<label>
+									<?php
+									echo __( 'OffsetY', 'els' ) . ' : ';
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][offsety]',
+											'value' => (int) $caption_detail['offsety'],
+											'class' => 'els_repeatable_name_field',
+										)
+									);
+									?>
+								</label>
+							</p>
+							<p>
+								<label>
+									<?php
+									echo __( 'Width', 'els' ) . ' : ';
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][width]',
+											'value' => absint( $caption_detail['width'] ),
+											'min'   => 0,
+											'class' => 'els_repeatable_name_field',
+										)
+									);
+									?>
+								</label>
+							</p>
+							<p>
+								<label>
+									<?php
+									echo __( 'Height', 'els' ) . ' : ';
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][height]',
+											'value' => absint( $caption_detail['height'] ),
+											'min'   => 0,
+											'class' => 'els_repeatable_name_field',
+										)
+									);
+									?>
+								</label>
+							</p>
+						</div>
+					</div>
+					<?php
+				}
+			}
+		} else {
+			?>
+			<div class="caption_spec_tabs" id="caption_spec_0" style="display: none;">
+				<ul>
+					<li><a href="#caption_content_0"><?php _e( 'Content', 'els' ) ?></a></li>
+					<li><a href="#caption_transition_0"><?php _e( 'Transition', 'els' ) ?></a></li>
+					<li><a href="#caption_style_0"><?php _e( 'Style', 'els' ) ?></a></li>
+				</ul>
+				<div id="caption_content_0">
+					<?php
+					wp_editor( '', 'caption_editor_0', array(
+							'media_buttons' => false,
+							'textarea_rows' => 5,
+							'textarea_name' => 'els_slider_captions[0][name]',
+							'teeny'			=> true,
+							'wpautop'		=> false,
+						)
+					);
+					?>
+				</div>
+				<div id="caption_transition_0">
+					<?php echo 'transition_0'; ?>
+				</div>
+				<div id="caption_style_0">
+					<p>
+						<label>
+							<?php
+							echo __( 'OffsetX', 'els' ) . ' : ';
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][offsetx]',
+									'value' => 0,
+									'class' => 'els_repeatable_name_field',
+								)
+							);
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'OffsetY', 'els' ) . ' : ';
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][offsety]',
+									'value' => 0,
+									'class' => 'els_repeatable_name_field',
+								)
+							);
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'Width', 'els' ) . ' : ';
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][width]',
+									'min'   => 0,
+									'class' => 'els_repeatable_name_field',
+								)
+							);
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'Height', 'els' ) . ' : ';
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][height]',
+									'min'   => 0,
+									'class' => 'els_repeatable_name_field',
+								)
+							);
+							?>
+						</label>
+					</p>
+				</div>
+			</div>
+			<?php
+		}
+		?>
 	</div>
 </div>
