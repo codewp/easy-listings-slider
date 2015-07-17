@@ -75,10 +75,16 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				// Detail fields.
 				$sanitized_caption['name']         = wp_kses_post( $caption['name'] );
 				// Transition fields.
-				if ( in_array( $caption['transition_type'], $caption_transition_types ) ) {
-					$sanitized_caption['transition_type'] = $caption['transition_type'];
+				if ( in_array( $caption['play_in_transition_type'], $caption_transition_types ) ) {
+					$sanitized_caption['play_in_transition_type'] = $caption['play_in_transition_type'];
 				} else {
-					$sanitized_caption['transition_type'] = $caption_transition_types[0];
+					$sanitized_caption['play_in_transition_type'] = $caption_transition_types[0];
+				}
+
+				if ( in_array( $caption['play_out_transition_type'], $caption_transition_types ) ) {
+					$sanitized_caption['play_out_transition_type'] = $caption['play_out_transition_type'];
+				} else {
+					$sanitized_caption['play_out_transition_type'] = $caption_transition_types[0];
 				}
 				// Style fields.
 				$sanitized_caption['slide_number'] = absint( $caption['slide_number'] );
@@ -106,6 +112,7 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 	private function get_transition_types() {
 		return apply_filters( 'els_slider_caption_transition_types',
 			array(
+				'*'			  => __( 'Random', 'els' ),
 				'L'           => 'L',
 				'R'           => 'R',
 				'T'           => 'T',

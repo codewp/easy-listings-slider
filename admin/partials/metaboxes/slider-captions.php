@@ -126,11 +126,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<p>
 								<label>
 									<?php
-									echo __( 'Transition type', 'els' ) . ' : ';
+									echo __( 'Play in transition type', 'els' ) . ' : ';
 									echo $html->select( array(
-											'name'             => 'els_slider_captions[' . $captions_count . '][transition_type]',
+											'name'             => 'els_slider_captions[' . $captions_count . '][play_in_transition_type]',
 											'options'          => $caption_transition_types,
-											'selected'		   => $caption_detail['transition_type'],
+											'selected'		   => $caption_detail['play_in_transition_type'],
+											'show_option_none' => null,
+											'show_option_all'  => null,
+											'class'            => 'els_repeatable_slide_select_field',
+										)
+									);
+									?>
+								</label>
+							</p>
+							<p>
+								<label>
+									<?php
+									echo __( 'Play out transition type', 'els' ) . ' : ';
+									echo $html->select( array(
+											'name'             => 'els_slider_captions[' . $captions_count . '][play_out_transition_type]',
+											'options'          => $caption_transition_types,
+											'selected'		   => $caption_detail['play_out_transition_type'],
 											'show_option_none' => null,
 											'show_option_all'  => null,
 											'class'            => 'els_repeatable_slide_select_field',
@@ -230,9 +246,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<p>
 						<label>
 							<?php
-							echo __( 'Transition type', 'els' ) . ' : ';
+							echo __( 'Play in transition type', 'els' ) . ' : ';
 							echo $html->select( array(
-									'name'             => 'els_slider_captions[' . $captions_count . '][transition_type]',
+									'name'             => 'els_slider_captions[' . $captions_count . '][play_in_transition_type]',
+									'options'          => $caption_transition_types,
+									'selected'		   => null,
+									'show_option_none' => null,
+									'show_option_all'  => null,
+									'class'            => 'els_repeatable_slide_select_field',
+								)
+							);
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'Play out transition type', 'els' ) . ' : ';
+							echo $html->select( array(
+									'name'             => 'els_slider_captions[' . $captions_count . '][play_out_transition_type]',
 									'options'          => $caption_transition_types,
 									'selected'		   => null,
 									'show_option_none' => null,
