@@ -43,8 +43,10 @@ class ELS_Shortcode_Slider {
 						$jssor_slider->slide_duration     = $slider->get_slide_duration();
 						$jssor_slider->drag_orientation   = $slider->get_drag_orientation();
 
+						ob_start();
 						// Displaying slider.
 						$jssor_slider->display();
+						return ob_get_clean();
 					}
 				}
 			}
