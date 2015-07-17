@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var string $images_url
  * @var array $slide_numbers
  * @var array $captions
+ * @var array $caption_transition_types
  */
 ?>
 <div id="els_slider_captions_container">
@@ -69,7 +70,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'options'          => $slide_numbers,
 									'selected'		   => null,
 									'show_option_none' => null,
-									'class'            => 'els_repeatable_slide_number_field',
+									'class'            => 'els_repeatable_slide_select_field',
 								)
 							);
 							?>
@@ -122,7 +123,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 						</div>
 						<div id="caption_transition_<?php echo $captions_count ?>">
-
+							<p>
+								<label>
+									<?php
+									echo __( 'Transition type', 'els' ) . ' : ';
+									echo $html->select( array(
+											'name'             => 'els_slider_captions[' . $captions_count . '][transition_type]',
+											'options'          => $caption_transition_types,
+											'selected'		   => $caption_detail['transition_type'],
+											'show_option_none' => null,
+											'show_option_all'  => null,
+											'class'            => 'els_repeatable_slide_select_field',
+										)
+									);
+									?>
+								</label>
+							</p>
 						</div>
 						<div id="caption_style_<?php echo $captions_count ?>">
 							<p>
@@ -211,7 +227,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 				</div>
 				<div id="caption_transition_0">
-					<?php echo 'transition_0'; ?>
+					<p>
+						<label>
+							<?php
+							echo __( 'Transition type', 'els' ) . ' : ';
+							echo $html->select( array(
+									'name'             => 'els_slider_captions[' . $captions_count . '][transition_type]',
+									'options'          => $caption_transition_types,
+									'selected'		   => null,
+									'show_option_none' => null,
+									'show_option_all'  => null,
+									'class'            => 'els_repeatable_slide_select_field',
+								)
+							);
+							?>
+						</label>
+					</p>
 				</div>
 				<div id="caption_style_0">
 					<p>

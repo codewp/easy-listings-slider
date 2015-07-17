@@ -45,10 +45,11 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 		}
 
 		$this->render_view( 'metaboxes.slider-captions', array(
-				'html'          => ELS_IOC::make( 'html' ),
-				'images_url'    => $this->get_images_url(),
-				'slide_numbers' => $slide_numbers,
-				'captions'		=> $slider->get_captions(),
+				'html'                     => ELS_IOC::make( 'html' ),
+				'images_url'               => $this->get_images_url(),
+				'slide_numbers'            => $slide_numbers,
+				'captions'                 => $slider->get_captions(),
+				'caption_transition_types' => $this->get_transition_types()
 			)
 		);
 	}
@@ -63,15 +64,29 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 	 */
 	public function save( $post_id, $post ) {
 		if ( count( $_POST['els_slider_captions'] ) ) {
-			$captions = array();
+			// captions array that should be saved.
+			$captions                 = array();
+			// captions transition types.
+			$caption_transition_types = $this->get_transition_types();
+			$caption_transition_types = array_keys( $caption_transition_types );
+
 			foreach ( $_POST['els_slider_captions'] as $caption ) {
 				$sanitized_caption                 = array();
+				// Detail fields.
 				$sanitized_caption['name']         = wp_kses_post( $caption['name'] );
+				// Transition fields.
+				if ( in_array( $caption['transition_type'], $caption_transition_types ) ) {
+					$sanitized_caption['transition_type'] = $caption['transition_type'];
+				} else {
+					$sanitized_caption['transition_type'] = $caption_transition_types[0];
+				}
+				// Style fields.
 				$sanitized_caption['slide_number'] = absint( $caption['slide_number'] );
 				$sanitized_caption['offsetx']      = (int) $caption['offsetx'];
 				$sanitized_caption['offsety']      = (int) $caption['offsety'];
 				$sanitized_caption['width']        = absint( $caption['width'] );
 				$sanitized_caption['height']       = absint( $caption['height'] );
+
 				if ( strlen( $sanitized_caption['name'] ) ) {
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;
 				}
@@ -80,6 +95,48 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 		} else {
 			update_post_meta( $post_id, 'captions', array() );
 		}
+	}
+
+	/**
+	 * Getting caption transition types.
+	 *
+	 * @since  1.0.0
+	 * @return array
+	 */
+	private function get_transition_types() {
+		return apply_filters( 'els_slider_caption_transition_types',
+			array(
+				'L'           => 'L',
+				'R'           => 'R',
+				'T'           => 'T',
+				'B'           => 'B',
+				'TR'          => 'TR',
+				'L|IB'        => 'L|IB',
+				'R|IB'        => 'R|IB',
+				'T|IB'        => 'T|IB',
+				'CLIP|LR'     => 'CLIP|LR',
+				'CLIP|TB'     => 'CLIP|TB',
+				'CLIP|L'      => 'CLIP|L',
+				'MCLIP|R'     => 'MCLIP|R',
+				'MCLIP|T'     => 'MCLIP|T',
+				'WV|B'        => 'WV|B',
+				'TORTUOUS|VB' => 'TORTUOUS|VB',
+				'LISTH|R'     => 'LISTH|R',
+				'RTT|360'     => 'RTT|360',
+				'RTT|10'      => 'RTT|10',
+				'RTTL|BR'     => 'RTTL|BR',
+				'T|IE*IE'     => 'T|IE*IE',
+				'RTTS|R'      => 'RTTS|R',
+				'RTTS|T'      => 'RTTS|T',
+				'DDGDANCE|RB' => 'DDGDANCE|RB',
+				'ZMF|10'      => 'ZMF|10',
+				'DDG|TR'      => 'DDG|TR',
+				'FLTTR|R'     => 'FLTTR|R',
+				'FLTTRWN|LT'  => 'FLTTRWN|LT',
+				'ATTACK|BR'   => 'ATTACK|BR',
+				'FADE'        => 'FADE',
+			)
+		);
 	}
 
 }
