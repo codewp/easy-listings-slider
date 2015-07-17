@@ -214,12 +214,12 @@ var tb_position;
 		init : function() {
 			this.add();
 			this.remove();
-			this.showCaptionSpecification();
+			this.showCaptionSpecification( true );
 		},
 
 		clone_repeatable : function( row ) {
 			// Retrieve the highest current key
-			var key = 1, highest = 1;
+			var key = 0, highest = 0;
 			row.parent().find( 'tr.els_repeatable_row' ).each(function() {
 				var current = $(this).data( 'key' );
 				if( parseInt( current ) > highest ) {
@@ -230,21 +230,56 @@ var tb_position;
 
 			var clone = row.clone();
 
-			/** manually update any select box values */
-			clone.find( 'select' ).each(function() {
-				$( this ).val( row.find( 'select[name="' + $( this ).attr( 'name' ) + '"]' ).val() );
-			});
-
 			clone.removeClass( 'els_add_blank' );
 
 			clone.attr( 'data-key', key );
-			clone.find( 'td input, td select' ).val( '' );
+			clone.find( 'td input' ).val( '' );
+			clone.find( 'td select' ).each( function() {
+				$( this ).val( $( 'option:first', this ).val() );
+			} );
 			clone.find( 'input, select, textarea' ).each(function() {
 				var name = $( this ).attr( 'name' );
 
 				name = name.replace( /\[(\d+)\]/, '[' + parseInt( key ) + ']');
 
 				$( this ).attr( 'name', name ).attr( 'id', name );
+			});
+
+			return clone;
+		},
+
+		cloneSpecification: function( specification ) {
+			// Retrieve the highest current key
+			var key = specification.data( 'key' ) ? specification.data( 'key' ) + 1 : 1;
+			var clone = specification.clone();
+			// Removing tinymce editor from clone and adding textarea instead of it to clone.
+			clone.find( '.caption_content' ).html( '<textarea  name="els_slider_captions[' + key + '][name]"></textarea>' );
+			clone.attr( 'data-key', key );
+			clone.attr( 'id', clone.attr( 'id' ).replace( /\d+/g, key ) );
+			clone.find( 'input, textarea' ).val( '' );
+			clone.find( 'select' ).each( function() {
+				$( this ).val( $( 'option:first', this ).val() );
+			} );
+			clone.find( 'input, select, textarea' ).each(function() {
+				var name = $( this ).attr( 'name' );
+				if ( name ) {
+					name = name.replace( /\[(\d+)\]/, '[' + parseInt( key ) + ']');
+					$( this ).attr( 'name', name ).attr( 'id', name );
+				}
+			});
+			clone.find('div').each( function() {
+				var id = $( this ).prop( 'id' );
+				if ( id && id.match( /caption/ ) ) {
+					id = id.replace( /\d+/g, parseInt( key ) );
+					$( this ).prop( 'id', id ).prop( 'name', id );
+				}
+			});
+			clone.find( 'a' ).each( function() {
+				var href = $( this ).attr( 'href' );
+				if ( href ) {
+					href = href.replace( /\d+/g, parseInt( key ) );
+					$( this ).attr( 'href', href );
+				}
 			});
 
 			return clone;
@@ -257,6 +292,17 @@ var tb_position;
 				row = button.parent().parent().prev( 'tr' ),
 				clone = ElsCaptionConfiguration.clone_repeatable( row );
 				clone.insertAfter( row ).find('input, textarea, select').filter(':visible').eq(0).focus();
+				// Cloning specification.
+				var $specification = $( '.caption_specification #caption_spec_' + ( row.data( 'key' ) ? row.data( 'key' ) : 0 ) );
+				var specification_clone = ElsCaptionConfiguration.cloneSpecification( $specification );
+				$( '.caption_specification' ).children().hide();
+				specification_clone.insertAfter( $specification );
+				// Applying tinymce to cloned specification textarea.
+				tinymce.init( {
+					selector: '#caption_detail_' + specification_clone.data( 'key' ) + ' .caption_content textarea'
+				} );
+				specification_clone.show();
+				ElsCaptionConfiguration.showCaptionSpecification( false );
 			});
 		},
 
@@ -266,25 +312,27 @@ var tb_position;
 
 				var row   = $(this).parent().parent( 'tr' ),
 					count = row.parent().find( 'tr' ).length - 1,
-					type  = $(this).data('type'),
-					repeatable = 'tr.els_repeatable_' + type + 's';
+					key   = row.data( 'key' ) ? row.data( 'key' ) : 0;
 
 				if( count > 1 ) {
 					$( 'input, select', row ).val( '' );
 					row.fadeOut( 'fast' ).remove();
+					// Removing caption specification for selected caption.
+					$( '.caption_specification #caption_spec_' + key ).remove();
 				} else {
 					$( 'input', row ).val( '' );
 					$( 'select', row ).val( 'all' );
+					// Removing caption specification values.
+					$( 'input:not([type="button"])', '.caption_specification #caption_spec_' + key ).val( '' );
+					$( 'select', '.caption_specification #caption_spec_' + key ).each( function() {
+						$( this ).val( $( 'option:first', this ).val() );
+					});
+					tinymce.activeEditor.setContent('');
 				}
 
-				/* re-index after deleting */
-				$(repeatable).each( function( rowIndex ) {
-					$(this).find( 'input, select' ).each(function() {
-						var name = $( this ).attr( 'name' );
-						name = name.replace( /\[(\d+)\]/, '[' + rowIndex+ ']');
-						$( this ).attr( 'name', name ).attr( 'id', name );
-					});
-				});
+				// Showing first caption specification on init.
+				$( '.caption_specification' ).children().hide();
+				$( '.caption_specification .caption_spec_tabs:nth-child(1)' ).show();
 			});
 		},
 
@@ -301,11 +349,13 @@ var tb_position;
 			}
 		},
 
-		showCaptionSpecification: function() {
+		showCaptionSpecification: function( showFirstSpec ) {
 			// jQuery tabs for caption_spec_tabs.
 			$( '.caption_spec_tabs' ).tabs();
-			// Showing first caption specification on init.
-			$( '.caption_specification .caption_spec_tabs:nth-child(1)' ).show();
+			if ( showFirstSpec ) {
+				// Showing first caption specification on init.
+				$( '.caption_specification .caption_spec_tabs:nth-child(1)' ).show();
+			}
 			// Showing selected caption specification.
 			$( '.els_repeatable_table tbody tr' ).on('click', function(event) {
 				event.preventDefault();

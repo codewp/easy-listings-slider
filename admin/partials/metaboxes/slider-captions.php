@@ -58,7 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					}
 				} else {
 					?>
-					<tr class="els_repeatable_row">
+					<tr class="els_repeatable_row" data-key="0">
 						<td>
 							<span><?php _e( 'Text', 'els' ) ?></span>
 						</td>
@@ -100,27 +100,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 				foreach ( $caption_details as $caption_detail ) {
 					$captions_count++;
 					?>
-					<div class="caption_spec_tabs" id="caption_spec_<?php echo $captions_count ?>" style="display: none;">
+					<div class="caption_spec_tabs" id="caption_spec_<?php echo $captions_count ?>" style="display: none;" data-key="<?php echo $captions_count ?>">
 						<ul>
-							<li><a href="#caption_content_<?php echo $captions_count ?>"><?php _e( 'Content', 'els' ) ?></a></li>
+							<li><a href="#caption_detail_<?php echo $captions_count ?>"><?php _e( 'Content', 'els' ) ?></a></li>
 							<li><a href="#caption_transition_<?php echo $captions_count ?>"><?php _e( 'Transition', 'els' ) ?></a></li>
 							<li><a href="#caption_style_<?php echo $captions_count ?>"><?php _e( 'Style', 'els' ) ?></a></li>
 						</ul>
-						<div id="caption_content_<?php echo $captions_count ?>">
-							<?php
-							wp_editor( stripslashes( $caption_detail['name'] ), 'caption_editor_' . $captions_count,
-								array(
-									'media_buttons' => false,
-									'textarea_rows' => 5,
-									'textarea_name' => 'els_slider_captions[' . $captions_count . '][name]',
-									'teeny'			=> true,
-									'wpautop'		=> false,
-								)
-							);
-							?>
+						<div id="caption_detail_<?php echo $captions_count ?>">
+							<div class="caption_content">
+								<?php
+								wp_editor( stripslashes( $caption_detail['name'] ), 'caption_editor_' . $captions_count,
+									array(
+										'media_buttons' => false,
+										'textarea_rows' => 5,
+										'textarea_name' => 'els_slider_captions[' . $captions_count . '][name]',
+										'teeny'			=> true,
+										'wpautop'		=> false,
+									)
+								);
+								?>
+							</div>
 						</div>
 						<div id="caption_transition_<?php echo $captions_count ?>">
-							<?php echo 'transition_' . $captions_count; ?>
+
 						</div>
 						<div id="caption_style_<?php echo $captions_count ?>">
 							<p>
@@ -133,6 +135,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'class' => 'els_repeatable_name_field',
 										)
 									);
+									echo ' ' . __( 'px', 'els' );
 									?>
 								</label>
 							</p>
@@ -146,6 +149,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'class' => 'els_repeatable_name_field',
 										)
 									);
+									echo ' ' . __( 'px', 'els' );
 									?>
 								</label>
 							</p>
@@ -160,6 +164,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'class' => 'els_repeatable_name_field',
 										)
 									);
+									echo ' ' . __( 'px', 'els' );
 									?>
 								</label>
 							</p>
@@ -174,6 +179,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'class' => 'els_repeatable_name_field',
 										)
 									);
+									echo ' ' . __( 'px', 'els' );
 									?>
 								</label>
 							</p>
@@ -184,23 +190,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 			}
 		} else {
 			?>
-			<div class="caption_spec_tabs" id="caption_spec_0" style="display: none;">
+			<div class="caption_spec_tabs" id="caption_spec_0" style="display: none;" data-key="0">
 				<ul>
-					<li><a href="#caption_content_0"><?php _e( 'Content', 'els' ) ?></a></li>
+					<li><a href="#caption_detail_0"><?php _e( 'Content', 'els' ) ?></a></li>
 					<li><a href="#caption_transition_0"><?php _e( 'Transition', 'els' ) ?></a></li>
 					<li><a href="#caption_style_0"><?php _e( 'Style', 'els' ) ?></a></li>
 				</ul>
-				<div id="caption_content_0">
-					<?php
-					wp_editor( '', 'caption_editor_0', array(
-							'media_buttons' => false,
-							'textarea_rows' => 5,
-							'textarea_name' => 'els_slider_captions[0][name]',
-							'teeny'			=> true,
-							'wpautop'		=> false,
-						)
-					);
-					?>
+				<div id="caption_detail_0">
+					<div class="caption_content">
+						<?php
+						wp_editor( '', 'caption_editor_0', array(
+								'media_buttons' => false,
+								'textarea_rows' => 5,
+								'textarea_name' => 'els_slider_captions[0][name]',
+								'teeny'			=> true,
+								'wpautop'		=> false,
+							)
+						);
+						?>
+					</div>
 				</div>
 				<div id="caption_transition_0">
 					<?php echo 'transition_0'; ?>
@@ -216,6 +224,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'class' => 'els_repeatable_name_field',
 								)
 							);
+							echo ' ' . __( 'px', 'els' );
 							?>
 						</label>
 					</p>
@@ -229,6 +238,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'class' => 'els_repeatable_name_field',
 								)
 							);
+							echo ' ' . __( 'px', 'els' );
 							?>
 						</label>
 					</p>
@@ -242,6 +252,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'class' => 'els_repeatable_name_field',
 								)
 							);
+							echo ' ' . __( 'px', 'els' );
 							?>
 						</label>
 					</p>
@@ -255,6 +266,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'class' => 'els_repeatable_name_field',
 								)
 							);
+							echo ' ' . __( 'px', 'els' );
 							?>
 						</label>
 					</p>
