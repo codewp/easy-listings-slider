@@ -91,7 +91,7 @@ var tb_position;
 	 						</ul>\
 	 					</li>');
 	 				// Increasing number of slides in captions.
-	 				$( '.els_repeatable_slide_number_field' ).each( function() {
+	 				$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
 	 					$(this).append( '<option value="' + $('option', this).length + '">' + $('option', this).length + '</option>' );
 	 				});
 	 			}
@@ -154,20 +154,24 @@ var tb_position;
 	 	$( '#tiptip_arrow' ).removeAttr( 'style' );
 
 	 	// Removing all of captions that relates to removed slide.
-	 	$( '.els_repeatable_slide_number_field' ).each( function() {
+	 	$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
 	 		if ( $( this ).val() == slide_number ) {
 	 			ElsCaptionConfiguration.removeRow( $( this ).closest('tr') );
 	 		}
 	 	});
 
 	 	// Decreasing number of slides in captions slide_number select.
-	 	$( '.els_repeatable_slide_number_field' ).each( function() {
+	 	$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
 	 		if ( $( this ).val() > slide_number ) {
 	 			// Decreasing slide numbers that are greater than removed slide number.
 	 			$( this ).val( $( this ).val() - 1 );
 	 		}
 	 		$( 'option:last', this ).remove();
 	 	});
+
+	 	// Showing first caption specification.
+	 	$( '.caption_specification' ).children().hide();
+	 	$( '.caption_specification .caption_spec_tabs:first' ).show();
 
 	 	return false;
 	 });
@@ -197,7 +201,7 @@ var tb_position;
 	 							</ul>\
 	 						</li>');
 		            	// Increasing number of slides in captions.
-		            	$( '.els_repeatable_slide_number_field' ).each( function() {
+		            	$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
 		            		$(this).append( '<option value="' + $('option', this).length + '">' + $('option', this).length + '</option>' );
 		            	});
 	            	}
@@ -338,13 +342,22 @@ var tb_position;
 
 		removeRow: function( row ) {
 			if ( row.length ) {
-				var rowCount = row.closest('tbody').find( 'tr' ).length - 1;
+				var rowCount = row.closest('tbody').find( 'tr' ).length - 1,
+					key      = row.data( 'key' ) ? row.data( 'key' ) : 0;
 				if ( rowCount > 1 ) {
 					$( 'input, select', row ).val( '' );
 					row.fadeOut( 'fast' ).remove();
+					// Removing caption specification for selected caption.
+					$( '.caption_specification #caption_spec_' + key ).remove();
 				} else {
 					$( 'input', row ).val( '' );
 					$( 'select', row ).val( 'all' );
+					// Removing caption specification values.
+					$( 'input:not([type="button"])', '.caption_specification #caption_spec_' + key ).val( '' );
+					$( 'select', '.caption_specification #caption_spec_' + key ).each( function() {
+						$( this ).val( $( 'option:first', this ).val() );
+					});
+					tinymce.activeEditor.setContent('');
 				}
 			}
 		},

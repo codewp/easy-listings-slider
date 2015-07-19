@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p>
 		<strong><?php _e( 'Slider captions:', 'els' ); ?></strong>
 	</p>
-	<div id="els_captoins" class="edd_meta_table_wrap">
+	<div id="els_captions" class="edd_meta_table_wrap">
 		<table class="widefat els_repeatable_table" width="100%" cellpadding="0" cellspacing="0">
 			<thead>
 				<tr>
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'options'          => $slide_numbers,
 											'selected'		   => $slide_number,
 											'show_option_none' => null,
-											'class'            => 'els_repeatable_slide_number_field',
+											'class'            => 'els_repeatable_slide_select_field',
 										)
 									);
 									?>
