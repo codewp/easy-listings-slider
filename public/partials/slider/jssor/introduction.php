@@ -36,29 +36,27 @@ wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduc
         <!-- Slides Container -->
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 980px; height: 380px; overflow: hidden;">
             <?php
-			if ( count( $data['image_ids'] ) ) {
-                for ( $i = 0; $i < count( $data['image_ids'] ); $i++ ) {
-                    echo '<div>';
-                    echo wp_get_attachment_image( (int) $data['image_ids'][ $i ], 'large', false, array( 'u' => 'image' ) );
-                    // output captions that should be shown in all of slides.
-                    if ( count( $data['captions'][0] ) ) {
-                        foreach ( $data['captions'][0] as $caption ) {
-                            echo '<div u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
-                            echo $caption['name'];
-                            echo '</div>';
-                        }
+            for ( $i = 0; $i < count( $data['image_ids'] ); $i++ ) {
+                echo '<div>';
+                echo wp_get_attachment_image( (int) $data['image_ids'][ $i ], 'large', false, array( 'u' => 'image' ) );
+                // output captions that should be shown in all of slides.
+                if ( count( $data['captions'][0] ) ) {
+                    foreach ( $data['captions'][0] as $caption ) {
+                        echo '<div u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
+                        echo $caption['name'];
+                        echo '</div>';
                     }
-                    // output captions that related to this slide.
-                    if ( count( $data['captions'][ $i + 1 ] ) ) {
-                        foreach ( $data['captions'][ $i + 1 ] as $caption ) {
-                            echo '<div u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
-                            echo $caption['name'];
-                            echo '</div>';
-                        }
-                    }
-                    echo '</div>';
                 }
-			}
+                // output captions that related to this slide.
+                if ( count( $data['captions'][ $i + 1 ] ) ) {
+                    foreach ( $data['captions'][ $i + 1 ] as $caption ) {
+                        echo '<div u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
+                        echo $caption['name'];
+                        echo '</div>';
+                    }
+                }
+                echo '</div>';
+            }
 			?>
         </div>
         <!-- bullet navigator container -->
