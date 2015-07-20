@@ -115,6 +115,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-ioc.php';
 
 		/**
+		 * The class responsible for validation.
+		 */
+		require_once $this->get_path() . 'includes/class-els-validator.php';
+
+		/**
 		 * The class responsible for plugin settigns.
 		 */
 		require_once $this->get_path() . 'includes/class-els-settings.php';
@@ -254,6 +259,7 @@ class Easy_Listings_Slider {
 	 * @return void
 	 */
 	private function define_globals() {
+		ELS_IOC::bind( 'validator', new ELS_Validator() );
 		ELS_IOC::bind( 'html', new ELS_HTML_Elements() );
 		ELS_IOC::bind( 'settings', new ELS_Settings() );
 		ELS_IOC::bind( 'listings', new ELS_Listings() );
