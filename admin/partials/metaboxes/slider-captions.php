@@ -233,6 +233,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<p>
 								<label>
 									<?php
+									echo __( 'Text align', 'els' ) . ' : ';
+									echo $html->select( array(
+											'name'    => 'els_slider_captions[' . $captions_count . '][text_align]',
+											'options' => array(
+												'left'   => __( 'Left', 'els' ),
+												'center' => __( 'Center', 'els' ),
+												'right'  => __( 'Right', 'els' )
+											),
+											'selected'         => $caption_detail['text_align'],
+											'show_option_none' => null,
+											'show_option_all'  => null,
+											'class'            => 'els_repeatable_select_field',
+										)
+									);
+									?>
+								</label>
+							</p>
+							<p>
+								<label>
+									<?php
 									echo __( 'Color', 'els' ) . ' : ';
 									echo $html->color_picker( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][color]',
@@ -373,6 +393,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							echo ' ' . __( 'px', 'els' );
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'Text align', 'els' ) . ' : ';
+							echo $html->select( array(
+									'name'    => 'els_slider_captions[0][text_align]',
+									'options' => array(
+										'left'   => __( 'Left', 'els' ),
+										'center' => __( 'Center', 'els' ),
+										'right'  => __( 'Right', 'els' )
+									),
+									'selected'         => 'center',
+									'show_option_none' => null,
+									'show_option_all'  => null,
+									'class'            => 'els_repeatable_select_field',
+								)
+							);
 							?>
 						</label>
 					</p>
