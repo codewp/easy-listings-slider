@@ -217,15 +217,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</p>
 							<p>
 								<label>
-								<?php
-								echo __( 'Color', 'els' ) . ' : ';
-								echo $html->color_picker( array(
-										'name'  => 'els_slider_captions[' . $captions_count . '][color]',
-										'value' => esc_attr( $caption_detail['color'] ),
-										'class' => 'els_repeatable_text_field',
-									)
-								);
-								?>
+									<?php
+									echo __( 'Font size', 'els' ) . ' : ';
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][font_size]',
+											'value' => absint( $caption_detail['font_size'] ) > 0 ? absint( $caption_detail['font_size'] ) : 20,
+											'min'   => 1,
+											'class' => 'els_repeatable_text_field',
+										)
+									);
+									echo ' ' . __( 'px', 'els' );
+									?>
+								</label>
+							</p>
+							<p>
+								<label>
+									<?php
+									echo __( 'Color', 'els' ) . ' : ';
+									echo $html->color_picker( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][color]',
+											'value' => esc_attr( $caption_detail['color'] ),
+											'class' => 'els_repeatable_text_field',
+										)
+									);
+									?>
 								</label>
 							</p>
 						</div>
@@ -348,15 +363,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</p>
 					<p>
 						<label>
-						<?php
-						echo __( 'Color', 'els' ) . ' : ';
-						echo $html->color_picker( array(
-								'name'  => 'els_slider_captions[0][color]',
-								'value' => '#000000',
-								'class' => 'els_repeatable_text_field',
-							)
-						);
-						?>
+							<?php
+							echo __( 'Font size', 'els' ) . ' : ';
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][font_size]',
+									'value' => 20,
+									'min'   => 1,
+									'class' => 'els_repeatable_text_field',
+								)
+							);
+							echo ' ' . __( 'px', 'els' );
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'Color', 'els' ) . ' : ';
+							echo $html->color_picker( array(
+									'name'  => 'els_slider_captions[0][color]',
+									'value' => '#000000',
+									'class' => 'els_repeatable_text_field',
+								)
+							);
+							?>
 						</label>
 					</p>
 				</div>

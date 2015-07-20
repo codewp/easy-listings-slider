@@ -94,8 +94,9 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				$sanitized_caption['offsety']      = (int) $caption['offsety'];
 				$sanitized_caption['width']        = absint( $caption['width'] );
 				$sanitized_caption['height']       = absint( $caption['height'] );
+				$sanitized_caption['font_size']    = absint( $caption['font_size'] ) > 0 ? absint( $caption['font_size'] ) : 20;
 				$sanitized_caption['color']		   = $validator->validate_color( $caption['color'] ) ?
-													 $caption['color'] : '#000000';
+														$caption['color'] : '#000000';
 
 				if ( strlen( $sanitized_caption['name'] ) ) {
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;
