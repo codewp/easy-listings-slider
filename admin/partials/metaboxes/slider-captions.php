@@ -263,6 +263,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 									?>
 								</label>
 							</p>
+							<p>
+								<label>
+									<?php
+									echo __( 'Background color', 'els' ) . ' : ';
+									echo $html->color_picker( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][background_color]',
+											'value' => esc_attr( $caption_detail['background_color'] ),
+											'class' => 'els_repeatable_text_field',
+										)
+									);
+									?>
+								</label>
+							</p>
 						</div>
 					</div>
 					<?php
@@ -423,6 +436,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 							echo $html->color_picker( array(
 									'name'  => 'els_slider_captions[0][color]',
 									'value' => '#000000',
+									'class' => 'els_repeatable_text_field',
+								)
+							);
+							?>
+						</label>
+					</p>
+					<p>
+						<label>
+							<?php
+							echo __( 'Background color', 'els' ) . ' : ';
+							echo $html->color_picker( array(
+									'name'  => 'els_slider_captions[0][background_color]',
 									'class' => 'els_repeatable_text_field',
 								)
 							);

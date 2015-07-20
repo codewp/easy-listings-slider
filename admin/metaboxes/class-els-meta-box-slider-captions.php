@@ -89,17 +89,15 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 					$sanitized_caption['play_out_transition_type'] = $caption_transition_types[0];
 				}
 				// Style fields.
-				$sanitized_caption['slide_number'] = absint( $caption['slide_number'] );
-				$sanitized_caption['offsetx']      = (int) $caption['offsetx'];
-				$sanitized_caption['offsety']      = (int) $caption['offsety'];
-				$sanitized_caption['width']        = absint( $caption['width'] );
-				$sanitized_caption['height']       = absint( $caption['height'] );
-				$sanitized_caption['font_size']    = absint( $caption['font_size'] ) > 0 ?
-														absint( $caption['font_size'] ) : 20;
-				$sanitized_caption['text_align']   = in_array( $caption['text_align'], array( 'left', 'center', 'right' ) ) ?
-														$caption['text_align'] : 'center';
-				$sanitized_caption['color']		   = $validator->validate_color( $caption['color'] ) ?
-														$caption['color'] : '#000000';
+				$sanitized_caption['slide_number']     = absint( $caption['slide_number'] );
+				$sanitized_caption['offsetx']          = (int) $caption['offsetx'];
+				$sanitized_caption['offsety']          = (int) $caption['offsety'];
+				$sanitized_caption['width']            = absint( $caption['width'] );
+				$sanitized_caption['height']           = absint( $caption['height'] );
+				$sanitized_caption['font_size']        = absint( $caption['font_size'] ) > 0 ? absint( $caption['font_size'] ) : 20;
+				$sanitized_caption['text_align']       = in_array( $caption['text_align'], array( 'left', 'center', 'right' ) ) ? $caption['text_align'] : 'center';
+				$sanitized_caption['color']            = $validator->validate_color( $caption['color'] ) ? $caption['color'] : '#000000';
+				$sanitized_caption['background_color'] = $validator->validate_color( $caption['background_color'] ) ? $caption['background_color'] : '';
 
 				if ( strlen( $sanitized_caption['name'] ) ) {
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;
