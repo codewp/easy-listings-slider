@@ -185,6 +185,8 @@ class ELS_Admin {
 		if ( ! function_exists( 'wp_enqueue_media' ) || version_compare( $wp_version, '3.5', '<' ) ) {
 			wp_enqueue_style( 'thickbox' );
 		}
+		// wordpress Color Picker.
+		wp_enqueue_style( 'wp-color-picker' );
 	}
 
 	/**
@@ -213,6 +215,7 @@ class ELS_Admin {
 		}
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'els-html-elements', plugin_dir_url( __FILE__ ) . 'js/els-html-elements.js', array( 'jquery' ), $this->version, true );
 	}
 
 	/**

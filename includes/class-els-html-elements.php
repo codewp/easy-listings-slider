@@ -206,6 +206,18 @@ class ELS_HTML_Elements {
 	}
 
 	/**
+	 * Renders an HTML Color Picker field.
+	 *
+	 * @since  1.0.0
+	 * @param  array  $args
+	 * @return string
+	 */
+	public function color_picker( $args = array() ) {
+		$args['class'] = 'colorpick';
+		return $this->text( $args );
+	}
+
+	/**
 	 * Renders an HTML textarea
 	 *
 	 * @since 1.0.0

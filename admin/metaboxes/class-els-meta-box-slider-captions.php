@@ -64,8 +64,10 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 	 */
 	public function save( $post_id, $post ) {
 		if ( count( $_POST['els_slider_captions'] ) ) {
+			// ELS_Validator instance.
+			$validator = ELS_IOC::make( 'validator' );
 			// captions array that should be saved.
-			$captions                 = array();
+			$captions  = array();
 			// captions transition types.
 			$caption_transition_types = $this->get_transition_types();
 			$caption_transition_types = array_keys( $caption_transition_types );
@@ -92,6 +94,8 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				$sanitized_caption['offsety']      = (int) $caption['offsety'];
 				$sanitized_caption['width']        = absint( $caption['width'] );
 				$sanitized_caption['height']       = absint( $caption['height'] );
+				$sanitized_caption['color']		   = $validator->validate_color( $caption['color'] ) ?
+													 $caption['color'] : '#000000';
 
 				if ( strlen( $sanitized_caption['name'] ) ) {
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;

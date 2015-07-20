@@ -41,7 +41,7 @@ wp_enqueue_style( 'jssor-fullwidth-slider', $css_url . 'slider/jssor/fullwidth.c
                 // output captions that should be shown in all of slides.
                 if ( count( $data['captions'][0] ) ) {
                     foreach ( $data['captions'][0] as $caption ) {
-                        echo '<div u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
+                        echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
                         echo $caption['name'];
                         echo '</div>';
                     }
@@ -49,7 +49,7 @@ wp_enqueue_style( 'jssor-fullwidth-slider', $css_url . 'slider/jssor/fullwidth.c
                 // output captions that related to this slide.
                 if ( count( $data['captions'][ $i + 1 ] ) ) {
                     foreach ( $data['captions'][ $i + 1 ] as $caption ) {
-                        echo '<div u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
+                        echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
                         echo $caption['name'];
                         echo '</div>';
                     }
