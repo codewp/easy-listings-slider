@@ -18,23 +18,23 @@
      * ... and so on.
 	 */
 
-	 var ElsHtmlElements = {
+	 $( function() {
+	 	var ElsHtmlElements = {
+	 	 	init: function() {
+	 	 		this.colorPicker();
+	 	 	},
 
-	 	init: function() {
-	 		this.colorPicker();
-	 	},
-
-	 	/**
-	 	 * HTML Color Picker field
-	 	 *
-	 	 * @since  1.0.0
-	 	 * @return void
-	 	 */
-	 	colorPicker: function() {
-			$('.colorpick').wpColorPicker();
-	 	}
-
-	 };
-	 ElsHtmlElements.init();
+	 	 	/**
+	 	 	 * HTML Color Picker field
+	 	 	 *
+	 	 	 * @since  1.0.0
+	 	 	 * @return void
+	 	 	 */
+	 	 	colorPicker: function() {
+	 			$('.colorpick').wpColorPicker();
+	 	 	}
+	 	};
+	 	ElsHtmlElements.init();
+	 });
 
 })( jQuery );
