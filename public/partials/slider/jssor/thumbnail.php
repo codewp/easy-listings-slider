@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 wp_enqueue_script( 'jssor-thumbnail-slider', $js_url . 'slider/jssor/thumbnail.js', array( 'jquery' ), false, true );
 wp_localize_script( 'jssor-thumbnail-slider', 'data', $data );
 // Registering styles
+wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common.css' );
 wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.css' );
 ?>
 <div id="slider_container" style="position: relative; width: 720px; height: 480px; overflow: hidden;">
@@ -42,16 +43,56 @@ wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.c
     		// output captions that should be shown in all of slides.
     		if ( count( $data['captions'][0] ) ) {
     		    foreach ( $data['captions'][0] as $caption ) {
-    		        echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
+    		        echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) .
+    		            '" t2="' . esc_attr( $caption['play_out_transition_type'] ) .
+    		            '" du="600" style="left:' . (int) $caption['offsetx'] . 'px;' .
+    		            ' top:' . (int) $caption['offsety'] . 'px;' .
+    		            ' width:' . ( absint( $caption['width'] ) ? absint( $caption['width'] ) . 'px;' : '100%;' ) .
+    		            ' height:' . ( absint( $caption['height'] ) ? absint( $caption['height'] ) . 'px;' : '100%;' ) .
+    		            '">';
+
+    		        // Background of caption.
+    		        echo '<div class="caption-background" style="' .
+    		            ( ! empty( $caption['background_color'] ) ? 'background:' . esc_attr( $caption['background_color'] ) . ';' : '' ) .
+    		            '"></div>';
+
+    		        // Forground of caption.
+    		        echo '<div class="caption-forground" style="' .
+    		            ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
+    		            ( ! empty( $caption['text_align'] ) ? ' text-align:' . esc_attr( $caption['text_align'] ) . ';' : '' ) .
+    		            ( ! empty( $caption['color'] ) ? ' color:' . esc_attr( $caption['color'] ) . ';' : '' ) .
+    		            '">';
     		        echo $caption['name'];
+    		        echo '</div>';
+
     		        echo '</div>';
     		    }
     		}
     		// output captions that related to this slide.
     		if ( count( $data['captions'][ $i + 1 ] ) ) {
     		    foreach ( $data['captions'][ $i + 1 ] as $caption ) {
-    		        echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) . '" t2="' . esc_attr( $caption['play_out_transition_type'] ) . '" du="600" style="position:absolute; left:' . (int) $caption['offsetx'] . 'px; top:' . (int) $caption['offsety'] . 'px; width:' . absint( $caption['width'] ) . 'px; height:' . absint( $caption['height'] ) . 'px;">';
+    		        echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) .
+    		            '" t2="' . esc_attr( $caption['play_out_transition_type'] ) .
+    		            '" du="600" style="left:' . (int) $caption['offsetx'] . 'px;' .
+    		            ' top:' . (int) $caption['offsety'] . 'px;' .
+    		            ' width:' . ( absint( $caption['width'] ) ? absint( $caption['width'] ) . 'px;' : '100%;' ) .
+    		            ' height:' . ( absint( $caption['height'] ) ? absint( $caption['height'] ) . 'px;' : '100%;' ) .
+    		            '">';
+
+    		        // Background of caption.
+    		        echo '<div class="caption-background" style="' .
+    		            ( ! empty( $caption['background_color'] ) ? 'background:' . esc_attr( $caption['background_color'] ) . ';' : '' ) .
+    		            '"></div>';
+
+    		        // Forground of caption.
+    		        echo '<div class="caption-forground" style="' .
+    		            ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
+    		            ( ! empty( $caption['text_align'] ) ? ' text-align:' . esc_attr( $caption['text_align'] ) . ';' : '' ) .
+    		            ( ! empty( $caption['color'] ) ? ' color:' . esc_attr( $caption['color'] ) . ';' : '' ) .
+    		            '">';
     		        echo $caption['name'];
+    		        echo '</div>';
+
     		        echo '</div>';
     		    }
     		}
