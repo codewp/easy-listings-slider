@@ -84,6 +84,7 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 				array(
 					'slider_theme',
 					'slider_type',
+					'slider_container_id',
 					'slider_width',
 					'slider_height',
 					'slider_auto_crop_resize',

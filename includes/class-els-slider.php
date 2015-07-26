@@ -48,6 +48,7 @@ class ELS_Slider {
 	private $captions;
 	private $type;
 	private $theme;
+	private $container_id;
 	private $width;
 	private $height;
 	private $auto_crop_resize;
@@ -213,6 +214,20 @@ class ELS_Slider {
 			'full-width'   => __( 'Full Width', 'els' ),
 			'introduction' => __( 'Introduction', 'els' ),
 		) );
+	}
+
+	/**
+	 * Getting container HTML element id attribute of the slider.
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public function get_container_id() {
+		if ( ! isset( $this->container_id ) ) {
+			$this->container_id = get_post_meta( $this->ID, 'slider_container_id', true );
+		}
+
+		return trim( $this->container_id );
 	}
 
 	/**

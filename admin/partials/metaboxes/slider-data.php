@@ -30,7 +30,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 				</select>
 			</p>
 			<p>
-				<label><?php _e( 'Slider theme', 'els' ) ?></label>
+				<label for="slider_theme"><?php _e( 'Slider theme', 'els' ) ?></label>
 				<select id="slider_theme" name="slider_theme">
 					<?php
 					foreach ( $slider->get_themes() as $id => $name ) {
@@ -38,6 +38,10 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 					}
 					?>
 				</select>
+			</p>
+			<p>
+				<label for="slider_container_id"><?php _e( 'Slider container id', 'els' ) ?></label>
+				<input type="text" id="slider_container_id" name="slider_container_id" value="<?php echo esc_attr( $slider->get_container_id() ) ?>" />
 			</p>
 			<p>
 				<label for="slider_width"><?php _e( 'Slider width', 'els' ) ?></label>
