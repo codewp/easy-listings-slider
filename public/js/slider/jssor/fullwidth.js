@@ -80,7 +80,7 @@
 	 ];
 
 	 var options = {
-	 	$FillMode: 2,
+	 	// $FillMode: 2,
 	 	$ArrowKeyNavigation: true,
 	 	$SlideEasing: $JssorEasing$.$EaseOutQuint,
 	 	$MinDragOffsetToSlide: 20,
@@ -121,11 +121,11 @@
 	 //responsive code begin
 	 //you can remove responsive code if you don't want the slider scales while window resizes
 	 function ScaleSlider() {
-	     var bodyWidth = document.body.clientWidth;
-	     if (bodyWidth)
-	         jssor_slider.$ScaleWidth(Math.min(bodyWidth, 1920));
-	     else
-	         window.setTimeout(ScaleSlider, 30);
+	    var parentWidth = jQuery(jssor_slider.$Elmt.parentNode).width();
+        if (parentWidth)
+            jssor_slider.$ScaleWidth(Math.min(parentWidth, data.width));
+        else
+            window.setTimeout(ScaleSlider, 30);
 	 }
 	 ScaleSlider();
 

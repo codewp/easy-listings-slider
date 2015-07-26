@@ -37,6 +37,8 @@ class ELS_Shortcode_Slider {
 						$jssor_slider->image_ids          = $slides;
 						$jssor_slider->captions 		  = $slider->get_captions();
 						$jssor_slider->theme			  = $slider->get_theme();
+						$jssor_slider->width 			  = $slider->get_width();
+						$jssor_slider->height 	   		  = $slider->get_height();
 						$jssor_slider->auto_play          = $slider->get_auto_play();
 						$jssor_slider->loop               = $slider->get_loop();
 						$jssor_slider->auto_play_interval = $slider->get_auto_play_interval();

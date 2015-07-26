@@ -21,7 +21,7 @@ wp_localize_script( 'jssor-thumbnail-slider', 'data', $data );
 wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common.css' );
 wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.css' );
 ?>
-<div id="slider_container" style="position: relative; width: 720px; height: 480px; overflow: hidden;">
+<div id="slider_container" style="position: relative; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 720 ?>px; height: <?php echo absint( $data['height'] ) ? absint( $data['height'] ) : 480 ?>px; overflow: hidden;">
 	<!-- Loading Screen -->
 	<div u="loading" style="position: absolute; top: 0px; left: 0px;">
 	    <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
@@ -33,7 +33,7 @@ wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.c
 	</div>
 
 	<!-- Slides Container -->
-	<div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 720px; height: 480px;
+	<div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 720 ?>px; height: <?php echo absint( $data['height'] ) ? absint( $data['height'] ) : 480 ?>px;
 	    overflow: hidden;">
 	    <?php
     	for ( $i = 0; $i < count( $data['image_ids'] ); $i++ ) {

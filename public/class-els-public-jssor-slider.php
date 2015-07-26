@@ -26,6 +26,8 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 		'image_ids'          => array(),
 		'captions'			 => array(),
 		'theme'              => 'thumbnail',
+		'width'				 => 800,
+		'height'			 => 480,
 		'auto_play'          => true,
 		'loop'               => 1, 				// Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind
 		'auto_play_interval' => 4000,
