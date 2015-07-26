@@ -135,6 +135,19 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 						'disabled' => __( 'Disabled', 'els' )
 					)
 				),
+				'single_page_slider_theme' => array(
+					'id' => 'single_page_slider_theme',
+					'name' => __( 'Theme of single page slider', 'els' ),
+					'desc' => __( 'Single listing page slider theme', 'els' ),
+					'type' => 'select',
+					'std' => 'thumbnail',
+					'options' => apply_filters( 'els_single_page_slider_theme', array(
+							'thumbnail'    => __( 'Thumbnail', 'els' ),
+							'full-width'   => __( 'Full Width', 'els' ),
+							'introduction' => __( 'Introduction', 'els' ),
+						)
+					)
+				),
 				'single_page_slider_width' => array(
 					'id'   => 'single_page_slider_width',
 					'name' => __( 'Width of single page slider', 'els' ),
