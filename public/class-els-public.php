@@ -105,7 +105,7 @@ class ELS_Public {
 		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_scripts' );
 
 		// Hook for single listing page slider.
-		new ELS_Public_Single_Slider( $this );
+		new ELS_Public_Single_Slider( $this->loader );
 
 		// Shortcodes.
 		$this->loader->add_shortcode( 'els_slider', new ELS_Shortcode_Slider(), 'output' );

@@ -16,11 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ELS_Public_Single_Slider {
 
-	private $plugin_public;
-
-	public function __construct( ELS_Public $plugin_public ) {
-		$this->plugin_public = $plugin_public;
-
+	/**
+	 * Constructor of the class
+	 *
+	 * @since 1.0.0
+	 * @param ELS_Loader $loader
+	 */
+	public function __construct( ELS_Loader $loader ) {
 		global $epl_settings;
 		$display_gallery = 0;
 		if ( ! empty( $epl_settings ) && isset( $epl_settings['display_single_gallery'] ) ) {
@@ -30,11 +32,17 @@ class ELS_Public_Single_Slider {
 		if ( 1 == $display_gallery ) {
 			if ( remove_action( 'epl_property_gallery', 'epl_property_gallery' ) ) {
 				// Adding action for displaying gallery in slider.
-				$this->plugin_public->get_loader()->add_action( 'epl_property_gallery', $this, 'display_single_listing_slider' );
+				$loader->add_action( 'epl_property_gallery', $this, 'display_single_listing_slider' );
 			}
 		}
 	}
 
+	/**
+	 * Displaying slider in single listing page.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
 	public function display_single_listing_slider() {
 		$listing_gallery = ELS_IOC::make( 'listings' )->get_gallery( get_the_ID() );
 		if ( count( $listing_gallery ) ) {
