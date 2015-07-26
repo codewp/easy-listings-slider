@@ -85,6 +85,7 @@
 	    $SlideDuration: parseInt( data.slide_duration ),            //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
 	    $DragOrientation: parseInt( data.drag_orientation ),        //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
 	    $UISearchMode: 0,                                   		//[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+	    $Loop: parseInt( data.loop ),
 
 	    $CaptionSliderOptions: {                            		//[Optional] Options which specifies how to animate caption
 	        $Class: $JssorCaptionSlider$,                   		//[Required] Class to create instance to animate caption

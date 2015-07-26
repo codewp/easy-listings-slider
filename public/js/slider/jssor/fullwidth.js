@@ -89,6 +89,7 @@
 	    $AutoPlayInterval: parseInt( data.auto_play_interval ),     //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
 	    $SlideDuration: parseInt( data.slide_duration ),            //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
 	    $DragOrientation: parseInt( data.drag_orientation ),        //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+	    $Loop: parseInt( data.loop ),
 
 	    $CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
 	        $Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption

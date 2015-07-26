@@ -154,7 +154,7 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 					'desc' => __( 'Single listing page slider width in pixels.', 'els' ),
 					'type' => 'number',
 					'size' => 'small',
-					'std'  => '600',
+					'std'  => '800',
 				),
 				'single_page_slider_height' => array(
 					'id'   => 'single_page_slider_height',

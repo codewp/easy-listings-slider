@@ -48,4 +48,127 @@ class ELS_Settings {
 		return apply_filters( 'els_get_settings', $this->plugin_settings );
 	}
 
+	/**
+	 * Magic __get function to dispatch a call to retrieve a private property
+	 *
+	 * @param  string $key
+	 * @return mixed
+	 */
+	public function __get( $key ) {
+		if ( method_exists( $this, 'get_' . $key ) ) {
+			return call_user_method( 'get_' . $key, $this );
+		} else if ( array_key_exists( $key, $this->plugin_settings ) ) {
+			return $this->plugin_settings[ $key ];
+		}
+
+		return null;
+	}
+
+	/**
+	 * Getting single listing page slider state.
+	 *
+	 * @since  1.0.0
+	 * @return boolean
+	 */
+	public function get_slider_in_single_page() {
+		return 'disabled' === $this->plugin_settings['slider_in_single_page'] ? false : true;
+	}
+
+	/**
+	 * Getting single listing page slider theme.
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public function get_single_page_slider_theme() {
+		return ! empty( $this->plugin_settings['single_page_slider_theme'] ) ?
+			$this->plugin_settings['single_page_slider_theme'] : 'thumbnail';
+	}
+
+	/**
+	 * Getting single listing page slider width.
+	 *
+	 * @since  1.0.0
+	 * @return int
+	 */
+	public function get_single_page_slider_width() {
+		return ! empty( $this->plugin_settings['single_page_slider_width'] ) ?
+			absint( $this->plugin_settings['single_page_slider_width'] ) : 800;
+	}
+
+	/**
+	 * Getting single listing page slider height.
+	 *
+	 * @since  1.0.0
+	 * @return int
+	 */
+	public function get_single_page_slider_height() {
+		return ! empty( $this->plugin_settings['single_page_slider_height'] ) ?
+			absint( $this->plugin_settings['single_page_slider_height'] ) : 480;
+	}
+
+	/**
+	 * Getting single listing page slider auto_crop_resize.
+	 *
+	 * @since  1.0.0
+	 * @return boolean
+	 */
+	public function get_single_page_slider_auto_crop_resize() {
+		return 'enabled' === $this->plugin_settings['single_page_slider_auto_crop_resize'] ? true : false;
+	}
+
+	/**
+	 * Getting single listing page slider autoplay.
+	 *
+	 * @since  1.0.0
+	 * @return boolean
+	 */
+	public function get_single_page_slider_autoplay() {
+		return 'disabled' === $this->plugin_settings['single_page_slider_autoplay'] ? false : true;
+	}
+
+	/**
+	 * Getting single listing page slider autoplay_interval
+	 *
+	 * @since  1.0.0
+	 * @return int
+	 */
+	public function get_single_page_slider_autoplay_interval() {
+		return ! empty( $this->plugin_settings['single_page_slider_autoplay_interval'] ) ?
+			absint( $this->plugin_settings['single_page_slider_autoplay_interval'] ) : 4000;
+	}
+
+	/**
+	 * Getting single listing page slider slide_duration.
+	 *
+	 * @since  1.0.0
+	 * @return int
+	 */
+	public function get_single_page_slider_slide_duration() {
+		return ! empty( $this->plugin_settings['single_page_slider_slide_duration'] ) ?
+			absint( $this->plugin_settings['single_page_slider_slide_duration'] ) : 500;
+	}
+
+	/**
+	 * Getting single listing page slider slider_loop.
+	 *
+	 * @since  1.0.0
+	 * @return int
+	 */
+	public function get_single_page_slider_loop() {
+		return isset( $this->plugin_settings['single_page_slider_loop'] ) ?
+			absint( $this->plugin_settings['single_page_slider_loop'] ) : 1;
+	}
+
+	/**
+	 * Getting single listing page slider drag_orientation.
+	 *
+	 * @since  1.0.0
+	 * @return int
+	 */
+	public function get_single_page_slider_drag_orientation() {
+		return isset( $this->plugin_settings['single_page_slider_drag_orientation'] ) ?
+			absint( $this->plugin_settings['single_page_slider_drag_orientation'] ) : 3;
+	}
+
 }
