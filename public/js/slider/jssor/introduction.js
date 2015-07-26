@@ -115,7 +115,7 @@
 	    }
 	 };
 
-	 var jssor_slider = new $JssorSlider$("slider_container", options);
+	 var jssor_slider = new $JssorSlider$(data.id, options);
 
 	 //responsive code begin
 	 //you can remove responsive code if you don't want the slider scales while window resizes

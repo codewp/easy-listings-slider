@@ -26,6 +26,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 		'image_ids'          => array(),
 		'captions'			 => array(),
 		'theme'              => 'thumbnail',
+		'id'				 => '',
 		'width'				 => 800,
 		'height'			 => 480,
 		'auto_play'          => true,
@@ -71,6 +72,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 		// Displaying slider only when it has images.
 		if ( count( $this->data['image_ids'] ) ) {
 			$this->register_dependencies();
+			$this->data['id'] = trim( $this->data['id'] ) ? trim( $this->data['id'] ) : 'slider_container_' . current_time( 'timestamp' );
 			$this->render_view( 'slider.jssor.' . $this->data['theme'], array(
 				'data'       => $this->data,
 				'css_url'    => plugin_dir_url( __FILE__ ) . 'css/',

@@ -21,7 +21,7 @@ wp_localize_script( 'jssor-introduction-slider', 'data', $data );
 wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common.css' );
 wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduction.css' );
 ?>
-<div id="slider_container" style="position: relative; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 980 ?>px;
+<div id="<?php echo esc_attr( $data['id'] ) ?>" class="slider_container" style="position: relative; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 980 ?>px;
         height: <?php echo absint( $data['height'] ) ? absint( $data['height'] ) : 380 ?>px; overflow: hidden;">
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
