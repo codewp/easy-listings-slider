@@ -15,6 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="els_slider_captions_container">
 	<p>
+		<strong><?php _e( 'Captions preview', 'els' ) ?></strong>
+	</p>
+	<div id="els_captions_preview" class="captions_preview" style="height: 500px; width: 100%;">
+		<div id="preview_caption" style="position: absolute; z-index: 10;"></div>
+		<img id="captions_preview_img" src="<?php echo esc_attr( $images_url ) . 'slide-caption-preview.jpg' ?>" width="100%" height="500px" style="position: relative;">
+	</div>
+	<p>
 		<strong><?php _e( 'Slider captions:', 'els' ); ?></strong>
 	</p>
 	<div id="els_captions" class="edd_meta_table_wrap">

@@ -156,7 +156,7 @@ var tb_position;
 	 	// Removing all of captions that relates to removed slide.
 	 	$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
 	 		if ( $( this ).val() == slide_number ) {
-	 			ElsCaptionConfiguration.removeRow( $( this ).closest('tr') );
+	 			ElsCaptionConfiguration.removeCaption( $( this ).closest('tr') );
 	 		}
 	 	});
 
@@ -215,13 +215,26 @@ var tb_position;
 	// Slider captions configurations.
 	var ElsCaptionConfiguration = {
 
+		/**
+		 * Initialize function of the class.
+		 *
+		 * @since  1.0.0
+		 * @return void
+		 */
 		init : function() {
 			this.add();
 			this.remove();
 			this.showCaptionSpecification( true );
 		},
 
-		clone_repeatable : function( row ) {
+		/**
+		 * Cloning a row from captions table to creating another one.
+		 *
+		 * @since  1.0.0
+		 * @param  object row
+		 * @return object
+		 */
+		cloneRepeatable : function( row ) {
 			// Retrieve the highest current key
 			var key = 0, highest = 0;
 			row.parent().find( 'tr.els_repeatable_row' ).each(function() {
@@ -252,12 +265,19 @@ var tb_position;
 			return clone;
 		},
 
+		/**
+		 * Cloning specificatoin of a captoin to creating another one.
+		 *
+		 * @since  1.0.0
+		 * @param  object specification
+		 * @return object
+		 */
 		cloneSpecification: function( specification ) {
 			// Retrieve the highest current key
 			var key = specification.data( 'key' ) ? specification.data( 'key' ) + 1 : 1;
 			var clone = specification.clone();
 			// Removing tinymce editor from clone and adding textarea instead of it to clone.
-			clone.find( '.caption_content' ).html( '<textarea  name="els_slider_captions[' + key + '][name]"></textarea>' );
+			clone.find( '.caption_content' ).html( '<textarea id="caption_editor_' + key + '" name="els_slider_captions[' + key + '][name]"></textarea>' );
 			clone.attr( 'data-key', key );
 			clone.attr( 'id', clone.attr( 'id' ).replace( /\d+/g, key ) );
 			clone.find( 'input, textarea' ).val( '' );
@@ -266,9 +286,14 @@ var tb_position;
 			} );
 			clone.find( 'input, select, textarea' ).each(function() {
 				var name = $( this ).attr( 'name' );
+				var id   = $( this ).attr( 'id' );
 				if ( name ) {
 					name = name.replace( /\[(\d+)\]/, '[' + parseInt( key ) + ']');
-					$( this ).attr( 'name', name ).attr( 'id', name );
+					$( this ).attr( 'name', name );
+				}
+				if ( id && id.match( /\[(\d+)\]/ ) ) {
+					id = id.replace( /\[(\d+)\]/, '[' + parseInt( key ) + ']');
+					$( this ).attr( 'id', id );
 				}
 			});
 			clone.find('div').each( function() {
@@ -289,12 +314,18 @@ var tb_position;
 			return clone;
 		},
 
+		/**
+		 * Adding a new caption.
+		 *
+		 * @since  1.0.0
+		 * @return void
+		 */
 		add: function() {
 			$( 'body' ).on( 'click', '.submit .els_add_repeatable', function(e) {
 				e.preventDefault();
 				var button = $( this ),
 				row = button.parent().parent().prev( 'tr' ),
-				clone = ElsCaptionConfiguration.clone_repeatable( row );
+				clone = ElsCaptionConfiguration.cloneRepeatable( row );
 				clone.insertAfter( row ).find('input, textarea, select').filter(':visible').eq(0).focus();
 				// Cloning specification.
 				var $specification = $( '.caption_specification #caption_spec_' + ( row.data( 'key' ) ? row.data( 'key' ) : 0 ) );
@@ -310,6 +341,12 @@ var tb_position;
 			});
 		},
 
+		/**
+		 * Removing a caption by clicking on the remove button.
+		 *
+		 * @sine   1.0.0
+		 * @return void
+		 */
 		remove : function() {
 			$( 'body' ).on( 'click', '.els_remove_repeatable', function(e) {
 				e.preventDefault();
@@ -340,7 +377,14 @@ var tb_position;
 			});
 		},
 
-		removeRow: function( row ) {
+		/**
+		 * Removing a caption that are related to removed slide.
+		 *
+		 * @since  1.0.0
+		 * @param  object row
+		 * @return void
+		 */
+		removeCaption: function( row ) {
 			if ( row.length ) {
 				var rowCount = row.closest('tbody').find( 'tr' ).length - 1,
 					key      = row.data( 'key' ) ? row.data( 'key' ) : 0;
@@ -362,6 +406,13 @@ var tb_position;
 			}
 		},
 
+		/**
+		 * Show specification of the caption like it's content, offsets, width, etc.
+		 *
+		 * @sice   1.0.0
+		 * @param  boolean showFirstSpec  showing first caption specification or not.
+		 * @return void
+		 */
 		showCaptionSpecification: function( showFirstSpec ) {
 			// jQuery tabs for caption_spec_tabs.
 			$( '.caption_spec_tabs' ).tabs();
@@ -370,12 +421,75 @@ var tb_position;
 				$( '.caption_specification .caption_spec_tabs:nth-child(1)' ).show();
 			}
 			// Showing selected caption specification.
-			$( '.els_repeatable_table tbody tr' ).on('click', function(event) {
+			$( '#els_captions tbody tr.els_repeatable_row' ).on('click', function(event) {
 				event.preventDefault();
 				var key = $( this ).data( 'key' ) > 0 ? $( this ).data( 'key' ) : 0;
 				$( '.caption_specification' ).children().hide();
 				$( '.caption_specification #caption_spec_' + key ).show();
+
+				// Preview caption.
+				ElsCaptionConfiguration.captionsPreview( key );
 			});
+		},
+
+		/**
+		 * Preview caption on the test image slider.
+		 *
+		 * @since  1.0.0
+		 * @param  int id
+		 * @return void
+		 */
+		captionsPreview: function( id ) {
+			var offsetX          = $( 'input[name="els_slider_captions[' + id + '][offsetx]"]' ).val();
+			var offsetY          = $( 'input[name="els_slider_captions[' + id + '][offsety]"]' ).val();
+			var width            = $( 'input[name="els_slider_captions[' + id + '][width]"]' ).val();
+			var height           = $( 'input[name="els_slider_captions[' + id + '][height]"]' ).val();
+			var font_size        = $( 'input[name="els_slider_captions[' + id + '][font_size]"]' ).val();
+			var text_align       = $( 'select[name="els_slider_captions[' + id + '][text_align]"]' ).val();
+			var color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).val();
+			var background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).val();
+			var captionContent   = tinymce.get( 'caption_editor_' + id ) ?
+				tinymce.get( 'caption_editor_' + id ).getContent() : '';
+			if ( ! captionContent ) {
+				$( '#preview_caption' ).html( '' );
+				return;
+			}
+			var defaultValues = this.captionDefaults();
+			var caption =  '<div class="caption-background" style="' +
+			( background_color ? 'background: ' + background_color + ';' : '' ) + '">' +
+			'</div>' +
+			'<div class="caption-forground" style="' +
+			'font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : defaultValues.font_size ) + 'px;' +
+			' text-align:' + ( text_align ? text_align : defaultValues.text_align ) + ';' +
+			' color:' + ( color ? color : defaultValues.color ) + ';' +
+			'">' + captionContent + '</div>';
+
+			$( '#preview_caption' ).css( {
+				'left' : parseInt( offsetX ) >= 0 ? parseInt( offsetX ) + 'px' : defaultValues.offsetx + 'px',
+				'top' : parseInt( offsetY ) >= 0 ? parseInt( offsetY ) + 'px' : defaultValues.offsety + 'px',
+				'width' : parseInt( width ) > 0 ? parseInt( width ) + 'px' : defaultValues.width + 'px',
+				'height' : parseInt( height ) > 0 ? parseInt( height ) + 'px' : defaultValues.height + 'px'
+			} );
+
+			$( '#preview_caption' ).html( caption );
+		},
+
+		/**
+		 * Caption default values.
+		 *
+		 * @since  1.0.0
+		 * @return object
+		 */
+		captionDefaults: function() {
+			return {
+				offsetx : 250,
+				offsety : 250,
+				width : 300,
+				height : 100,
+				font_size : 20,
+				text_align : 'center',
+				color : '#000000'
+			};
 		}
 
 	}
