@@ -215,7 +215,7 @@ class ELS_Admin {
 		}
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( 'els-html-elements', plugin_dir_url( __FILE__ ) . 'js/els-html-elements.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( 'els-admin-globals', plugin_dir_url( __FILE__ ) . 'js/els-admin-globals.js', array( 'jquery' ), $this->version, true );
 	}
 
 	/**

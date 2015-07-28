@@ -1,4 +1,4 @@
-var tb_position, TB_WIDTH, TB_HEIGHT;
+var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 
 (function( $ ) {
 	'use strict';
@@ -338,6 +338,14 @@ var tb_position, TB_WIDTH, TB_HEIGHT;
 				$( 'input[name="els_slider_captions[' + key + '][color]"]', clone ).val( this.captionDefaults.color );
 				$( 'input[name="els_slider_captions[' + key + '][background_color]"]', clone ).val( this.captionDefaults.background_color );
 
+				/**
+				 * Removing wp-color-picker created elements.
+				 * And replacing them with input types so color-picker can create new color-picker on input types.
+				 */
+				$( '#caption_style_' + key + ' p .wp-picker-container', clone ).each( function() {
+					$( this ).replaceWith( $( 'input[type=text].colorpick', this ) );
+				});
+
 				return clone;
 			},
 
@@ -456,6 +464,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT;
 					// Preview caption.
 					ElsCaptionConfiguration.captionsPreview( key );
 				});
+				// Using color picker in specifications.
+				ElsHtmlElements.colorPicker();
 			},
 
 			/**
