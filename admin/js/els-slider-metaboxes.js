@@ -228,7 +228,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT;
 				height : 100,
 				font_size : 20,
 				text_align : 'center',
-				color : '#000000'
+				color : '#000000',
+				background_color : ''
 			},
 
 			/**
@@ -326,6 +327,16 @@ var tb_position, TB_WIDTH, TB_HEIGHT;
 						$( this ).attr( 'href', href );
 					}
 				});
+
+				// Setting default values to clone.
+				$( 'input[name="els_slider_captions[' + key + '][offsetx]"]', clone ).val( this.captionDefaults.offsetx );
+				$( 'input[name="els_slider_captions[' + key + '][offsety]"]', clone ).val( this.captionDefaults.offsety );
+				$( 'input[name="els_slider_captions[' + key + '][width]"]', clone ).val( this.captionDefaults.width );
+				$( 'input[name="els_slider_captions[' + key + '][height]"]', clone ).val( this.captionDefaults.height );
+				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', clone ).val( this.captionDefaults.font_size );
+				$( 'select[name="els_slider_captions[' + key + '][text_align]"]', clone ).val( this.captionDefaults.text_align );
+				$( 'input[name="els_slider_captions[' + key + '][color]"]', clone ).val( this.captionDefaults.color );
+				$( 'input[name="els_slider_captions[' + key + '][background_color]"]', clone ).val( this.captionDefaults.background_color );
 
 				return clone;
 			},
@@ -425,7 +436,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT;
 			 * Show specification of the caption like it's content, offsets, width, etc.
 			 *
 			 * @sice   1.0.0
-			 * @param  boolean showFirstSpec  showing first caption specification or not.
+			 * @param  boolean showFirstSpec  showing first caption specification or no.
 			 * @return void
 			 */
 			showCaptionSpecification: function( showFirstSpec ) {
