@@ -394,7 +394,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 						$( 'input, select', row ).val( '' );
 						row.fadeOut( 'fast' ).remove();
 						// Removing caption specification for selected caption.
-						$( '.caption_specification #caption_spec_' + key ).remove();
+						$( '.caption_specification #caption_spec_' + key ).fadeOut( 'fast' ).remove();
 					} else {
 						$( 'input', row ).val( '' );
 						$( 'select', row ).val( 'all' );

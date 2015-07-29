@@ -187,6 +187,8 @@ class ELS_Admin {
 		}
 		// wordpress Color Picker.
 		wp_enqueue_style( 'wp-color-picker' );
+		// editor.css for tinymce.
+		wp_enqueue_style( 'editor-buttons' );
 	}
 
 	/**
