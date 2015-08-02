@@ -21,8 +21,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 	 */
 
 	$( function() {
-		 $( "#slider-data-container .tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-		 $( "#slider-data-container .tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+		 $( "#slider-data-container .tabs" ).tabs().addClass( 'ui-tabs' );
 
 		 // Controlling slider type and allowing only for adding selected type.
 		 $( '#slider_type' ).on( 'change', function() {
@@ -449,7 +448,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			 */
 			showCaptionSpecification: function( showFirstSpec ) {
 				// jQuery tabs for caption_spec_tabs.
-				$( '.caption_spec_tabs' ).tabs();
+				$( '.caption_spec_tabs' ).tabs().addClass( 'ui-tabs' );
 				if ( showFirstSpec ) {
 					// Showing first caption specification on init.
 					$( '.caption_specification .caption_spec_tabs:first' ).show();

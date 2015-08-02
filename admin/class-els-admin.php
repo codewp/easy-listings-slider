@@ -185,11 +185,15 @@ class ELS_Admin {
 		if ( ! function_exists( 'wp_enqueue_media' ) || version_compare( $wp_version, '3.5', '<' ) ) {
 			wp_enqueue_style( 'thickbox' );
 		}
+		// jQueryUi.
+		wp_enqueue_style( 'jquery-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui/jquery-ui' . $suffix . '.css' );
+		wp_enqueue_style( 'jquery-ui-theme', plugin_dir_url( __FILE__ ) . 'css/jquery-ui/jquery-ui-theme' . $suffix . '.css' );
 		// wordpress Color Picker.
 		wp_enqueue_style( 'wp-color-picker' );
 		// editor.css for tinymce.
 		wp_enqueue_style( 'editor-buttons' );
 	}
+
 
 	/**
 	 * Register the JavaScript for the admin area.
