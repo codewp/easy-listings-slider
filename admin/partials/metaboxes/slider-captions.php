@@ -129,11 +129,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 								?>
 							</div>
 						</div>
-						<div id="caption_transition_<?php echo $captions_count ?>">
-							<p>
-								<label>
+						<div id="caption_transition_<?php echo $captions_count ?>" class="slider-options-panel">
+							<div class="row">
+								<div class="col-label">
+									<label for="els_slider_captions[<?php echo $captions_count ?>][play_in_transition_type]"><?php _e( 'Play in transition type', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Play in transition type', 'els' ) . ' : ';
 									echo $html->select( array(
 											'name'             => 'els_slider_captions[' . $captions_count . '][play_in_transition_type]',
 											'options'          => $caption_transition_types,
@@ -144,12 +146,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Play out transition type', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Play out transition type', 'els' ) . ' : ';
 									echo $html->select( array(
 											'name'             => 'els_slider_captions[' . $captions_count . '][play_out_transition_type]',
 											'options'          => $caption_transition_types,
@@ -160,14 +164,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
-								</label>
-							</p>
+								</div>
+							</div>
 						</div>
-						<div id="caption_style_<?php echo $captions_count ?>">
-							<p>
-								<label>
+						<div id="caption_style_<?php echo $captions_count ?>" class="slider-options-panel">
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'OffsetX', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'OffsetX', 'els' ) . ' : ';
 									echo $html->number( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][offsetx]',
 											'value' => (int) $caption_detail['offsetx'],
@@ -176,12 +182,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'OffsetY', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'OffsetY', 'els' ) . ' : ';
 									echo $html->number( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][offsety]',
 											'value' => (int) $caption_detail['offsety'],
@@ -190,12 +198,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Width', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Width', 'els' ) . ' : ';
 									echo $html->number( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][width]',
 											'value' => absint( $caption_detail['width'] ),
@@ -205,12 +215,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Height', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Height', 'els' ) . ' : ';
 									echo $html->number( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][height]',
 											'value' => absint( $caption_detail['height'] ),
@@ -220,12 +232,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Font size', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Font size', 'els' ) . ' : ';
 									echo $html->number( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][font_size]',
 											'value' => absint( $caption_detail['font_size'] ) > 0 ? absint( $caption_detail['font_size'] ) : 20,
@@ -235,12 +249,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Text align', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Text align', 'els' ) . ' : ';
 									echo $html->select( array(
 											'name'    => 'els_slider_captions[' . $captions_count . '][text_align]',
 											'options' => array(
@@ -255,12 +271,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Color', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Color', 'els' ) . ' : ';
 									echo $html->color_picker( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][color]',
 											'value' => esc_attr( $caption_detail['color'] ),
@@ -268,12 +286,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
-								</label>
-							</p>
-							<p>
-								<label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
+									<label><?php _e( 'Background color', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
 									<?php
-									echo __( 'Background color', 'els' ) . ' : ';
 									echo $html->color_picker( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][background_color]',
 											'value' => esc_attr( $caption_detail['background_color'] ),
@@ -281,8 +301,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
-								</label>
-							</p>
+								</div>
+							</div>
 						</div>
 					</div>
 					<?php
@@ -310,11 +330,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 						?>
 					</div>
 				</div>
-				<div id="caption_transition_0">
-					<p>
-						<label>
+				<div id="caption_transition_0" class="slider-options-panel">
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Play in transition type', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Play in transition type', 'els' ) . ' : ';
 							echo $html->select( array(
 									'name'             => 'els_slider_captions[' . $captions_count . '][play_in_transition_type]',
 									'options'          => $caption_transition_types,
@@ -325,12 +347,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Play out transition type', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Play out transition type', 'els' ) . ' : ';
 							echo $html->select( array(
 									'name'             => 'els_slider_captions[' . $captions_count . '][play_out_transition_type]',
 									'options'          => $caption_transition_types,
@@ -341,14 +365,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							?>
-						</label>
-					</p>
+						</div>
+					</div>
 				</div>
-				<div id="caption_style_0">
-					<p>
-						<label>
+				<div id="caption_style_0" class="slider-options-panel">
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'OffsetX', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'OffsetX', 'els' ) . ' : ';
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][offsetx]',
 									'value' => 0,
@@ -357,12 +383,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'OffsetY', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'OffsetY', 'els' ) . ' : ';
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][offsety]',
 									'value' => 0,
@@ -371,12 +399,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Width', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Width', 'els' ) . ' : ';
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][width]',
 									'min'   => 0,
@@ -385,12 +415,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Height', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Height', 'els' ) . ' : ';
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][height]',
 									'min'   => 0,
@@ -399,12 +431,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Font size', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Font size', 'els' ) . ' : ';
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][font_size]',
 									'value' => 20,
@@ -414,12 +448,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Text align', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Text align', 'els' ) . ' : ';
 							echo $html->select( array(
 									'name'    => 'els_slider_captions[0][text_align]',
 									'options' => array(
@@ -434,12 +470,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Color', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Color', 'els' ) . ' : ';
 							echo $html->color_picker( array(
 									'name'  => 'els_slider_captions[0][color]',
 									'value' => '#000000',
@@ -447,20 +485,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							?>
-						</label>
-					</p>
-					<p>
-						<label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Background color', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
 							<?php
-							echo __( 'Background color', 'els' ) . ' : ';
 							echo $html->color_picker( array(
 									'name'  => 'els_slider_captions[0][background_color]',
 									'class' => 'els_repeatable_text_field',
 								)
 							);
 							?>
-						</label>
-					</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<?php
