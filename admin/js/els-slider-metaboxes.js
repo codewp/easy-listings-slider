@@ -341,7 +341,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				 * Removing wp-color-picker created elements.
 				 * And replacing them with input types so color-picker can create new color-picker on input types.
 				 */
-				$( '#caption_style_' + key + ' p .wp-picker-container', clone ).each( function() {
+				$( '#caption_style_' + key + ' .wp-picker-container', clone ).each( function() {
 					$( this ).replaceWith( $( 'input[type=text].colorpick', this ) );
 				});
 
