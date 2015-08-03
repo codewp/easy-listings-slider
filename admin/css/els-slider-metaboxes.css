@@ -28,3 +28,36 @@
 #preview_caption .caption-forground p {
 	font-size: inherit;
 }
+/* Slider meta box content */
+.slider-options-panel div.row {
+	font-size: 14px;
+}
+.slider-options-panel div.row div.col-label {
+	float: left;
+	font-weight: 500;
+    line-height: 1.3;
+    padding: 10px 10px 10px 0;
+    text-align: left;
+    vertical-align: top;
+    width: 200px;
+}
+.slider-options-panel div.row div.col-label label {
+	color: #23282d;
+	text-shadow: none;
+}
+.slider-options-panel div.row div.col-value {
+	line-height: 1.3;
+    margin-bottom: 9px;
+    padding: 10px 10px;
+    vertical-align: middle;
+}
+.slider-options-panel input[type="text"], .slider-options-panel input[type="number"], .slider-options-panel input[type="email"], .slider-options-panel input[type="password"], .slider-options-panel select, .slider-options-panel textarea {
+	width: 25%;
+}
+/* =Media Queries
+-------------------------------------------------------------- */
+@media screen and ( max-width: 768px ) {
+	.slider-options-panel input[type="text"], .slider-options-panel input[type="number"], .slider-options-panel input[type="email"], .slider-options-panel input[type="password"], .slider-options-panel select, .slider-options-panel textarea {
+		width: 100%;
+	}
+}
