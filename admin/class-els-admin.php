@@ -219,6 +219,8 @@ class ELS_Admin {
 			wp_enqueue_script( 'media-upload' );
 			wp_enqueue_script( 'thickbox' );
 		}
+		// wordpress Color Picker.
+		wp_enqueue_script( 'wp-color-picker' );
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script( 'els-admin-globals', plugin_dir_url( __FILE__ ) . 'js/els-admin-globals.js', array( 'jquery' ), $this->version, true );
