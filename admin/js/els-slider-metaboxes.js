@@ -228,7 +228,9 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				font_size : 20,
 				text_align : 'center',
 				color : '#000000',
-				background_color : ''
+				background_color : '',
+				play_in_transition_type : '*',
+				play_out_transition_type : '*'
 			},
 
 			/**
@@ -328,15 +330,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				});
 
 				// Setting default values to clone.
-				$( 'input[name="els_slider_captions[' + key + '][offsetx]"]', clone ).val( this.captionDefaults.offsetx );
-				$( 'input[name="els_slider_captions[' + key + '][offsety]"]', clone ).val( this.captionDefaults.offsety );
-				$( 'input[name="els_slider_captions[' + key + '][width]"]', clone ).val( this.captionDefaults.width );
-				$( 'input[name="els_slider_captions[' + key + '][height]"]', clone ).val( this.captionDefaults.height );
-				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', clone ).val( this.captionDefaults.font_size );
-				$( 'select[name="els_slider_captions[' + key + '][text_align]"]', clone ).val( this.captionDefaults.text_align );
-				$( 'input[name="els_slider_captions[' + key + '][color]"]', clone ).val( this.captionDefaults.color );
-				$( 'input[name="els_slider_captions[' + key + '][background_color]"]', clone ).val( this.captionDefaults.background_color );
-
+				this.setCaptionSpecDefaults( key, clone );
 				/**
 				 * Removing wp-color-picker created elements.
 				 * And replacing them with input types so color-picker can create new color-picker on input types.
@@ -397,11 +391,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					} else {
 						$( 'input', row ).val( '' );
 						$( 'select', row ).val( 'all' );
-						// Removing caption specification values.
-						$( 'input:not([type="button"])', '.caption_specification #caption_spec_' + key ).val( '' );
-						$( 'select', '.caption_specification #caption_spec_' + key ).each( function() {
-							$( this ).val( $( 'option:first', this ).val() );
-						});
+						// Setting default values to caption specifications.
+						ElsCaptionConfiguration.setCaptionSpecDefaults( key );
 						tinymce.get( 'caption_editor_' + key ).setContent('');
 					}
 
@@ -429,11 +420,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					} else {
 						$( 'input', row ).val( '' );
 						$( 'select', row ).val( 'all' );
-						// Removing caption specification values.
-						$( 'input:not([type="button"])', '.caption_specification #caption_spec_' + key ).val( '' );
-						$( 'select', '.caption_specification #caption_spec_' + key ).each( function() {
-							$( this ).val( $( 'option:first', this ).val() );
-						});
+						// Setting default values to caption specifications.
+						this.setCaptionSpecDefaults( key );
 						tinymce.get( 'caption_editor_' + key ).setContent('');
 					}
 				}
@@ -465,6 +453,29 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				});
 				// Using color picker in specifications.
 				ElsHtmlElements.colorPicker();
+			},
+
+			/**
+			 * Setting default values to caption specification.
+			 *
+			 * @since 1.0.0
+			 * @param int    key
+			 * @param object captionSpec
+			 */
+			setCaptionSpecDefaults: function( key, captionSpec ) {
+				if ( ! captionSpec ) {
+					captionSpec = $( '.caption_specification #caption_spec_' + key );
+				}
+				$( 'select[name="els_slider_captions[' + key + '][play_in_transition_type]"]', captionSpec ).val( this.captionDefaults.play_in_transition_type );
+				$( 'select[name="els_slider_captions[' + key + '][play_out_transition_type]"]', captionSpec ).val( this.captionDefaults.play_out_transition_type );
+				$( 'input[name="els_slider_captions[' + key + '][offsetx]"]', captionSpec ).val( this.captionDefaults.offsetx );
+				$( 'input[name="els_slider_captions[' + key + '][offsety]"]', captionSpec ).val( this.captionDefaults.offsety );
+				$( 'input[name="els_slider_captions[' + key + '][width]"]', captionSpec ).val( this.captionDefaults.width );
+				$( 'input[name="els_slider_captions[' + key + '][height]"]', captionSpec ).val( this.captionDefaults.height );
+				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', captionSpec ).val( this.captionDefaults.font_size );
+				$( 'select[name="els_slider_captions[' + key + '][text_align]"]', captionSpec ).val( this.captionDefaults.text_align );
+				$( 'input[name="els_slider_captions[' + key + '][color]"]', captionSpec ).val( this.captionDefaults.color );
+				$( 'input[name="els_slider_captions[' + key + '][background_color]"]', captionSpec ).val( this.captionDefaults.background_color );
 			},
 
 			/**
