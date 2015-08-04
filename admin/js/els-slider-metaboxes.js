@@ -330,14 +330,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				});
 
 				// Setting default values to clone.
-				this.setCaptionSpecDefaults( key, clone );
-				/**
-				 * Removing wp-color-picker created elements.
-				 * And replacing them with input types so color-picker can create new color-picker on input types.
-				 */
-				$( '#caption_style_' + key + ' .wp-picker-container', clone ).each( function() {
-					$( this ).replaceWith( $( 'input[type=text].colorpick', this ) );
-				});
+				this.setCaptionSpecDefaults( key, clone, true );
 
 				return clone;
 			},
@@ -436,7 +429,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			 */
 			showCaptionSpecification: function( showFirstSpec ) {
 				// jQuery tabs for caption_spec_tabs.
-				$( '.caption_spec_tabs' ).tabs().addClass( 'ui-tabs' );
+				$( '.caption_spec_tabs' ).tabs();
 				if ( showFirstSpec ) {
 					// Showing first caption specification on init.
 					$( '.caption_specification .caption_spec_tabs:first' ).show();
@@ -461,8 +454,9 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			 * @since 1.0.0
 			 * @param int    key
 			 * @param object captionSpec
+			 * @param boolean removeIris Removing iris color picker and creating new color picker.
 			 */
-			setCaptionSpecDefaults: function( key, captionSpec ) {
+			setCaptionSpecDefaults: function( key, captionSpec, removeIris ) {
 				if ( ! captionSpec ) {
 					captionSpec = $( '.caption_specification #caption_spec_' + key );
 				}
@@ -474,8 +468,25 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				$( 'input[name="els_slider_captions[' + key + '][height]"]', captionSpec ).val( this.captionDefaults.height );
 				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', captionSpec ).val( this.captionDefaults.font_size );
 				$( 'select[name="els_slider_captions[' + key + '][text_align]"]', captionSpec ).val( this.captionDefaults.text_align );
-				$( 'input[name="els_slider_captions[' + key + '][color]"]', captionSpec ).val( this.captionDefaults.color );
-				$( 'input[name="els_slider_captions[' + key + '][background_color]"]', captionSpec ).val( this.captionDefaults.background_color );
+				if ( ! removeIris ) {
+					$( 'input[name="els_slider_captions[' + key + '][color]"]', captionSpec ).iris( 'color', this.captionDefaults.color );
+					$( 'input[name="els_slider_captions[' + key + '][background_color]"]', captionSpec ).val( this.captionDefaults.background_color );
+					$( '#els-els_slider_captions' + key + 'background_color-wrap a.wp-color-result', captionSpec ).css( 'background-color', '' );
+				} else {
+					/**
+					 * Removing wp-color-picker created elements.
+					 * And replacing them with input types so color-picker can create new color-picker on input types.
+					 */
+					$( '#caption_style_' + key + ' .wp-picker-container', captionSpec ).each( function() {
+						var name = $( 'input[type=text].colorpick', this ).attr( 'name' );
+						var value = ElsCaptionConfiguration.captionDefaults.color;
+						if ( /background_color/.test( name ) ) {
+							value = ElsCaptionConfiguration.captionDefaults.background_color;
+						}
+						$( 'input[type=text].colorpick', this ).val( value );
+						$( this ).closest( '.col-value' ).html( $( 'input[type=text].colorpick', this ) );
+					});
+				}
 			},
 
 			/**
