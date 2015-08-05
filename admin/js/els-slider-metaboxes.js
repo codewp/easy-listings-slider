@@ -226,6 +226,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				width : 300,
 				height : 100,
 				font_size : 20,
+				font_family : 'inherit',
 				text_align : 'center',
 				color : '#000000',
 				background_color : '',
@@ -467,6 +468,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				$( 'input[name="els_slider_captions[' + key + '][width]"]', captionSpec ).val( this.captionDefaults.width );
 				$( 'input[name="els_slider_captions[' + key + '][height]"]', captionSpec ).val( this.captionDefaults.height );
 				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', captionSpec ).val( this.captionDefaults.font_size );
+				$( 'select[name="els_slider_captions[' + key + '][font_family]"]', captionSpec ).val( this.captionDefaults.font_family );
 				$( 'select[name="els_slider_captions[' + key + '][text_align]"]', captionSpec ).val( this.captionDefaults.text_align );
 				if ( ! removeIris ) {
 					$( 'input[name="els_slider_captions[' + key + '][color]"]', captionSpec ).iris( 'color', this.captionDefaults.color );
