@@ -340,7 +340,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							echo $html->select( array(
 									'name'             => 'els_slider_captions[' . $captions_count . '][play_in_transition_type]',
 									'options'          => $caption_transition_types,
-									'selected'		   => null,
+									'selected'		   => '*',
 									'show_option_none' => null,
 									'show_option_all'  => null,
 									'class'            => 'els_repeatable_slide_select_field',
@@ -358,7 +358,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							echo $html->select( array(
 									'name'             => 'els_slider_captions[' . $captions_count . '][play_out_transition_type]',
 									'options'          => $caption_transition_types,
-									'selected'		   => null,
+									'selected'		   => '*',
 									'show_option_none' => null,
 									'show_option_all'  => null,
 									'class'            => 'els_repeatable_slide_select_field',
@@ -377,7 +377,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][offsetx]',
-									'value' => 0,
+									'value' => 250,
 									'class' => 'els_repeatable_name_field',
 								)
 							);
@@ -393,7 +393,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][offsety]',
-									'value' => 0,
+									'value' => 250,
 									'class' => 'els_repeatable_name_field',
 								)
 							);
@@ -409,6 +409,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][width]',
+									'value' => 300,
 									'min'   => 0,
 									'class' => 'els_repeatable_name_field',
 								)
@@ -425,6 +426,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							echo $html->number( array(
 									'name'  => 'els_slider_captions[0][height]',
+									'value' => 100,
 									'min'   => 0,
 									'class' => 'els_repeatable_name_field',
 								)
