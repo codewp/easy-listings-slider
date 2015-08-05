@@ -130,6 +130,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-settings.php';
 
 		/**
+		 * The class responsible for managing plugin fonts.
+		 */
+		require_once $this->get_path() . 'includes/class-els-font-manager.php';
+
+		/**
 		 * The class responsible for plugin HTML elements render.
 		 */
 		require_once $this->get_path() . 'includes/class-els-html-elements.php';
@@ -266,6 +271,7 @@ class Easy_Listings_Slider {
 	private function define_globals() {
 		ELS_IOC::bind( 'validator', new ELS_Validator() );
 		ELS_IOC::bind( 'asset_manager', new ELS_Asset_Manager() );
+		ELS_IOC::bind( 'font_manager', new ELS_Font_Manager() );
 		ELS_IOC::bind( 'html', new ELS_HTML_Elements() );
 		ELS_IOC::bind( 'settings', new ELS_Settings() );
 		ELS_IOC::bind( 'listings', new ELS_Listings() );
