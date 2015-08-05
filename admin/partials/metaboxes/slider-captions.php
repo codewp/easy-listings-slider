@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var array $slide_numbers
  * @var array $captions
  * @var array $caption_transition_types
+ * @var array $fonts
  */
 ?>
 <div id="els_slider_captions_container">
@@ -253,6 +254,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 							<div class="row">
 								<div class="col-label">
+									<label><?php _e( 'Font family', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
+									<?php
+									echo $html->select( array(
+											'name'             => 'els_slider_captions[' . $captions_count . '][font_family]',
+											'options'          => $fonts,
+											'selected'		   => $caption_detail['font_family'],
+											'show_option_none' => false,
+											'show_option_all'  => false,
+											'class'            => 'els_repeatable_slide_select_field',
+										)
+									);
+									?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
 									<label><?php _e( 'Text align', 'els' ) ?></label>
 								</div>
 								<div class="col-value">
@@ -449,6 +468,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							echo ' ' . __( 'px', 'els' );
+							?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Font family', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
+							<?php
+							echo $html->select( array(
+									'name'             => 'els_slider_captions[0][font_family]',
+									'options'          => $fonts,
+									'selected'		   => 'inherit',
+									'show_option_none' => false,
+									'show_option_all'  => false,
+									'class'            => 'els_repeatable_slide_select_field',
+								)
+							);
 							?>
 						</div>
 					</div>

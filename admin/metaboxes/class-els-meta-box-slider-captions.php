@@ -49,7 +49,8 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				'images_url'               => $this->get_images_url(),
 				'slide_numbers'            => $slide_numbers,
 				'captions'                 => $slider->get_captions(),
-				'caption_transition_types' => $this->get_transition_types()
+				'caption_transition_types' => $this->get_transition_types(),
+				'fonts'					   => ELS_IOC::make( 'font_manager' )->get_font_family()
 			)
 		);
 	}

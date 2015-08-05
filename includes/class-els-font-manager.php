@@ -94,14 +94,14 @@ class ELS_Font_Manager {
 		return apply_filters('els_font_family',
 			array_merge(
 				array(
-					__( 'Use Your Themes', 'popup-maker' )	=> 'inherit',
-					__( 'Sans-Serif', 'popup-maker' )		=> 'Sans-Serif',
-					__( 'Tahoma', 'popup-maker' )			=> 'Tahoma',
-					__( 'Georgia', 'popup-maker' )			=> 'Georgia',
-					__( 'Comic Sans MS', 'popup-maker' )	=> 'Comic Sans MS',
-					__( 'Arial', 'popup-maker' )			=> 'Arial',
-					__( 'Lucida Grande', 'popup-maker' )	=> 'Lucida Grande',
-					__( 'Times New Roman', 'popup-maker' )	=> 'Times New Roman',
+					'inherit' => __( 'Use Your Themes', 'els' ),
+					'Sans-Serif' => __( 'Sans-Serif', 'els' ),
+					'Tahoma' => __( 'Tahoma', 'els' ),
+					'Georgia' => __( 'Georgia', 'els' ),
+					'Comic Sans MS' => __( 'Comic Sans MS', 'els' ),
+					'Arial' => __( 'Arial', 'els' ),
+					'Lucida Grande' => __( 'Lucida Grande', 'els' ),
+					'Times New Roman' => __( 'Times New Roman', 'els' )
 				), $this->get_google_font_family() )
 		);
 	}
