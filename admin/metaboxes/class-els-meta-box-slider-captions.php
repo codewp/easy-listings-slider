@@ -119,6 +119,7 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 		return apply_filters( 'els_slider_caption_transition_types',
 			array(
 				'*'			  => __( 'Random', 'els' ),
+				'no'		  => __( 'No', 'els' ),
 				'L'           => 'L',
 				'R'           => 'R',
 				'T'           => 'T',
