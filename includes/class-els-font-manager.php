@@ -106,4 +106,27 @@ class ELS_Font_Manager {
 		);
 	}
 
+	/**
+	 * Enqueue google fonts.
+	 *
+	 * @since  1.0.0
+	 * @param  array  $fonts Google fonts to enqueue.
+	 * @return void
+	 */
+	public function enqueue_google_fonts( array $fonts ) {
+		if ( count( $fonts ) ) {
+			$google_fonts = $this->get_google_webfonts();
+			$link         = '//fonts.googleapis.com/css?family=';
+			foreach ( $fonts as $font_family => $font ) {
+				// Checking if font is Google WebFont
+				if ( array_key_exists( $font_family, $google_fonts ) ) {
+					$link .= $font_family . '|';
+				}
+			}
+			if ( '//fonts.googleapis.com/css?family=' !== $link ) {
+				wp_enqueue_style( 'els-google-fonts', rtrim( $link, '|' ) );
+			}
+		}
+	}
+
 }
