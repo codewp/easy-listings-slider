@@ -46,6 +46,7 @@ class ELS_Slider {
 
 	private $slides;
 	private $captions;
+	private $captions_fonts;
 	private $type;
 	private $theme;
 	private $container_id;
@@ -148,6 +149,36 @@ class ELS_Slider {
 		}
 
 		return $this->captions;
+	}
+
+	/**
+	 * Returning fonts of captions.
+	 *
+	 * @since  1.0.0
+	 * @return array  array of captions fotns.
+	 */
+	public function get_captions_font() {
+		if ( ! isset( $this->captions_fonts ) ) {
+			$captions             = $this->get_captions();
+			$this->captions_fonts = array();
+			if ( count( $captions ) ) {
+				foreach ( $captions as $slide => $caption ) {
+					foreach ( $caption as $caption_detail ) {
+						if ( $caption_detail['font_family'] ) {
+							if ( ! isset( $this->captions_fonts[ $caption_detail['font_family'] ] ) ) {
+								$this->captions_fonts[ $caption_detail['font_family'] ] = array(
+									'font_family' => $caption_detail['font_family'],
+								);
+							} else {
+								// Merging font options.
+
+							}
+						}
+					}
+				}
+			}
+		}
+		return $this->captions_fonts;
 	}
 
 	/**
