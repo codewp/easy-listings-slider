@@ -59,6 +59,7 @@ wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduc
                         // Forground of caption.
                         echo '<div class="caption-forground" style="' .
                             ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
+                            ( ! empty( $caption['font_family'] ) ? ' font-family:' . esc_attr( $caption['font_family'] ) . ';' : '' ) .
                             ( ! empty( $caption['text_align'] ) ? ' text-align:' . esc_attr( $caption['text_align'] ) . ';' : '' ) .
                             ( ! empty( $caption['color'] ) ? ' color:' . esc_attr( $caption['color'] ) . ';' : '' ) .
                             '">';
@@ -87,6 +88,7 @@ wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduc
                         // Forground of caption.
                         echo '<div class="caption-forground" style="' .
                             ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
+                            ( ! empty( $caption['font_family'] ) ? ' font-family:' . esc_attr( $caption['font_family'] ) . ';' : '' ) .
                             ( ! empty( $caption['text_align'] ) ? ' text-align:' . esc_attr( $caption['text_align'] ) . ';' : '' ) .
                             ( ! empty( $caption['color'] ) ? ' color:' . esc_attr( $caption['color'] ) . ';' : '' ) .
                             '">';
