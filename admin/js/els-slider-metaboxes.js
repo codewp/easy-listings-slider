@@ -235,6 +235,14 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			},
 
 			/**
+			 * Cache object for Google WebFonts to don't adding them to page multi times.
+			 *
+			 * @since 1.0.0
+			 * @type  Object
+			 */
+			cacheGoogleFonts : {},
+
+			/**
 			 * Initialize function of the class.
 			 *
 			 * @since  1.0.0
@@ -504,6 +512,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				var width            = $( 'input[name="els_slider_captions[' + id + '][width]"]' ).val();
 				var height           = $( 'input[name="els_slider_captions[' + id + '][height]"]' ).val();
 				var font_size        = $( 'input[name="els_slider_captions[' + id + '][font_size]"]' ).val();
+				var font_family		 = $( 'select[name="els_slider_captions[' + id + '][font_family]"]' ).val();
 				var text_align       = $( 'select[name="els_slider_captions[' + id + '][text_align]"]' ).val();
 				var color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).val();
 				var background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).val();
@@ -513,11 +522,30 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					$( '#preview_caption' ).html( '' );
 					return;
 				}
+				if ( els_slider.google_fonts[ font_family ] !== undefined ) {
+					var link = "//fonts.googleapis.com/css?family=" + font_family;
+
+					/*if ( font_weight !== 'normal' ) {
+					    link += ":" + font_weight;
+					}
+					if ( font_style === 'italic' ) {
+					    if (link.indexOf(':') === -1) {
+					        link += ":";
+					    }
+					    link += "italic";
+					}*/
+					if ( ! this.cacheGoogleFonts[font_family] ) {
+						jQuery( 'body' ).append( '<link href="' + link + '" rel="stylesheet" type="text/css">' );
+						// This font added to page.
+						this.cacheGoogleFonts[font_family] = true;
+					}
+				}
 				var caption =  '<div class="caption-background" style="' +
 				( background_color ? 'background: ' + background_color + ';' : '' ) + '">' +
 				'</div>' +
 				'<div class="caption-forground" style="' +
 				'font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : this.captionDefaults.font_size ) + 'px;' +
+				' font-family: ' + ( font_family.length ? font_family : 'inherit' ) + ';' +
 				' text-align:' + ( text_align ? text_align : this.captionDefaults.text_align ) + ';' +
 				' color:' + ( color ? color : this.captionDefaults.color ) + ';' +
 				'">' + captionContent + '</div>';

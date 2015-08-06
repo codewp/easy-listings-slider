@@ -50,7 +50,12 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 		// Registering scripts.
 		wp_enqueue_script( 'els-slider-metaboxes', $this->get_js_url() . 'els-slider-metaboxes' . $suffix . '.js',
 			array( 'jquery-ui-tabs' ), false, true );
-		wp_localize_script( 'els-slider-metaboxes', 'els_slider', array( 'add_listings' => __( 'Add Listings to Slider', 'els' ) ) );
+		wp_localize_script( 'els-slider-metaboxes', 'els_slider',
+			array(
+				'add_listings' => __( 'Add Listings to Slider', 'els' ),
+				'google_fonts' => ELS_IOC::make( 'font_manager' )->get_google_webfonts()
+			)
+		);
 		// Registering styles.
 		wp_enqueue_style( 'els-slider-metaboxes', $this->get_css_url() . 'els-slider-metaboxes' . $suffix . '.css' );
 	}
