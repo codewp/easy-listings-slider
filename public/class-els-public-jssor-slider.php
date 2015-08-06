@@ -25,6 +25,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	protected $data = array(
 		'image_ids'          => array(),
 		'captions'			 => array(),
+		'captions_fonts'	 => array(),
 		'theme'              => 'thumbnail',
 		'id'				 => '',
 		'width'				 => 800,
@@ -72,6 +73,9 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 		// Displaying slider only when it has images.
 		if ( count( $this->data['image_ids'] ) ) {
 			$this->register_dependencies();
+			if ( count( $this->data['captions_fonts'] ) ) {
+				ELS_IOC::make( 'font_manager' )->enqueue_google_fonts( $this->data['captions_fonts'] );
+			}
 			$this->data['id'] = trim( $this->data['id'] ) ? trim( $this->data['id'] ) : 'slider_container_' . current_time( 'timestamp' );
 			$this->render_view( 'slider.jssor.' . $this->data['theme'], array(
 				'data'       => $this->data,

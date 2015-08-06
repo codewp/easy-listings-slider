@@ -36,6 +36,7 @@ class ELS_Shortcode_Slider {
 						$jssor_slider                     = new ELS_Public_Jssor_Slider();
 						$jssor_slider->image_ids          = $slides;
 						$jssor_slider->captions 		  = $slider->get_captions();
+						$jssor_slider->captions_fonts	  = $slider->get_captions_font();
 						$jssor_slider->theme			  = $slider->get_theme();
 						$jssor_slider->id 				  = $slider->get_container_id();
 						$jssor_slider->width 			  = $slider->get_width();
