@@ -168,10 +168,22 @@ class ELS_Slider {
 							if ( ! isset( $this->captions_fonts[ $caption_detail['font_family'] ] ) ) {
 								$this->captions_fonts[ $caption_detail['font_family'] ] = array(
 									'font_family' => $caption_detail['font_family'],
+									'font_weight' => array( $caption_detail['font_weight'] ),
+									'font_style'  => array( $caption_detail['font_style'] ),
 								);
-							} else {
-								// Merging font options.
-
+							}
+							// Merging font options.
+							else {
+								// Merging font_weights
+								if ( ! in_array( $caption_detail['font_weight'],
+									$this->captions_fonts[ $caption_detail['font_family'] ]['font_weight'] ) ) {
+									array_push( $this->captions_fonts[ $caption_detail['font_family'] ]['font_weight'], $caption_detail['font_weight'] );
+								}
+								// Merging font_styles
+								if ( ! in_array( $caption_detail['font_style'],
+									$this->captions_fonts[ $caption_detail['font_family'] ]['font_style'] ) ) {
+									array_push( $this->captions_fonts[ $caption_detail['font_family'] ]['font_style'], $caption_detail['font_style'] );
+								}
 							}
 						}
 					}
