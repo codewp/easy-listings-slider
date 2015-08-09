@@ -592,49 +592,67 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			 * @return void
 			 */
 			fontOptionControl: function() {
-				$( '.caption_specification select.font-family' ).on( 'change', function() {
-					var id = $( this ).closest('div.caption_spec_tabs').data( 'key' ),
-					    $font_weight = $( 'select[name="els_slider_captions[' + id + '][font_weight]"]'),
-						$font_style  = $( 'select[name="els_slider_captions[' + id + '][font_style]"]'),
-						$font_weight_options = $font_weight.find( 'option' ),
-				        $font_style_options = $font_style.find( 'option' );
-
-				    // Google Font Chosen
-				    if ( els_slider.google_fonts[ $( this ).val() ] !== undefined ) {
-				        var font = els_slider.google_fonts[ $( this ).val() ];
-
-				        $font_weight_options.each( function() {
-				        	$( this ).prop( 'disabled', true );
-				        });
-				        $font_style_options.each( function() {
-				        	$( this ).prop( 'disabled', true );
-				        });
-
-				        if ( font.variants.length ) {
-				            for ( var i = 0, max = font.variants.length; i < max ; i++ ) {
-				                if ( font.variants[ i ] === 'regular' ) {
-				                    jQuery( 'option[value="normal"]', $font_weight ).prop( 'disabled', false );
-				                    jQuery( 'option[value="normal"]', $font_style ).prop( 'disabled', false );
-				                } else {
-				                    if ( font.variants[ i ].indexOf('italic') >= 0 ) {
-				                        jQuery( 'option[value="italic"]', $font_style ).prop( 'disabled', false );
-				                    }
-				                    jQuery( 'option[value="' + parseInt( font.variants[i], 10 ) + '"]', $font_weight ).prop( 'disabled', false );
-				                }
-				            }
-				        }
-				    // Standard Font Chosen
-				    } else {
-				        $font_weight_options.each( function() {
-				        	$( this ).prop( 'disabled', false );
-				        });
-				        $font_style_options.each( function() {
-				        	$( this ).prop( 'disabled', false );
-				        });
-				    }
-				    $font_weight.val( 'normal' );
-				    $font_style.val( 'normal' );
+				$( '.caption_specification select.font-family' ).each( function() {
+					ElsCaptionConfiguration.updateFontOptions( $( this ) );
 				});
+				$( '.caption_specification select.font-family' ).on( 'change', function() {
+					ElsCaptionConfiguration.updateFontOptions( $( this ), true );
+				});
+			},
+
+			/**
+			 * Updating font options( weight, style ) based on font-family.
+			 *
+			 * @since  1.0.0
+			 * @param  Object fontFamilySelect font family select HTML element
+			 * @param  boolean if true change values of font optoins to default value
+			 * @return void
+			 */
+			updateFontOptions : function( fontFamilySelect, changeValue ) {
+				var id = fontFamilySelect.closest('div.caption_spec_tabs').data( 'key' ),
+				    $font_weight = $( 'select[name="els_slider_captions[' + id + '][font_weight]"]'),
+					$font_style  = $( 'select[name="els_slider_captions[' + id + '][font_style]"]'),
+					$font_weight_options = $font_weight.find( 'option' ),
+			        $font_style_options = $font_style.find( 'option' );
+
+			    // Google Font Chosen
+			    if ( els_slider.google_fonts[ fontFamilySelect.val() ] !== undefined ) {
+			        var font = els_slider.google_fonts[ fontFamilySelect.val() ];
+
+			        $font_weight_options.each( function() {
+			        	$( this ).prop( 'disabled', true );
+			        });
+			        $font_style_options.each( function() {
+			        	$( this ).prop( 'disabled', true );
+			        });
+
+			        if ( font.variants.length ) {
+			            for ( var i = 0, max = font.variants.length; i < max ; i++ ) {
+			                if ( font.variants[ i ] === 'regular' ) {
+			                    jQuery( 'option[value="normal"]', $font_weight ).prop( 'disabled', false );
+			                    jQuery( 'option[value="normal"]', $font_style ).prop( 'disabled', false );
+			                } else {
+			                    if ( font.variants[ i ].indexOf('italic') >= 0 ) {
+			                        jQuery( 'option[value="italic"]', $font_style ).prop( 'disabled', false );
+			                    }
+			                    jQuery( 'option[value="' + parseInt( font.variants[i], 10 ) + '"]', $font_weight ).prop( 'disabled', false );
+			                }
+			            }
+			        }
+			    // Standard Font Chosen
+			    } else {
+			        $font_weight_options.each( function() {
+			        	$( this ).prop( 'disabled', false );
+			        });
+			        $font_style_options.each( function() {
+			        	$( this ).prop( 'disabled', false );
+			        });
+			    }
+			    // Changing values of font options to default values.
+			    if ( changeValue ) {
+			    	$font_weight.val( 'normal' );
+			    	$font_style.val( 'normal' );
+			    }
 			}
 
 		}
