@@ -98,6 +98,7 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				$sanitized_caption['font_size']        = absint( $caption['font_size'] ) > 0 ? absint( $caption['font_size'] ) : 20;
 				$sanitized_caption['font_family']	   = sanitize_text_field( $caption['font_family'] );
 				$sanitized_caption['font_weight']	   = in_array( $caption['font_weight'], array( 'normal', 100, 200, 300, 400, 500, 600, 700, 800, 900 ) ) ? $caption['font_weight'] : 'normal';
+				$sanitized_caption['font_style']	   = in_array( $caption['font_style'], array( 'normal', 'italic' ) ) ? $caption['font_style'] : 'normal';
 				$sanitized_caption['text_align']       = in_array( $caption['text_align'], array( 'left', 'center', 'right' ) ) ? $caption['text_align'] : 'center';
 				$sanitized_caption['color']            = $validator->validate_color( $caption['color'] ) ? $caption['color'] : '#000000';
 				$sanitized_caption['background_color'] = $validator->validate_color( $caption['background_color'] ) ? $caption['background_color'] : '';
