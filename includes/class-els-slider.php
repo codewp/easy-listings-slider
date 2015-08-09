@@ -165,24 +165,21 @@ class ELS_Slider {
 				foreach ( $captions as $slide => $caption ) {
 					foreach ( $caption as $caption_detail ) {
 						if ( $caption_detail['font_family'] ) {
+							$font_options = 'normal' !== $caption_detail['font_weight'] ? $caption_detail['font_weight'] : '';
+							if ( 'italic' === $caption_detail['font_style'] ) {
+								$font_options .= $caption_detail['font_style'];
+							}
 							if ( ! isset( $this->captions_fonts[ $caption_detail['font_family'] ] ) ) {
 								$this->captions_fonts[ $caption_detail['font_family'] ] = array(
-									'font_family' => $caption_detail['font_family'],
-									'font_weight' => array( $caption_detail['font_weight'] ),
-									'font_style'  => array( $caption_detail['font_style'] ),
+									'font_family'  => $caption_detail['font_family'],
+									'font_options' => array( $font_options ),
 								);
 							}
 							// Merging font options.
 							else {
-								// Merging font_weights
-								if ( ! in_array( $caption_detail['font_weight'],
-									$this->captions_fonts[ $caption_detail['font_family'] ]['font_weight'] ) ) {
-									array_push( $this->captions_fonts[ $caption_detail['font_family'] ]['font_weight'], $caption_detail['font_weight'] );
-								}
-								// Merging font_styles
-								if ( ! in_array( $caption_detail['font_style'],
-									$this->captions_fonts[ $caption_detail['font_family'] ]['font_style'] ) ) {
-									array_push( $this->captions_fonts[ $caption_detail['font_family'] ]['font_style'], $caption_detail['font_style'] );
+								if ( ! in_array( $font_options,
+									$this->captions_fonts[ $caption_detail['font_family'] ]['font_options'] ) ) {
+									array_push( $this->captions_fonts[ $caption_detail['font_family'] ]['font_options'], $font_options );
 								}
 							}
 						}

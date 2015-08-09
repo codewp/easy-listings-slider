@@ -121,19 +121,8 @@ class ELS_Font_Manager {
 				// Checking if font is Google WebFont
 				if ( array_key_exists( $font_family, $google_fonts ) ) {
 					$link .= $font_family;
-					if ( count( $font['font_weight'] ) ) {
-						foreach ( $font['font_weight'] as $font_weight ) {
-							if ( 'normal' !== $font_weight ) {
-								$link .= ':' . $font_weight;
-							}
-						}
-					}
-					if ( count( $font['font_style'] ) ) {
-						foreach ( $font['font_style'] as $font_style ) {
-							if ( 'italic' === $font_style ) {
-								$link .= ':italic';
-							}
-						}
+					if ( count( $font['font_options'] ) ) {
+						$link .= ':' . implode( ',', $font['font_options'] );
 					}
 					$link .= '|';
 				}
