@@ -270,7 +270,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									?>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row font-weight-only">
 								<div class="col-label">
 									<label><?php _e( 'Font weight', 'els' ) ?></label>
 								</div>
@@ -291,6 +291,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 												900      => 900,
 											),
 											'selected'		   => $caption_detail['font_weight'],
+											'show_option_none' => false,
+											'show_option_all'  => false,
+											'class'            => 'els_repeatable_slide_select_field',
+										)
+									);
+									?>
+								</div>
+							</div>
+							<div class="row font-style-only">
+								<div class="col-label">
+									<label><?php _e( 'Font style', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
+									<?php
+									echo $html->select( array(
+											'name'             => 'els_slider_captions[' . $captions_count . '][font_style]',
+											'options'          => array(
+												'normal' => __( 'Normal', 'els' ),
+												'italic' => __( 'Italic', 'els' )
+											),
+											'selected'		   => $caption_detail['font_style'],
 											'show_option_none' => false,
 											'show_option_all'  => false,
 											'class'            => 'els_repeatable_slide_select_field',
@@ -518,7 +539,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							?>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row font-weight-only">
 						<div class="col-label">
 							<label><?php _e( 'Font weight', 'els' ) ?></label>
 						</div>
@@ -537,6 +558,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 										700      => 700,
 										800      => 800,
 										900      => 900,
+									),
+									'selected'		   => 'normal',
+									'show_option_none' => false,
+									'show_option_all'  => false,
+									'class'            => 'els_repeatable_slide_select_field',
+								)
+							);
+							?>
+						</div>
+					</div>
+					<div class="row font-style-only">
+						<div class="col-label">
+							<label><?php _e( 'Font style', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
+							<?php
+							echo $html->select( array(
+									'name'             => 'els_slider_captions[0][font_style]',
+									'options'          => array(
+										'normal' => __( 'Normal', 'els' ),
+										'italic' => __( 'Italic', 'els' )
 									),
 									'selected'		   => 'normal',
 									'show_option_none' => false,
