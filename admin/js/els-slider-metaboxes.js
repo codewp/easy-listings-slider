@@ -254,7 +254,6 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				this.add();
 				this.remove();
 				this.showCaptionSpecification( true );
-				this.fontOptionControl();
 			},
 
 			/**
@@ -466,6 +465,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				});
 				// Using color picker in specifications.
 				ElsHtmlElements.colorPicker();
+				// Controlling FontOptions
+				this.fontOptionControl();
 			},
 
 			/**
