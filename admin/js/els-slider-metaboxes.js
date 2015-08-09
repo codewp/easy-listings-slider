@@ -227,6 +227,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				height : 100,
 				font_size : 20,
 				font_family : 'inherit',
+				font_weight : 'normal',
+				font_style : 'normal',
 				text_align : 'center',
 				color : '#000000',
 				background_color : '',
@@ -486,6 +488,16 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				$( 'input[name="els_slider_captions[' + key + '][height]"]', captionSpec ).val( this.captionDefaults.height );
 				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', captionSpec ).val( this.captionDefaults.font_size );
 				$( 'select[name="els_slider_captions[' + key + '][font_family]"]', captionSpec ).val( this.captionDefaults.font_family );
+				$( 'select[name="els_slider_captions[' + key + '][font_weight]"]', captionSpec ).val( this.captionDefaults.font_weight );
+				// Enabling disabled font-weights.
+				$( 'select[name="els_slider_captions[' + key + '][font_weight]"] option', captionSpec ).each( function() {
+					$( this ).prop( 'disabled', false );
+				});
+				$( 'select[name="els_slider_captions[' + key + '][font_style]"]', captionSpec ).val( this.captionDefaults.font_style );
+				// Enabling disabled font-styles.
+				$( 'select[name="els_slider_captions[' + key + '][font_style]"] option', captionSpec ).each( function() {
+					$( this ).prop( 'disabled', false );
+				});
 				$( 'select[name="els_slider_captions[' + key + '][text_align]"]', captionSpec ).val( this.captionDefaults.text_align );
 				if ( ! removeIris ) {
 					$( 'input[name="els_slider_captions[' + key + '][color]"]', captionSpec ).iris( 'color', this.captionDefaults.color );
