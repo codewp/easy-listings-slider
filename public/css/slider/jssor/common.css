@@ -16,6 +16,8 @@ div.caption .caption-forground {
 div.caption .caption-forground p {
 	font-family: inherit;
 	font-size: inherit;
+	font-weight: inherit;
+	font-style: inherit;
 }
 
 div.caption .caption-background {
