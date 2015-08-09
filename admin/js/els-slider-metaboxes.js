@@ -303,8 +303,18 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				// Retrieve the highest current key
 				var key = specification.data( 'key' ) ? specification.data( 'key' ) + 1 : 1;
 				var clone = specification.clone();
-				// Removing tinymce editor from clone and adding textarea instead of it to clone.
-				clone.find( '.caption_content' ).html( '<textarea id="caption_editor_' + key + '" name="els_slider_captions[' + key + '][name]"></textarea>' );
+				// Removing tinymce editor from clone and using textarea instead of it to clone.
+				clone.find( '.caption_content .wp-editor-container' ).html( function() {
+					var textarea = $( this ).find( 'textarea' );
+					textarea.attr( 'id', textarea.attr( 'id' ).replace( /\d+/g, key ) );
+					textarea.attr( 'name', textarea.attr( 'name' ).replace( /\d+/g, key ) );
+					textarea.html( '' ).css( 'display', 'block' );
+					return textarea;
+				} );
+				// Changing active tab in tinymce editor to visual tab.
+				clone.find( '#wp-caption_editor_' + ( key - 1 ) + '-wrap' ).attr( 'class', function( index, value ) {
+					return value.replace( /html-active/, 'tmce-active' );
+				} );
 				clone.attr( 'data-key', key );
 				clone.attr( 'id', clone.attr( 'id' ).replace( /\d+/g, key ) );
 				clone.find( 'input, textarea' ).val( '' );
@@ -323,7 +333,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 						$( this ).attr( 'id', id );
 					}
 				});
-				clone.find('div').each( function() {
+				clone.find('div, button').each( function() {
 					var id = $( this ).prop( 'id' );
 					if ( id && id.match( /caption/ ) ) {
 						id = id.replace( /\d+/g, parseInt( key ) );
@@ -362,10 +372,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					var specification_clone = ElsCaptionConfiguration.cloneSpecification( $specification );
 					$( '.caption_specification' ).children().hide();
 					specification_clone.insertAfter( $specification );
-					// Applying tinymce to cloned specification textarea.
-					tinymce.init( {
-						selector: '#caption_detail_' + specification_clone.data( 'key' ) + ' .caption_content textarea'
-					} );
+					// Applying caption editor tinymce to cloned specification textarea.
+					captionEditorView.create( specification_clone.data( 'key' ) );
 					specification_clone.show();
 					ElsCaptionConfiguration.showCaptionSpecification( false );
 				});
@@ -578,6 +586,50 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 
 		}
 		ElsCaptionConfiguration.init();
+
+		/**
+		 * TinyMce view of captions.
+		 *
+		 * @since 1.0.0
+		 * @type  Object
+		 */
+		var captionEditorView = {
+
+			settings : {},		// Settings of WpEditor
+			qtagSettings : {},	// Tag settings of WpEditor
+
+			/**
+			 * Initialize caption editor tinymce properties.
+			 *
+			 *@since   1.0.0
+			 * @return void
+			 */
+			init: function() {
+				var firstCaptionId = $( '.caption_specification .caption_spec_tabs:first' ).data( 'key' );
+				// Getting settings of tinymce editor that created by wp.
+				this.settings      = window.tinyMCEPreInit.mceInit[ 'caption_editor_' + firstCaptionId ];
+				this.qtagSettings  = window.tinyMCEPreInit.qtInit[ 'caption_editor_' + firstCaptionId ];
+			},
+
+			/**
+			 * Creating a new captionEditorView.
+			 *
+			 * @since  1.0.0
+			 * @param  int id
+			 * @return void
+			 */
+			create: function( id ) {
+				var settings = $.extend( {}, this.settings || {},
+					{ selector : '#caption_detail_' + id + ' .caption_content textarea' } );
+				tinymce.init( settings );
+				var qtagSettings = $.extend( {}, this.qtagSettings || {},
+					{ id : 'caption_editor_' + id } );
+				var qtags = quicktags( qtagSettings );
+				QTags._buttonsInit();
+			}
+
+		};
+		captionEditorView.init();
 
 		/**
 		 * Quick fix for thickbox issue with width and height in admin.
