@@ -264,7 +264,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'selected'		   => $caption_detail['font_family'],
 											'show_option_none' => false,
 											'show_option_all'  => false,
-											'class'            => 'els_repeatable_slide_select_field',
+											'class'            => 'els_repeatable_slide_select_field font-family',
 										)
 									);
 									?>
@@ -293,7 +293,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'selected'		   => $caption_detail['font_weight'],
 											'show_option_none' => false,
 											'show_option_all'  => false,
-											'class'            => 'els_repeatable_slide_select_field',
+											'class'            => 'els_repeatable_slide_select_field font-weight',
 										)
 									);
 									?>
@@ -314,7 +314,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'selected'		   => $caption_detail['font_style'],
 											'show_option_none' => false,
 											'show_option_all'  => false,
-											'class'            => 'els_repeatable_slide_select_field',
+											'class'            => 'els_repeatable_slide_select_field font-style',
 										)
 									);
 									?>
@@ -533,7 +533,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'selected'		   => 'inherit',
 									'show_option_none' => false,
 									'show_option_all'  => false,
-									'class'            => 'els_repeatable_slide_select_field',
+									'class'            => 'els_repeatable_slide_select_field font-family',
 								)
 							);
 							?>
@@ -562,7 +562,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'selected'		   => 'normal',
 									'show_option_none' => false,
 									'show_option_all'  => false,
-									'class'            => 'els_repeatable_slide_select_field',
+									'class'            => 'els_repeatable_slide_select_field font-weight',
 								)
 							);
 							?>
@@ -583,7 +583,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'selected'		   => 'normal',
 									'show_option_none' => false,
 									'show_option_all'  => false,
-									'class'            => 'els_repeatable_slide_select_field',
+									'class'            => 'els_repeatable_slide_select_field font-style',
 								)
 							);
 							?>
