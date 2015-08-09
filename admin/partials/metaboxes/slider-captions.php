@@ -272,6 +272,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 							<div class="row">
 								<div class="col-label">
+									<label><?php _e( 'Font weight', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
+									<?php
+									echo $html->select( array(
+											'name'             => 'els_slider_captions[' . $captions_count . '][font_weight]',
+											'options'          => array(
+												'normal' => __( 'Normal', 'els' ),
+												100      => 100,
+												200      => 200,
+												300      => 300,
+												400      => 400,
+												500      => 500,
+												600      => 600,
+												700      => 700,
+												800      => 800,
+												900      => 900,
+											),
+											'selected'		   => $caption_detail['font_weight'],
+											'show_option_none' => false,
+											'show_option_all'  => false,
+											'class'            => 'els_repeatable_slide_select_field',
+										)
+									);
+									?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
 									<label><?php _e( 'Text align', 'els' ) ?></label>
 								</div>
 								<div class="col-value">
@@ -481,6 +510,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'name'             => 'els_slider_captions[0][font_family]',
 									'options'          => $fonts,
 									'selected'		   => 'inherit',
+									'show_option_none' => false,
+									'show_option_all'  => false,
+									'class'            => 'els_repeatable_slide_select_field',
+								)
+							);
+							?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Font weight', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
+							<?php
+							echo $html->select( array(
+									'name'             => 'els_slider_captions[0][font_weight]',
+									'options'          => array(
+										'normal' => __( 'Normal', 'els' ),
+										100      => 100,
+										200      => 200,
+										300      => 300,
+										400      => 400,
+										500      => 500,
+										600      => 600,
+										700      => 700,
+										800      => 800,
+										900      => 900,
+									),
+									'selected'		   => 'normal',
 									'show_option_none' => false,
 									'show_option_all'  => false,
 									'class'            => 'els_repeatable_slide_select_field',
