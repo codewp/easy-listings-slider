@@ -27,6 +27,9 @@
 
 #preview_caption .caption-forground p {
 	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: inherit;
 }
 /* Slider meta box content */
 .slider-options-panel div.row {

@@ -529,16 +529,18 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			 * @return void
 			 */
 			captionsPreview: function( id ) {
-				var offsetX          = $( 'input[name="els_slider_captions[' + id + '][offsetx]"]' ).val();
-				var offsetY          = $( 'input[name="els_slider_captions[' + id + '][offsety]"]' ).val();
-				var width            = $( 'input[name="els_slider_captions[' + id + '][width]"]' ).val();
-				var height           = $( 'input[name="els_slider_captions[' + id + '][height]"]' ).val();
-				var font_size        = $( 'input[name="els_slider_captions[' + id + '][font_size]"]' ).val();
-				var font_family		 = $( 'select[name="els_slider_captions[' + id + '][font_family]"]' ).val();
-				var text_align       = $( 'select[name="els_slider_captions[' + id + '][text_align]"]' ).val();
-				var color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).val();
-				var background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).val();
-				var captionContent   = tinymce.get( 'caption_editor_' + id ) ?
+				var offsetX          = $( 'input[name="els_slider_captions[' + id + '][offsetx]"]' ).val(),
+					offsetY          = $( 'input[name="els_slider_captions[' + id + '][offsety]"]' ).val(),
+					width            = $( 'input[name="els_slider_captions[' + id + '][width]"]' ).val(),
+					height           = $( 'input[name="els_slider_captions[' + id + '][height]"]' ).val(),
+					font_size        = $( 'input[name="els_slider_captions[' + id + '][font_size]"]' ).val(),
+					font_family		 = $( 'select[name="els_slider_captions[' + id + '][font_family]"]' ).val(),
+					font_weight      = $( 'select[name="els_slider_captions[' + id + '][font_weight]"]' ).val(),
+					font_style 		 = $( 'select[name="els_slider_captions[' + id + '][font_style]"]' ).val(),
+					text_align       = $( 'select[name="els_slider_captions[' + id + '][text_align]"]' ).val(),
+					color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).val(),
+					background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).val(),
+					captionContent   = tinymce.get( 'caption_editor_' + id ) ?
 					tinymce.get( 'caption_editor_' + id ).getContent() : '';
 				if ( ! captionContent ) {
 					$( '#preview_caption' ).html( '' );
@@ -546,20 +548,16 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				}
 				if ( els_slider.google_fonts[ font_family ] !== undefined ) {
 					var link = "//fonts.googleapis.com/css?family=" + font_family;
-
-					/*if ( font_weight !== 'normal' ) {
-					    link += ":" + font_weight;
+					if ( 'normal' !== font_weight  ) {
+					    link += ':' + font_weight;
 					}
-					if ( font_style === 'italic' ) {
-					    if (link.indexOf(':') === -1) {
-					        link += ":";
-					    }
-					    link += "italic";
-					}*/
-					if ( ! this.cacheGoogleFonts[font_family] ) {
+					if ( 'italic' === font_style ) {
+					    link += ':italic';
+					}
+					if ( link !== this.cacheGoogleFonts[font_family] ) {
 						jQuery( 'body' ).append( '<link href="' + link + '" rel="stylesheet" type="text/css">' );
 						// This font added to page.
-						this.cacheGoogleFonts[font_family] = true;
+						this.cacheGoogleFonts[font_family] = link;
 					}
 				}
 				var caption =  '<div class="caption-background" style="' +
@@ -568,6 +566,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				'<div class="caption-forground" style="' +
 				'font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : this.captionDefaults.font_size ) + 'px;' +
 				' font-family: ' + ( font_family.length ? font_family : 'inherit' ) + ';' +
+				' font-weight: ' + ( font_weight.length ? font_weight : 'normal' ) + ';' +
+				' font-style: ' + ( font_style.length ? font_style : 'normal' ) + ';' +
 				' text-align:' + ( text_align ? text_align : this.captionDefaults.text_align ) + ';' +
 				' color:' + ( color ? color : this.captionDefaults.color ) + ';' +
 				'">' + captionContent + '</div>';
