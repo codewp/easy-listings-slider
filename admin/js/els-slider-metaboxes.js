@@ -552,12 +552,18 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					    link += ':' + font_weight;
 					}
 					if ( 'italic' === font_style ) {
-					    link += ':italic';
+						if ( -1 === link.indexOf( ':' ) ) {
+							link += ":";
+						}
+					    link += 'italic';
 					}
-					if ( link !== this.cacheGoogleFonts[font_family] ) {
+					if ( ! this.cacheGoogleFonts[ font_family ] || ! this.cacheGoogleFonts[ font_family ][ link ] ) {
 						jQuery( 'body' ).append( '<link href="' + link + '" rel="stylesheet" type="text/css">' );
-						// This font added to page.
-						this.cacheGoogleFonts[font_family] = link;
+						// Caching this font link.
+						if ( ! this.cacheGoogleFonts[ font_family ] ) {
+							this.cacheGoogleFonts[ font_family ] = {};
+						}
+						this.cacheGoogleFonts[ font_family ][ link ] = true;
 					}
 				}
 				var caption =  '<div class="caption-background" style="' +
