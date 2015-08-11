@@ -232,6 +232,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				offsety : 250,
 				width : 300,
 				height : 100,
+				padding : 0,
 				font_size : 20,
 				font_family : 'inherit',
 				font_weight : 'normal',
@@ -503,6 +504,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				$( 'input[name="els_slider_captions[' + key + '][offsety]"]', captionSpec ).val( this.captionDefaults.offsety );
 				$( 'input[name="els_slider_captions[' + key + '][width]"]', captionSpec ).val( this.captionDefaults.width );
 				$( 'input[name="els_slider_captions[' + key + '][height]"]', captionSpec ).val( this.captionDefaults.height );
+				$( 'input[name="els_slider_captions[' + key + '][padding]"]', captionSpec ).val( this.captionDefaults.padding );
 				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', captionSpec ).val( this.captionDefaults.font_size );
 				$( 'select[name="els_slider_captions[' + key + '][font_family]"]', captionSpec ).val( this.captionDefaults.font_family );
 				$( 'select[name="els_slider_captions[' + key + '][font_weight]"]', captionSpec ).val( this.captionDefaults.font_weight );
@@ -562,6 +564,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					offsetY          = $( 'input[name="els_slider_captions[' + id + '][offsety]"]' ).val(),
 					width            = $( 'input[name="els_slider_captions[' + id + '][width]"]' ).val(),
 					height           = $( 'input[name="els_slider_captions[' + id + '][height]"]' ).val(),
+					padding			 = $( 'input[name="els_slider_captions[' + id + '][padding]"]' ).val(),
 					font_size        = $( 'input[name="els_slider_captions[' + id + '][font_size]"]' ).val(),
 					font_family		 = $( 'select[name="els_slider_captions[' + id + '][font_family]"]' ).val(),
 					font_weight      = $( 'select[name="els_slider_captions[' + id + '][font_weight]"]' ).val(),
@@ -570,7 +573,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).iris( 'color' ),
 					background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).iris( 'color' ),
 					captionContent   = tinymce.get( 'caption_editor_' + id ) ?
-					tinymce.get( 'caption_editor_' + id ).getContent() : '';
+						tinymce.get( 'caption_editor_' + id ).getContent() : '';
 
 				if ( ! captionContent ) {
 					$( '#preview_caption' ).html( '' );
@@ -601,6 +604,7 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 				'</div>' +
 				'<div class="caption-forground" style="' +
 				'font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : this.captionDefaults.font_size ) + 'px;' +
+				' padding: ' + ( parseInt( padding ) > 0 ? parseInt( padding ) : this.captionDefaults.padding ) + 'px;' +
 				' font-family: ' + ( font_family.length ? font_family : 'inherit' ) + ';' +
 				' font-weight: ' + ( font_weight.length ? font_weight : 'normal' ) + ';' +
 				' font-style: ' + ( font_style.length ? font_style : 'normal' ) + ';' +
