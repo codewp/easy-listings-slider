@@ -385,6 +385,8 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					captionEditorView.create( specification_clone.data( 'key' ) );
 					specification_clone.show();
 					ElsCaptionConfiguration.showCaptionSpecification( false );
+					// Preview new caption.
+					ElsCaptionConfiguration.captionsPreview( specification_clone.data( 'key' ) );
 				});
 			},
 
