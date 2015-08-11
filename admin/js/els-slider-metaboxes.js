@@ -211,8 +211,15 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 		    };
 		}
 
-		// Slider captions configurations.
-		var ElsCaptionConfiguration = {
+		/**
+		 * Slider captions configurations.
+		 * Making this Object as window global variable to accessing it
+		 * from captions tinymce editor.
+		 *
+		 * @since 1.0.0
+		 * @type  Object
+		 */
+		window.ElsCaptionConfiguration = {
 
 			/**
 			 * Caption default values.
@@ -464,9 +471,16 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					ElsCaptionConfiguration.captionsPreview( key );
 				});
 				// Using color picker in specifications.
-				ElsHtmlElements.colorPicker();
+				jQuery( 'input[type=text].colorpick' ).wpColorPicker({
+					change: function( event, ui ) {
+						var captionId = $( this ).closest( 'div.caption_spec_tabs' ).data( 'key' );
+						// Preview caption after changing colors.
+						ElsCaptionConfiguration.captionsPreview( captionId );
+					}
+				});
 				// Controlling FontOptions
 				this.fontOptionControl();
+				this.updateCaptionPreview();
 			},
 
 			/**
@@ -522,6 +536,19 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 			},
 
 			/**
+			 * Updating content and specification of caption in the caption preview.
+			 *
+			 * @since  1.0.0
+			 * @return void
+			 */
+			updateCaptionPreview: function() {
+				$( '.caption_spec_tabs input, .caption_spec_tabs select, .caption_spec_tabs textarea' ).on( 'change', function() {
+					var captionId = $( this ).closest( 'div.caption_spec_tabs' ).data( 'key' );
+					ElsCaptionConfiguration.captionsPreview( captionId );
+				});
+			},
+
+			/**
 			 * Preview caption on the test image slider.
 			 *
 			 * @since  1.0.0
@@ -538,10 +565,11 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 					font_weight      = $( 'select[name="els_slider_captions[' + id + '][font_weight]"]' ).val(),
 					font_style 		 = $( 'select[name="els_slider_captions[' + id + '][font_style]"]' ).val(),
 					text_align       = $( 'select[name="els_slider_captions[' + id + '][text_align]"]' ).val(),
-					color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).val(),
-					background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).val(),
+					color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).iris( 'color' ),
+					background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).iris( 'color' ),
 					captionContent   = tinymce.get( 'caption_editor_' + id ) ?
 					tinymce.get( 'caption_editor_' + id ).getContent() : '';
+
 				if ( ! captionContent ) {
 					$( '#preview_caption' ).html( '' );
 					return;
