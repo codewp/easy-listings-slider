@@ -1,5 +1,3 @@
-var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
-
 (function( $ ) {
 	'use strict';
 
@@ -754,20 +752,6 @@ var tb_position, TB_WIDTH, TB_HEIGHT, ElsHtmlElements;
 
 		};
 		captionEditorView.init();
-
-		/**
-		 * Quick fix for thickbox issue with width and height in admin.
-		 * @refer https://core.trac.wordpress.org/ticket/27473
-		 *
-		 * @return void
-		 */
-		tb_position = function() {
-			var isIE6 = typeof document.body.style.maxHeight === "undefined";
-			jQuery("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
-			if ( ! isIE6 ) { // take away IE6
-				jQuery("#TB_window").css({marginTop: '-' + parseInt((TB_HEIGHT / 2),10) + 'px'});
-			}
-		}
 	});
 
 })( jQuery );

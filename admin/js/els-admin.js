@@ -140,6 +140,37 @@
 
 	 		return false;
 	 	});
+
+	 	// Slider Actions Column in Sliders admin page.
+	 	var sliderActions = {
+
+	 		/**
+	 		 * initialize class.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @return void
+	 		 */
+	 		init : function() {
+	 			this.previewSlider();
+	 		},
+
+	 		/**
+	 		 * Preview slider.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @return void
+	 		 */
+	 		previewSlider : function() {
+	 			$( 'body' ).on( 'click', 'a.slider-preview-action', function( e ) {
+	 				e.preventDefault();
+	 				var slider = $( this ).data( 'id' );
+	 				tb_show( $( this ).data( 'text' ), ajaxurl + '?action=els_slider_preview&width=1000&height=500&slider=' + slider + '&TB_iframe=true' );
+	 			});
+	 		}
+
+	 	}
+	 	sliderActions.init();
+
 	 });
 
 })( jQuery );

@@ -105,6 +105,10 @@ class ELS_Admin {
 		 * The class responsible for showing notices in admin area.
 		 */
 		require_once $this->get_path() . 'class-els-admin-notices.php';
+		/**
+		 * The class responsible for preview sliders in admin area.
+		 */
+		require_once $this->get_path() . 'class-els-admin-slider-preview.php';
 	}
 
 	/**
@@ -123,6 +127,8 @@ class ELS_Admin {
 		new ELS_Admin_Meta_Boxes( $this->loader );
 		// Hooks for admin notices.
 		new ELS_Admin_Notices( $this->loader );
+		// Hooks for preview slider in admin-area.
+		new ELS_Admin_Slider_Preview( $this->loader );
 		// Hooks for plugin admin menus.
 		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
 	}
