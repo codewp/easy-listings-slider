@@ -87,6 +87,7 @@ class ELS_Admin_Post_Types {
 			'shortcode' => __( 'Shortcode', 'els' ),
 			'slides'    => __( 'Slides', 'els' ),
 			'type'		=> __( 'Type', 'els' ),
+			'action'	=> __( 'Action', 'els' ),
 			'date'      => __( 'Date', 'els' )
 		);
 
@@ -125,6 +126,12 @@ class ELS_Admin_Post_Types {
 						$types = $slider->get_types();
 						echo $types[ $slider_type ];
 					}
+					break;
+
+				case 'action' :
+					echo '<a class="slider-preview-action button button-primary button-large" href="#" data-text="' .
+						__( 'Preview Slider', 'els' ) . '" data-id="' . (int) $post_id . '">'
+						. __( 'Preview', 'els' ) . '</a>';
 					break;
 
 				default:
