@@ -129,7 +129,8 @@ class ELS_Admin_Post_Types {
 					break;
 
 				case 'action' :
-					echo '<a class="slider-preview-action button button-primary button-large" href="#" data-text="' .
+					echo '<a class="slider-preview-action button button-primary button-large" href="' .
+						esc_url( admin_url( '/options.php?page=els_slider_preview&noheader&slider=' . urlencode( $post_id ) ) ) . '" data-text="' .
 						__( 'Preview Slider', 'els' ) . '" data-id="' . (int) $post_id . '">'
 						. __( 'Preview', 'els' ) . '</a>';
 					break;

@@ -22,7 +22,21 @@ class ELS_Admin_Slider_Preview {
 	 * @param ELS_Loader $loader
 	 */
 	public function __construct( ELS_Loader $loader ) {
-		$loader->add_action( 'wp_ajax_els_slider_preview', $this, 'preview' );
+		// Hook for creating slider preview page.
+		$loader->add_action( 'admin_menu', $this, 'slider_preview_page' );
+	}
+
+	/**
+	 * Creating a page for slider preview.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function slider_preview_page() {
+		add_submenu_page(
+			'options.php', __( 'Slider Preview', 'els' ), __( 'Slider Preview', 'els' ),
+			'manage_options', 'els_slider_preview', array( $this, 'preview' )
+		);
 	}
 
 	/**
