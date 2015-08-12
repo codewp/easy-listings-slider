@@ -20,6 +20,14 @@ wp_localize_script( 'jssor-thumbnail-slider', 'data', $data );
 // Registering styles
 wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common.css' );
 wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.css' );
+/**
+ * Printing scripts when scripts should be printed manually
+ * And admin-header.php does not loaded.
+ */
+if ( 1 === (int) $data['print_scripts'] ) {
+    wp_print_scripts( array( 'jssor-thumbnail-slider', 'jssor-thumbnail-slider' ) );
+    wp_print_styles( array( 'jssor-slider-common-style', 'jssor-thumbnail-slider' ) );
+}
 ?>
 <div id="<?php echo esc_attr( $data['id'] ) ?>" class="slider_container" style="position: relative; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 720 ?>px; height: <?php echo absint( $data['height'] ) ? absint( $data['height'] ) : 480 ?>px; overflow: hidden;">
 	<!-- Loading Screen -->
