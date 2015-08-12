@@ -150,6 +150,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-slider.php';
 
 		/**
+		 * The Factory class for sliders.
+		 */
+		require_once $this->get_path() . 'includes/class-els-slider-factory.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once $this->get_path() . 'admin/class-els-admin.php';
@@ -274,6 +279,7 @@ class Easy_Listings_Slider {
 		ELS_IOC::bind( 'font_manager', new ELS_Font_Manager() );
 		ELS_IOC::bind( 'html', new ELS_HTML_Elements() );
 		ELS_IOC::bind( 'settings', new ELS_Settings() );
+		ELS_IOC::bind( 'slider_factory', new ELS_Slider_Factory() );
 		ELS_IOC::bind( 'listings', new ELS_Listings() );
 		ELS_IOC::bind( 'plugin_admin', new ELS_Admin( $this->plugin_name, $this->version, $this->loader ) );
 		ELS_IOC::bind( 'plugin_public', new ELS_Public( $this->plugin_name, $this->version, $this->loader ) );
