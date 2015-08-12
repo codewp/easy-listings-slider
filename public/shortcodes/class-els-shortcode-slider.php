@@ -28,31 +28,15 @@ class ELS_Shortcode_Slider {
 
 		if ( absint( $attributes['id'] ) ) {
 			if ( 'els_slider' === get_post_type( absint( $attributes['id'] ) ) ) {
-				$slider = new ELS_Slider( absint( $attributes['id'] ) );
-				$slides = $slider->get_slides();
-				if ( strlen( $slides ) ) {
-					$slides = array_filter( explode( ',', $slides ) );
-					if ( count( $slides ) ) {
-						$jssor_slider                     = new ELS_Public_Jssor_Slider();
-						$jssor_slider->image_ids          = $slides;
-						$jssor_slider->captions 		  = $slider->get_captions();
-						$jssor_slider->captions_fonts	  = $slider->get_captions_font();
-						$jssor_slider->theme			  = $slider->get_theme();
-						$jssor_slider->id 				  = $slider->get_container_id();
-						$jssor_slider->width 			  = $slider->get_width();
-						$jssor_slider->height 	   		  = $slider->get_height();
-						$jssor_slider->auto_play          = $slider->get_auto_play();
-						$jssor_slider->loop               = $slider->get_loop();
-						$jssor_slider->auto_play_interval = $slider->get_auto_play_interval();
-						$jssor_slider->slide_duration     = $slider->get_slide_duration();
-						$jssor_slider->drag_orientation   = $slider->get_drag_orientation();
 
-						ob_start();
-						// Displaying slider.
-						$jssor_slider->display();
-						return ob_get_clean();
-					}
-				}
+				$slider       = new ELS_Slider( absint( $attributes['id'] ) );
+				$jssor_slider = ELS_IOC::make( 'slider_factory' )->get_jssor_slider( $slider );
+
+				ob_start();
+				// Displaying slider.
+				$jssor_slider->display();
+				return ob_get_clean();
+
 			}
 		}
 	}
