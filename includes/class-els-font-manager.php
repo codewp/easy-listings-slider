@@ -111,9 +111,10 @@ class ELS_Font_Manager {
 	 *
 	 * @since  1.0.0
 	 * @param  array  $fonts Google fonts to enqueue.
+	 * @param  bolean Flag for printing styles or not.
 	 * @return void
 	 */
-	public function enqueue_google_fonts( array $fonts ) {
+	public function enqueue_google_fonts( array $fonts, $print_font_styles = false ) {
 		if ( count( $fonts ) ) {
 			$google_fonts = $this->get_google_webfonts();
 			$link         = '//fonts.googleapis.com/css?family=';
@@ -129,6 +130,9 @@ class ELS_Font_Manager {
 			}
 			if ( '//fonts.googleapis.com/css?family=' !== $link ) {
 				wp_enqueue_style( 'els-google-fonts', rtrim( $link, '|' ) );
+				if ( $print_font_styles ) {
+					wp_print_styles( 'els-google-fonts' );
+				}
 			}
 		}
 	}

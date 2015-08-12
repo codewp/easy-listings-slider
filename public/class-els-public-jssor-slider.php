@@ -23,6 +23,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 * @var array
 	 */
 	protected $data = array(
+		'print_scripts'		 => false,			// A flag for printing scripts when admin-header.php does not loaded.
 		'image_ids'          => array(),
 		'captions'			 => array(),
 		'captions_fonts'	 => array(),
@@ -61,6 +62,14 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 		} else {
 			wp_enqueue_script( 'jssor', plugin_dir_url( __FILE__ ) . 'js/jssor/jssor.slider.mini.js', array( 'jquery' ), $this->version, true );
 		}
+		/**
+		 * Printing scripts when scripts should be printed manually
+		 * And admin-header.php does not loaded.
+		 */
+		if ( $this->data['print_scripts'] ) {
+			wp_script_is( 'jssor-slider' ) ?
+				wp_print_scripts( array( 'jssor', 'jssor-slider' ) ) : wp_print_scripts( 'jssor' );
+		}
 	}
 
 	/**
@@ -74,7 +83,9 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 		if ( count( $this->data['image_ids'] ) ) {
 			$this->register_dependencies();
 			if ( count( $this->data['captions_fonts'] ) ) {
-				ELS_IOC::make( 'font_manager' )->enqueue_google_fonts( $this->data['captions_fonts'] );
+				$this->data['print_scripts'] ?
+					ELS_IOC::make( 'font_manager' )->enqueue_google_fonts( $this->data['captions_fonts'], true ) :
+					ELS_IOC::make( 'font_manager' )->enqueue_google_fonts( $this->data['captions_fonts'] );
 			}
 			$this->data['id'] = trim( $this->data['id'] ) ? trim( $this->data['id'] ) : 'slider_container_' . current_time( 'timestamp' );
 			$this->render_view( 'slider.jssor.' . $this->data['theme'], array(

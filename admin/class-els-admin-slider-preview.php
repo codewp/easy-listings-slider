@@ -47,6 +47,14 @@ class ELS_Admin_Slider_Preview {
 	 */
 	public function preview() {
 		$slider = absint( $_GET['slider'] );
+		if ( $slider && 'els_slider' === get_post_type( $slider ) ) {
+			$slider                      = new ELS_Slider( $slider );
+			$jssor_slider                = ELS_IOC::make( 'slider_factory' )->get_jssor_slider( $slider );
+			// Because in preview page admin-header.php does not loaded so print scripts manually.
+			$jssor_slider->print_scripts = true;
+
+			$jssor_slider->display();
+		}
 
 		die();	// this is required to terminate immediately and return a proper response
 	}
