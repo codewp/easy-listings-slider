@@ -25,7 +25,7 @@ wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.c
  * And admin-header.php does not loaded.
  */
 if ( 1 === (int) $data['print_scripts'] ) {
-    wp_print_scripts( array( 'jssor-thumbnail-slider', 'jssor-thumbnail-slider' ) );
+    wp_print_scripts( 'jssor-thumbnail-slider' );
     wp_print_styles( array( 'jssor-slider-common-style', 'jssor-thumbnail-slider' ) );
 }
 ?>
