@@ -2,3 +2,177 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+/* font faces */
+@font-face {
+    font-family: WooCommerce;
+    src: url(../fonts/WooCommerce.eot);
+    src: url(../fonts/WooCommerce.eot?#iefix) format("embedded-opentype"),url(../fonts/WooCommerce.woff) format("woff"),url(../fonts/WooCommerce.ttf) format("truetype"),url(../fonts/WooCommerce.svg#WooCommerce) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+/* Listing Gallery Metabox */
+#els_listing_gallery .inside {
+    margin: 0;
+    padding: 0
+}
+
+#els_listing_gallery .inside .add_listing_images {
+    padding: 0 12px 12px
+}
+
+#els_listing_gallery .inside #listing_gallery_container {
+    padding: 0 0 0 9px
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul {
+    margin: 0;
+    padding: 0
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul:after,
+#els_listing_gallery .inside #listing_gallery_container ul:before {
+    content: " ";
+    display: table
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul:after {
+    clear: both
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul li.add,
+#els_listing_gallery .inside #listing_gallery_container ul li.image,
+#els_listing_gallery .inside #listing_gallery_container ul li.els-metabox-sortable-placeholder {
+    width: 80px;
+    float: left;
+    cursor: move;
+    border: 1px solid #d5d5d5;
+    margin: 9px 9px 0 0;
+    background: #f7f7f7;
+    border-radius: 2px;
+    position: relative;
+    box-sizing: border-box
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul li.add img,
+#els_listing_gallery .inside #listing_gallery_container ul li.image img,
+#els_listing_gallery .inside #listing_gallery_container ul li.els-metabox-sortable-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul li.els-metabox-sortable-placeholder {
+    border: 3px dashed #ddd;
+    position: relative
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul li.els-metabox-sortable-placeholder:after {
+    font-family: WooCommerce;
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    content: "";
+    font-size: 2.618em;
+    line-height: 72px;
+    color: #ddd
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.delete:before,
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.view:before {
+    left: 0;
+    text-align: center;
+    font-family: WooCommerce;
+    speak: none;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    background-color: #000
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: 2px;
+    display: none
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li {
+    float: right;
+    margin: 0 0 0 2px
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a {
+    width: 1em;
+    margin: 0;
+    height: 0;
+    display: block;
+    overflow: hidden
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.tips {
+    cursor: pointer
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.view {
+    display: block;
+    text-indent: -9999px;
+    position: relative;
+    height: 1em;
+    width: 1em;
+    font-size: 1.4em
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.view:before {
+    margin: 0;
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: ""
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.delete {
+    display: block;
+    text-indent: -9999px;
+    position: relative;
+    height: 1em;
+    width: 1em;
+    font-size: 1.4em
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.delete:before {
+    margin: 0;
+    text-indent: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    border-radius: 100%;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2)
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul ul.actions li a.delete:hover before {
+    background-color: #a00
+}
+
+#els_listing_gallery .inside #listing_gallery_container ul li:hover ul.actions {
+    display: block
+}
