@@ -24,6 +24,7 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 	 */
 	protected $data = array(
 		'print_scripts'		 => false,			// A flag for printing scripts when admin-header.php does not loaded.
+		'show_no_images'	 => false,			// A flag for showing slider has not images when it has not images.
 		'image_ids'          => array(),
 		'captions'			 => array(),
 		'captions_fonts'	 => array(),
@@ -94,6 +95,22 @@ class ELS_Public_Jssor_Slider extends ELS_Public_Slider_Base {
 				'js_url'     => plugin_dir_url( __FILE__ ) . 'js/',
 				'images_url' => plugin_dir_url( __FILE__ ) . 'images/',
 			) );
+		} else if ( $this->data['show_no_images'] ) {
+			wp_enqueue_style( 'jssor-slider-no-images', plugin_dir_url( __FILE__ ) . 'css/' . 'slider/jssor/no-images.css' );
+			if ( $this->data['print_scripts'] ) {
+				wp_print_styles( 'jssor-slider-no-images' );
+			}
+			?>
+			<div id="message" class="error">
+				<p>
+					<strong>
+						<?php
+						echo __( 'Slider has not images to show', 'els' );
+						?>
+					</strong>
+				</p>
+			</div>
+			<?php
 		}
 	}
 

@@ -48,10 +48,12 @@ class ELS_Admin_Slider_Preview {
 	public function preview() {
 		$slider = absint( $_GET['slider'] );
 		if ( $slider && 'els_slider' === get_post_type( $slider ) ) {
-			$slider                      = new ELS_Slider( $slider );
-			$jssor_slider                = ELS_IOC::make( 'slider_factory' )->get_jssor_slider( $slider );
+			$slider       = new ELS_Slider( $slider );
+			$jssor_slider = ELS_IOC::make( 'slider_factory' )->get_jssor_slider( $slider );
 			// Because in preview page admin-header.php does not loaded so print scripts manually.
-			$jssor_slider->print_scripts = true;
+			$jssor_slider->print_scripts  = true;
+			// Show message when slider has not images.
+			$jssor_slider->show_no_images = true;
 
 			$jssor_slider->display();
 		}
