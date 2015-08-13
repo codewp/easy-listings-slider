@@ -125,6 +125,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 										'textarea_name' => 'els_slider_captions[' . $captions_count . '][name]',
 										'teeny'			=> true,
 										'wpautop'		=> false,
+										'quicktags'		=> array(
+											'buttons' => 'strong,em,link,block,ul,ol,li,close',
+										),
 										'tinymce'		=> array(
 											'setup' => 'function( editor ) {' .
 												'editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );'
@@ -416,6 +419,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 								'textarea_name' => 'els_slider_captions[0][name]',
 								'teeny'			=> true,
 								'wpautop'		=> false,
+								'quicktags'		=> array(
+									'buttons' => 'strong,em,link,block,ul,ol,li,close',
+								),
 								'tinymce'		=> array(
 									'setup' => 'function( editor ) {' .
 										'editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );'
