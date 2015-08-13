@@ -104,7 +104,7 @@
 		 });
 
 		 // Image ordering
-		 /*$slider_images.sortable({
+		 $slider_images.sortable({
 		 	items: 'li.image',
 		 	cursor: 'move',
 		 	scrollSensitivity:40,
@@ -112,7 +112,7 @@
 		 	forceHelperSize: false,
 		 	helper: 'clone',
 		 	opacity: 0.65,
-		 	placeholder: 'wc-metabox-sortable-placeholder',
+		 	placeholder: 'els-metabox-sortable-placeholder',
 		 	start:function(event,ui){
 		 		ui.item.css('background-color','#f6f6f6');
 		 	},
@@ -129,7 +129,7 @@
 
 		 		$image_ids.val( attachment_ids );
 		 	}
-		 });*/
+		 });
 
 		 // Remove images
 		 $('#els-slider-slides-container').on( 'click', 'a.delete', function() {
