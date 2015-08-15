@@ -130,7 +130,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 										),
 										'tinymce'		=> array(
 											'setup' => 'function( editor ) {' .
-												'editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );'
+												'
+												// Preview caption on change of caption content.
+												editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } ),
+												// Preview first caption content on loading page.
+												editor.on( "init", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); if ( 1 === captionId ) { ElsCaptionConfiguration.captionsPreview( captionId ); } } );
+												'
 											. '}',
 											'forced_root_block' => false,
 										)
@@ -425,7 +430,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 								),
 								'tinymce'		=> array(
 									'setup' => 'function( editor ) {' .
-										'editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );'
+										'
+										// Preview caption on change of caption content.
+										editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );
+										'
 									. '}',
 									'forced_root_block' => false,
 								)
