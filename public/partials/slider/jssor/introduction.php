@@ -29,7 +29,7 @@ if ( 1 === (int) $data['print_scripts'] ) {
     wp_print_styles( array( 'jssor-slider-common-style', 'jssor-introduction-slider' ) );
 }
 ?>
-<div id="<?php echo esc_attr( $data['id'] ) ?>" class="slider_container" style="position: relative; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 980 ?>px;
+<div id="<?php echo esc_attr( $data['id'] ) ?>" class="slider_container" style="position: relative; margin: 0 auto; width: <?php echo absint( $data['width'] ) ? absint( $data['width'] ) : 980 ?>px;
         height: <?php echo absint( $data['height'] ) ? absint( $data['height'] ) : 380 ?>px; overflow: hidden;">
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
