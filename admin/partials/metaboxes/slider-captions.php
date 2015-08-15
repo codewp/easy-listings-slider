@@ -132,6 +132,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											'setup' => 'function( editor ) {' .
 												'editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );'
 											. '}',
+											'forced_root_block' => false,
 										)
 									)
 								);
@@ -426,6 +427,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'setup' => 'function( editor ) {' .
 										'editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );'
 									. '}',
+									'forced_root_block' => false,
 								)
 							)
 						);
