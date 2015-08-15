@@ -17,13 +17,14 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 	<ul class="slider_images">
 		<?php
 		if ( count( $attachments ) ) {
-			foreach ( $attachments as $attachment_id ) {
+			for ( $i = 0; $i < count( $attachments ); $i++ ) {
 				?>
-				<li class="image" data-attachment_id="<?php echo esc_attr( $attachment_id ) ?>">
-				<?php echo wp_get_attachment_image( $attachment_id, 'thumbnail' ) ?>
-				<ul class="actions">
-					<li><a href="#" class="delete tips" data-tip="<?php _e( 'Delete image', 'els' ) ?>"><?php _e( 'Delete', 'els' ) ?></a></li>
-				</ul>
+				<li class="image" data-attachment_id="<?php echo esc_attr( $attachments[ $i ] ) ?>">
+					<?php echo wp_get_attachment_image( $attachments[ $i ], 'thumbnail' ) ?>
+					<ul class="actions">
+						<li><a href="#" class="delete tips" data-tip="<?php _e( 'Delete image', 'els' ) ?>"><?php _e( 'Delete', 'els' ) ?></a></li>
+					</ul>
+					<span class="slide-number">#<?php echo $i + 1 ?></span>
 				</li>
 				<?php
 			}
