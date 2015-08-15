@@ -163,11 +163,6 @@ class ELS_Admin {
 			$return = true;
 		}
 
-		/*$pages = apply_filters( 'els_admin_pages', $this->menu->get_menus() );
-		if ( in_array( $screen->id, $pages ) ) {
-			return true;
-		}*/
-
 		return (bool) apply_filters( 'els_is_admin_page', $return );
 	}
 
@@ -182,22 +177,26 @@ class ELS_Admin {
 			return;
 		}
 
-		global $wp_version;
+		global $wp_version, $typenow;
 
 		// Use minified libraries if SCRIPT_DEBUG is turned off
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/els-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/els-admin' . $suffix . '.css', array(), $this->version, 'all' );
 		if ( ! function_exists( 'wp_enqueue_media' ) || version_compare( $wp_version, '3.5', '<' ) ) {
 			wp_enqueue_style( 'thickbox' );
 		}
-		// jQueryUi.
-		wp_enqueue_style( 'jquery-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui/jquery-ui' . $suffix . '.css' );
-		wp_enqueue_style( 'jquery-ui-theme', plugin_dir_url( __FILE__ ) . 'css/jquery-ui/jquery-ui-theme' . $suffix . '.css' );
-		// wordpress Color Picker.
-		wp_enqueue_style( 'wp-color-picker' );
-		// editor.css for tinymce.
-		wp_enqueue_style( 'editor-buttons' );
+
+		// Loading only in els_slider post types.
+		if ( 'els_slider' === $typenow ) {
+			// jQueryUi.
+			wp_enqueue_style( 'jquery-ui-css', plugin_dir_url( __FILE__ ) . 'css/jquery-ui/jquery-ui' . $suffix . '.css' );
+			wp_enqueue_style( 'jquery-ui-theme', plugin_dir_url( __FILE__ ) . 'css/jquery-ui/jquery-ui-theme' . $suffix . '.css' );
+			// wordpress Color Picker.
+			wp_enqueue_style( 'wp-color-picker' );
+			// editor.css for tinymce.
+			wp_enqueue_style( 'editor-buttons' );
+		}
 	}
 
 
@@ -212,7 +211,7 @@ class ELS_Admin {
 			return;
 		}
 
-		global $wp_version;
+		global $wp_version, $typenow;
 
 		// Use minified libraries if SCRIPT_DEBUG is turned off
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
@@ -225,11 +224,15 @@ class ELS_Admin {
 			wp_enqueue_script( 'media-upload' );
 			wp_enqueue_script( 'thickbox' );
 		}
-		// wordpress Color Picker.
-		wp_enqueue_script( 'wp-color-picker' );
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin.js', array( 'jquery' ), $this->version, false );
-		wp_enqueue_script( 'els-admin-globals', plugin_dir_url( __FILE__ ) . 'js/els-admin-globals.js', array( 'jquery' ), $this->version, true );
+		// Loading only in els_slider post types.
+		if ( 'els_slider' === $typenow ) {
+			// wordpress Color Picker.
+			wp_enqueue_script( 'wp-color-picker' );
+		}
+
+		wp_enqueue_script( 'els-admin-globals', plugin_dir_url( __FILE__ ) . 'js/els-admin-globals' . $suffix . '.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin' . $suffix . '.js', array( 'jquery' ), $this->version, false );
 	}
 
 	/**
