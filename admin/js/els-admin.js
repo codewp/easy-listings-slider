@@ -164,7 +164,7 @@
 	 			$( 'body' ).on( 'click', 'a.slider-preview-action', function( e ) {
 	 				e.preventDefault();
 	 				var slider = $( this ).data( 'id' );
-	 				tb_show( $( this ).data( 'text' ), $( this ).prop( 'href' ) + '&width=1000&height=500&TB_iframe=true' );
+	 				tb_show( $( this ).data( 'text' ), $( this ).prop( 'href' ) + '&width=' + ( $(window).width() - 50 ) + '&height=' + ( $(window).height() - 80 ) + '&TB_iframe=true' );
 	 			});
 	 		}
 
