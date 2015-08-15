@@ -130,6 +130,11 @@
 		 		});
 
 		 		$image_ids.val( attachment_ids );
+
+		 		// Ordering numbers of slides.
+		 		$('#els-slider-slides-container ul li.image span.slide-number').each( function( i ) {
+		 			$( this ).html( '#' + ( i + 1 ) );
+		 		});
 		 	}
 		 });
 
