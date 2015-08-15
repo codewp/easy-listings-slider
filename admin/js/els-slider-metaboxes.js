@@ -57,13 +57,13 @@
 		 		// Set the title of the modal.
 		 		title: $el.data('choose'),
 		 		button: {
-		 			text: $el.data('update'),
+		 			text: $el.data('update')
 		 		},
 		 		states : [
 		 			new wp.media.controller.Library({
 		 				title: $el.data('choose'),
 		 				filterable :	'all',
-		 				multiple: true,
+		 				multiple: true
 		 			})
 		 		]
 		 	});
@@ -80,6 +80,7 @@
 		 			if ( attachment.id ) {
 		 				attachment_ids   = attachment_ids ? attachment_ids + "," + attachment.id : attachment.id;
 		 				attachment_image = attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url;
+		 				var slideNumber  = ( $( 'li.image', $slider_images ).length ? $( 'li.image', $slider_images ).length : 0 ) + 1;
 
 		 				$slider_images.append('\
 		 					<li class="image" data-attachment_id="' + attachment.id + '">\
@@ -87,6 +88,7 @@
 		 						<ul class="actions">\
 		 							<li><a href="#" class="delete" title="' + $el.data('delete') + '">' + $el.data('text') + '</a></li>\
 		 						</ul>\
+		 						<span class="slide-number">#' + slideNumber + '</span>\
 		 					</li>');
 		 				// Increasing number of slides in captions.
 		 				$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
@@ -189,6 +191,7 @@
 		            selected_listings.each( function() {
 		            	var img = $( 'img', this );
 		            	if ( img.length ) {
+		            		var slideNumber  = ( $( 'li.image', $slider_images ).length ? $( 'li.image', $slider_images ).length : 0 ) + 1;
 		            		$els_slider_images.val( $els_slider_images.val() + ( $els_slider_images.val().length > 0 ? ',' : '' ) + img.data( 'id' ) );
 			            	$slider_images.append('\
 		 						<li class="image" data-attachment_id="' + img.data( 'id' ) + '">\
@@ -196,6 +199,7 @@
 		 							<ul class="actions">\
 		 								<li><a href="#" class="delete" title="' + $( '.listings_loader' ).data('delete') + '">' + $( '.listings_loader' ).data('text') + '</a></li>\
 		 							</ul>\
+		 							<span class="slide-number">#' + slideNumber + '</span>\
 		 						</li>');
 			            	// Increasing number of slides in captions.
 			            	$( '#els_captions .els_repeatable_row select.els_repeatable_slide_select_field' ).each( function() {
