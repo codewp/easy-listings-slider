@@ -36,7 +36,7 @@
 		 });
 
 		 // slides file uploads
-		 var slides_frame;
+		 var slidesFrame;
 		 var $image_ids = $('#els_slider_images');
 		 var $slider_images = $('#els-slider-slides-container ul.slider_images');
 
@@ -47,13 +47,13 @@
 		 	event.preventDefault();
 
 		 	// If the media frame already exists, reopen it.
-		 	if ( slides_frame ) {
-		 		slides_frame.open();
+		 	if ( slidesFrame ) {
+		 		slidesFrame.open();
 		 		return;
 		 	}
 
 		 	// Create the media frame.
-		 	slides_frame = wp.media.frames.slides = wp.media({
+		 	slidesFrame = wp.media.frames.slides = wp.media({
 		 		// Set the title of the modal.
 		 		title: $el.data('choose'),
 		 		button: {
@@ -69,9 +69,9 @@
 		 	});
 
 		 	// When an image is selected, run a callback.
-		 	slides_frame.on( 'select', function() {
+		 	slidesFrame.on( 'select', function() {
 
-		 		var selection = slides_frame.state().get('selection');
+		 		var selection = slidesFrame.state().get('selection');
 		 		var attachment_image;
 
 		 		selection.map( function( attachment ) {
@@ -100,7 +100,7 @@
 		 	});
 
 		 	// Finally, open the modal.
-		 	slides_frame.open();
+		 	slidesFrame.open();
 		 });
 
 		 // Image ordering
@@ -226,6 +226,7 @@
 			 * @type  object
 			 */
 			captionDefaults : {
+				name : '',
 				offsetx : 250,
 				offsety : 250,
 				width : 300,
@@ -496,6 +497,7 @@
 				if ( ! captionSpec ) {
 					captionSpec = $( '.caption_specification #caption_spec_' + key );
 				}
+				$( 'textarea[name="els_slider_captions[' + key + '][name]"]', captionSpec ).val( this.captionDefaults.name );
 				$( 'select[name="els_slider_captions[' + key + '][play_in_transition_type]"]', captionSpec ).val( this.captionDefaults.play_in_transition_type );
 				$( 'select[name="els_slider_captions[' + key + '][play_out_transition_type]"]', captionSpec ).val( this.captionDefaults.play_out_transition_type );
 				$( 'input[name="els_slider_captions[' + key + '][offsetx]"]', captionSpec ).val( this.captionDefaults.offsetx );
