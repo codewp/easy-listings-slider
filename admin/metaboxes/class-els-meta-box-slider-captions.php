@@ -44,6 +44,9 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 			}
 		}
 
+		// Filtering content of captions tinymce editor.
+		add_filter( 'the_editor_content', array( $this, 'filter_caption_editor_content' ), 5 );
+
 		$this->render_view( 'metaboxes.slider-captions', array(
 				'html'                     => ELS_IOC::make( 'html' ),
 				'images_url'               => $this->get_images_url(),
@@ -156,6 +159,22 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				'FADE'        => 'FADE',
 			)
 		);
+	}
+
+	/**
+	 * Filtering content of captions editor to removing p from content.
+	 *
+	 * @since  1.0.0
+	 * @param  string $content
+	 * @return string
+	 */
+	public function filter_caption_editor_content( $content ) {
+		// Removing default filter for tinymce content.
+		remove_filter( 'the_editor_content', 'wp_richedit_pre' );
+
+		$content = convert_chars( $content );
+		$content = htmlspecialchars( $content, ENT_NOQUOTES, get_option( 'blog_charset' ) );
+		return $content;
 	}
 
 }
