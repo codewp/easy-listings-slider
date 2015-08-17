@@ -69,7 +69,9 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 	public function save( $post_id, $post ) {
 		if ( count( $_POST['els_slider_captions'] ) ) {
 			// ELS_Validator instance.
-			$validator = ELS_IOC::make( 'validator' );
+			$validator       = ELS_IOC::make( 'validator' );
+			// ELS_Color_Converter instance.
+			$color_converter = new ELS_Color_Converter();
 			// captions array that should be saved.
 			$captions  = array();
 			// captions transition types.
@@ -105,7 +107,9 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				$sanitized_caption['font_style']	   = in_array( $caption['font_style'], array( 'normal', 'italic' ) ) ? $caption['font_style'] : 'normal';
 				$sanitized_caption['text_align']       = in_array( $caption['text_align'], array( 'left', 'center', 'right' ) ) ? $caption['text_align'] : 'center';
 				$sanitized_caption['color']            = $validator->validate_color( $caption['color'] ) ? $caption['color'] : '#000000';
+				$sanitized_caption['color']			   = $color_converter->hex_to_rgba( $sanitized_caption['color'] );
 				$sanitized_caption['background_color'] = $validator->validate_color( $caption['background_color'] ) ? $caption['background_color'] : '';
+				$sanitized_caption['background_color'] = $color_converter->hex_to_rgba( $sanitized_caption['background_color'] );
 
 				if ( strlen( $sanitized_caption['name'] ) ) {
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;
