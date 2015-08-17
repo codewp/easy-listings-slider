@@ -53,30 +53,20 @@ if ( 1 === (int) $data['print_scripts'] ) {
                     foreach ( $data['captions'][0] as $caption ) {
                         echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) .
                             '" t2="' . esc_attr( $caption['play_out_transition_type'] ) .
-                            '" du="600" style="left:' . (int) $caption['offsetx'] . 'px;' .
+                            '" du="600" style="border-radius: 4px; left:' . (int) $caption['offsetx'] . 'px;' .
                             ' top:' . (int) $caption['offsety'] . 'px;' .
                             ' width:' . ( absint( $caption['width'] ) ? absint( $caption['width'] ) . 'px;' : '100%;' ) .
                             ' height:' . ( absint( $caption['height'] ) ? absint( $caption['height'] ) . 'px;' : '100%;' ) .
-                            '">';
-
-                        // Background of caption.
-                        echo '<div class="caption-background" style="' .
-                            ( ! empty( $caption['background_color'] ) ? 'background:' . esc_attr( $caption['background_color'] ) . ';' : '' ) .
-                            '"></div>';
-
-                        // Forground of caption.
-                        echo '<div class="caption-forground" style="' .
                             ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
                             ( absint( $caption['padding'] ) ? ' padding:' .  absint( $caption['padding'] ) . 'px;' : '' ) .
                             ( ! empty( $caption['font_family'] ) ? ' font-family:' . esc_attr( $caption['font_family'] ) . ';' : '' ) .
                             ( ! empty( $caption['font_weight'] ) ? ' font-weight:' . esc_attr( $caption['font_weight'] ) . ';' : '' ) .
                             ( ! empty( $caption['font_style'] ) ? ' font-style:' . esc_attr( $caption['font_style'] ) . ';' : '' ) .
                             ( ! empty( $caption['text_align'] ) ? ' text-align:' . esc_attr( $caption['text_align'] ) . ';' : '' ) .
-                            ( ! empty( $caption['color'] ) ? ' color:' . esc_attr( $caption['color'] ) . ';' : '' ) .
+                            ( ! empty( strval( $caption['color'] ) ) ? ' color:' . esc_attr( strval( $caption['color'] ) ) . ';' : '' ) .
+                            ( ! empty( strval( $caption['background_color'] ) ) ? ' background:' . esc_attr( strval( $caption['background_color'] ) ) . ';' : '' ) .
                             '">';
                         echo $caption['name'];
-                        echo '</div>';
-
                         echo '</div>';
                     }
                 }
@@ -85,30 +75,20 @@ if ( 1 === (int) $data['print_scripts'] ) {
                     foreach ( $data['captions'][ $i + 1 ] as $caption ) {
                         echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) .
                             '" t2="' . esc_attr( $caption['play_out_transition_type'] ) .
-                            '" du="600" style="left:' . (int) $caption['offsetx'] . 'px;' .
+                            '" du="600" style="border-radius: 4px; left:' . (int) $caption['offsetx'] . 'px;' .
                             ' top:' . (int) $caption['offsety'] . 'px;' .
                             ' width:' . ( absint( $caption['width'] ) ? absint( $caption['width'] ) . 'px;' : '100%;' ) .
                             ' height:' . ( absint( $caption['height'] ) ? absint( $caption['height'] ) . 'px;' : '100%;' ) .
-                            '">';
-
-                        // Background of caption.
-                        echo '<div class="caption-background" style="' .
-                            ( ! empty( $caption['background_color'] ) ? 'background:' . esc_attr( $caption['background_color'] ) . ';' : '' ) .
-                            '"></div>';
-
-                        // Forground of caption.
-                        echo '<div class="caption-forground" style="' .
                             ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
                             ( absint( $caption['padding'] ) ? ' padding:' .  absint( $caption['padding'] ) . 'px;' : '' ) .
                             ( ! empty( $caption['font_family'] ) ? ' font-family:' . esc_attr( $caption['font_family'] ) . ';' : '' ) .
                             ( ! empty( $caption['font_weight'] ) ? ' font-weight:' . esc_attr( $caption['font_weight'] ) . ';' : '' ) .
                             ( ! empty( $caption['font_style'] ) ? ' font-style:' . esc_attr( $caption['font_style'] ) . ';' : '' ) .
                             ( ! empty( $caption['text_align'] ) ? ' text-align:' . esc_attr( $caption['text_align'] ) . ';' : '' ) .
-                            ( ! empty( $caption['color'] ) ? ' color:' . esc_attr( $caption['color'] ) . ';' : '' ) .
+                            ( ! empty( strval( $caption['color'] ) ) ? ' color:' . esc_attr( strval( $caption['color'] ) ) . ';' : '' ) .
+                            ( ! empty( strval( $caption['background_color'] ) ) ? ' background:' . esc_attr( strval( $caption['background_color'] ) ) . ';' : '' ) .
                             '">';
                         echo $caption['name'];
-                        echo '</div>';
-
                         echo '</div>';
                     }
                 }
