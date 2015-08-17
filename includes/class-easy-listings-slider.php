@@ -155,6 +155,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-slider-factory.php';
 
 		/**
+		 * The class responsible for converting colors.
+		 */
+		require_once $this->get_path() . 'includes/class-els-color-converter.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once $this->get_path() . 'admin/class-els-admin.php';
