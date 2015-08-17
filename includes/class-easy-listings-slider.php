@@ -155,6 +155,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-slider-factory.php';
 
 		/**
+		 * The class responsible for creating RGBA colors.
+		 */
+		require_once $this->get_path() . 'includes/color/class-els-color-rgba.php';
+
+		/**
 		 * The class responsible for converting colors.
 		 */
 		require_once $this->get_path() . 'includes/class-els-color-converter.php';
