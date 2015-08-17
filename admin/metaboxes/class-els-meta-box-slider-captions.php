@@ -109,7 +109,7 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 				$sanitized_caption['color']            = $validator->validate_color( $caption['color'] ) ? $caption['color'] : '#000000';
 				$sanitized_caption['color']			   = $color_converter->hex_to_rgba( $sanitized_caption['color'] );
 				$sanitized_caption['background_color'] = $validator->validate_color( $caption['background_color'] ) ? $caption['background_color'] : '';
-				$sanitized_caption['background_color'] = $color_converter->hex_to_rgba( $sanitized_caption['background_color'] );
+				$sanitized_caption['background_color'] = $color_converter->hex_to_rgba( $sanitized_caption['background_color'], 60 );
 
 				if ( strlen( $sanitized_caption['name'] ) ) {
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;

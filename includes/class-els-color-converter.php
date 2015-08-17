@@ -24,9 +24,9 @@ class ELS_Color_Converter {
 	 * @since  1.0.0
 	 * @param  string  $hex
 	 * @param  integer $opacity
-	 * @return stdClass	with { r, g, b, a } properties.
+	 * @return ELS_Color_RGBA
 	 */
-	public function hex_to_rgba( $hex, $opacity = 60 ) {
+	public function hex_to_rgba( $hex, $opacity = 100 ) {
 		$hex = str_replace( '#', '', $hex );
 		if ( $opacity > 100 ) {
 			$opacity = 100;
@@ -34,34 +34,33 @@ class ELS_Color_Converter {
 			$opacity = 0;
 		}
 
-		$rgba = new stdClass();
 		if ( 3 === strlen( $hex ) ) {
-			$rgba->r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
-			$rgba->g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
-			$rgba->b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+			$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+			$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+			$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
 		} else if ( strlen( $hex ) >= 6 ) {
-			$rgba->r = hexdec( substr( $hex, 0, 2 ) );
-			$rgba->g = hexdec( substr( $hex, 2, 2 ) );
-			$rgba->b = hexdec( substr( $hex, 4, 2 ) );
+			$r = hexdec( substr( $hex, 0, 2 ) );
+			$g = hexdec( substr( $hex, 2, 2 ) );
+			$b = hexdec( substr( $hex, 4, 2 ) );
 		}
-		$rgba->a = $opacity / 100;
 
-		return $rgba;
+		return new ELS_Color_RGBA( $r, $g, $b, $opacity );
 	}
 
 	/**
 	 * RGBA to Hex converter.
 	 *
 	 * @since  1.0.0
-	 * @param  stdClass $rgba
+	 * @param  ELS_Color_RGBA $rgba
 	 * @return string
 	 */
-	public function rgba_to_hex( stdClass $rgba ) {
-		if ( ! empty( $rgba->a ) && ! empty( $rgba->g ) && ! empty( $rgba->b ) ) {
+	public function rgba_to_hex( ELS_Color_RGBA $rgba ) {
+		if ( ! empty( $rgba->get_r() ) && ! empty( $rgba->get_g() ) &&
+			! empty( $rgba->get_b() ) ) {
 			$hex = '#';
-			$hex .= str_pad( dechex( $rgba->r ), 2, 0, STR_PAD_LEFT );
-			$hex .= str_pad( dechex( $rgba->g ), 2, 0, STR_PAD_LEFT );
-			$hex .= str_pad( dechex( $rgba->b ), 2, 0, STR_PAD_LEFT );
+			$hex .= str_pad( dechex( $rgba->get_r() ), 2, 0, STR_PAD_LEFT );
+			$hex .= str_pad( dechex( $rgba->get_g() ), 2, 0, STR_PAD_LEFT );
+			$hex .= str_pad( dechex( $rgba->get_b() ), 2, 0, STR_PAD_LEFT );
 
 			return $hex;
 		}
