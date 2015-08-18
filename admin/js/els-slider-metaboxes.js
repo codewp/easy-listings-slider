@@ -596,6 +596,7 @@
 					offsetY          = $( 'input[name="els_slider_captions[' + id + '][offsety]"]' ).val(),
 					width            = $( 'input[name="els_slider_captions[' + id + '][width]"]' ).val(),
 					height           = $( 'input[name="els_slider_captions[' + id + '][height]"]' ).val(),
+					line_height		 = $( 'input[name="els_slider_captions[' + id + '][line_height]"]' ).val(),
 					padding			 = $( 'input[name="els_slider_captions[' + id + '][padding]"]' ).val(),
 					font_size        = $( 'input[name="els_slider_captions[' + id + '][font_size]"]' ).val(),
 					font_family		 = $( 'select[name="els_slider_captions[' + id + '][font_family]"]' ).val(),
@@ -639,6 +640,7 @@
 				var caption = '<div class="caption" style="border-radius: 4px;' +
 				' width: ' + ( parseInt( width ) > 0 ? parseInt( width ) + 'px;' : this.captionDefaults.width + 'px;' ) +
 				' height: ' + ( parseInt( height ) > 0 ? parseInt( height ) + 'px;' : this.captionDefaults.height + 'px;' ) +
+				' line-height: ' + ( parseInt( line_height ) >= 8 ? parseInt( line_height ) + 'px;' : this.captionDefaults.line_height + 'px;' ) +
 				' font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : this.captionDefaults.font_size ) + 'px;' +
 				' padding: ' + ( parseInt( padding ) > 0 ? parseInt( padding ) : this.captionDefaults.padding ) + 'px;' +
 				' font-family: ' + ( font_family.length ? font_family : 'inherit' ) + ';' +
