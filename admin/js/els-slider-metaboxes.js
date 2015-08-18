@@ -608,24 +608,27 @@
 						this.cacheGoogleFonts[ font_family ][ link ] = true;
 					}
 				}
-				var caption =  '<div class="caption-background" style="' +
-				( background_color ? 'background: ' + background_color + ';' : '' ) + '">' +
-				'</div>' +
-				'<div class="caption-forground" style="' +
-				'font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : this.captionDefaults.font_size ) + 'px;' +
+				// converting colors to RGBA mode.
+				if ( background_color.length ) {
+					background_color = colorConverter.hexToRgba( background_color, 60 );
+				}
+
+				var caption = '<div class="caption" style="border-radius: 4px;' +
+				' width: ' + ( parseInt( width ) > 0 ? parseInt( width ) + 'px;' : this.captionDefaults.width + 'px;' ) +
+				' height: ' + ( parseInt( height ) > 0 ? parseInt( height ) + 'px;' : this.captionDefaults.height + 'px;' ) +
+				' font-size: ' + ( parseInt( font_size ) > 0 ? parseInt( font_size ) : this.captionDefaults.font_size ) + 'px;' +
 				' padding: ' + ( parseInt( padding ) > 0 ? parseInt( padding ) : this.captionDefaults.padding ) + 'px;' +
 				' font-family: ' + ( font_family.length ? font_family : 'inherit' ) + ';' +
 				' font-weight: ' + ( font_weight.length ? font_weight : 'normal' ) + ';' +
 				' font-style: ' + ( font_style.length ? font_style : 'normal' ) + ';' +
 				' text-align:' + ( text_align ? text_align : this.captionDefaults.text_align ) + ';' +
 				' color:' + ( color ? color : this.captionDefaults.color ) + ';' +
+				( background_color ? ' background: ' + background_color + ';' : '' ) +
 				'">' + captionContent + '</div>';
 
 				$( '#preview_caption' ).css( {
 					'left' : parseInt( offsetX ) >= 0 ? parseInt( offsetX ) + 'px' : this.captionDefaults.offsetx + 'px',
-					'top' : parseInt( offsetY ) >= 0 ? parseInt( offsetY ) + 'px' : this.captionDefaults.offsety + 'px',
-					'width' : parseInt( width ) > 0 ? parseInt( width ) + 'px' : this.captionDefaults.width + 'px',
-					'height' : parseInt( height ) > 0 ? parseInt( height ) + 'px' : this.captionDefaults.height + 'px'
+					'top' : parseInt( offsetY ) >= 0 ? parseInt( offsetY ) + 'px' : this.captionDefaults.offsety + 'px'
 				} );
 
 				$( '#preview_caption' ).html( caption );
@@ -763,6 +766,37 @@
 
 		};
 		captionEditorView.init();
+
+		/**
+		 * Color converter class.
+		 *
+		 * @since 1.0.0
+		 * @type  Object
+		 */
+		var colorConverter = {
+			/**
+			 * Converting Hex color to RGBA color
+			 *
+			 * @since  1.0.0
+			 * @param  string hex
+			 * @param  int opacity
+			 * @return string
+			 */
+			hexToRgba : function( hex, opacity ) {
+				hex = hex.replace('#', '');
+				if ( 3 === hex.length ) {
+					var r = parseInt( hex.substring(0, 1) + hex.substring(0, 1), 16 ),
+					    g = parseInt( hex.substring(1, 2) + hex.substring(1, 2), 16 ),
+					    b = parseInt( hex.substring(2, 3) + hex.substring(2, 3), 16 );
+				} else if ( hex.length >= 6 ) {
+					var r = parseInt(hex.substring(0, 2), 16),
+					    g = parseInt(hex.substring(2, 4), 16),
+					    b = parseInt(hex.substring(4, 6), 16);
+				}
+				return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity / 100 + ')';
+			}
+		}
+
 	});
 
 })( jQuery );
