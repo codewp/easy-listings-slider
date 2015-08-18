@@ -484,9 +484,19 @@
 				// Using color picker in specifications.
 				jQuery( 'input[type=text].colorpick' ).wpColorPicker({
 					change: function( event, ui ) {
-						var captionId = $( this ).closest( 'div.caption_spec_tabs' ).data( 'key' );
-						// Preview caption after changing colors.
-						ElsCaptionConfiguration.captionsPreview( captionId );
+						var name = $( this ).attr( 'name' );
+						if ( /\[background_color\]/.test( name ) ) {
+							var background_color = ui.color.toString();
+							// converting background color to RGBA mode.
+							if ( background_color.length ) {
+								background_color = colorConverter.hexToRgba( background_color, 60 );
+							}
+							// Setting background-color of caption in caption preview.
+							$( '#preview_caption .caption' ).css( 'background-color', background_color );
+						} else if ( /\[color\]/.test( name ) ) {
+							// Setting color of caption in caption preview.
+							$( '#preview_caption .caption' ).css( 'color', ui.color.toString() );
+						}
 					}
 				});
 				// Controlling FontOptions
@@ -555,9 +565,20 @@
 			 * @return void
 			 */
 			updateCaptionPreview: function() {
-				$( '.caption_spec_tabs input, .caption_spec_tabs select, .caption_spec_tabs textarea' ).on( 'change', function() {
+				$( '.caption_spec_tabs input, .caption_spec_tabs select, .caption_spec_tabs textarea' ).not( 'input.colorpick' ).on( 'change', function() {
 					var captionId = $( this ).closest( 'div.caption_spec_tabs' ).data( 'key' );
 					ElsCaptionConfiguration.captionsPreview( captionId );
+				});
+				// Removing color and background-color of caption on clearing color.
+				$( 'input[type=button].wp-picker-clear' ).on( 'click', function() {
+					var name = $( this ).siblings( 'input[type=text].colorpick' ).attr( 'name' );
+					if ( /\[background_color\]/.test( name ) ) {
+						// Removing background color of caption in caption preview.
+						$( '#preview_caption .caption' ).css( 'background-color', '' );
+					} else if ( /\[color\]/.test( name ) ) {
+						// Using default color for caption in caption preview.
+						$( '#preview_caption .caption' ).css( 'color', ElsCaptionConfiguration.captionDefaults.color );
+					}
 				});
 			},
 
@@ -579,8 +600,8 @@
 					font_weight      = $( 'select[name="els_slider_captions[' + id + '][font_weight]"]' ).val(),
 					font_style 		 = $( 'select[name="els_slider_captions[' + id + '][font_style]"]' ).val(),
 					text_align       = $( 'select[name="els_slider_captions[' + id + '][text_align]"]' ).val(),
-					color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).iris( 'color' ),
-					background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).iris( 'color' ),
+					color            = $( 'input[name="els_slider_captions[' + id + '][color]"]' ).val(),
+					background_color = $( 'input[name="els_slider_captions[' + id + '][background_color]"]' ).val(),
 					captionContent   = tinymce.get( 'caption_editor_' + id ) ?
 						tinymce.get( 'caption_editor_' + id ).getContent() : '';
 
