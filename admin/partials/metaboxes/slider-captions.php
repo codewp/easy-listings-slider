@@ -252,6 +252,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 							<div class="row">
 								<div class="col-label">
+									<label><?php _e( 'Line height', 'els' ) ?></label>
+								</div>
+								<div class="col-value">
+									<?php
+									echo $html->number( array(
+											'name'  => 'els_slider_captions[' . $captions_count . '][line_height]',
+											'value' => absint( $caption_detail['line_height'] ),
+											'min'   => 8,
+											'class' => 'els_repeatable_text_field',
+										)
+									);
+									echo ' ' . __( 'px', 'els' );
+									?>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-label">
 									<label><?php _e( 'Padding', 'els' ) ?></label>
 								</div>
 								<div class="col-value">
@@ -544,6 +561,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 									'value' => 100,
 									'min'   => 0,
 									'class' => 'els_repeatable_name_field',
+								)
+							);
+							echo ' ' . __( 'px', 'els' );
+							?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-label">
+							<label><?php _e( 'Line height', 'els' ) ?></label>
+						</div>
+						<div class="col-value">
+							<?php
+							echo $html->number( array(
+									'name'  => 'els_slider_captions[0][line_height]',
+									'value' => 30,
+									'min'   => 8,
+									'class' => 'els_repeatable_text_field',
 								)
 							);
 							echo ' ' . __( 'px', 'els' );
