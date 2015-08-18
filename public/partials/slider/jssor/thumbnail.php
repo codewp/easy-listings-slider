@@ -57,6 +57,7 @@ if ( 1 === (int) $data['print_scripts'] ) {
                         ' top:' . (int) $caption['offsety'] . 'px;' .
                         ' width:' . ( absint( $caption['width'] ) ? absint( $caption['width'] ) . 'px;' : '100%;' ) .
                         ' height:' . ( absint( $caption['height'] ) ? absint( $caption['height'] ) . 'px;' : '100%;' ) .
+                        ' line-height:' . ( absint( $caption['line_height'] ) ? absint( $caption['line_height'] ) . 'px;' : '30px;' ) .
                         ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
                         ( absint( $caption['padding'] ) ? ' padding:' .  absint( $caption['padding'] ) . 'px;' : '' ) .
                         ( ! empty( $caption['font_family'] ) ? ' font-family:' . esc_attr( $caption['font_family'] ) . ';' : '' ) .
@@ -79,6 +80,7 @@ if ( 1 === (int) $data['print_scripts'] ) {
                         ' top:' . (int) $caption['offsety'] . 'px;' .
                         ' width:' . ( absint( $caption['width'] ) ? absint( $caption['width'] ) . 'px;' : '100%;' ) .
                         ' height:' . ( absint( $caption['height'] ) ? absint( $caption['height'] ) . 'px;' : '100%;' ) .
+                        ' line-height:' . ( absint( $caption['line_height'] ) ? absint( $caption['line_height'] ) . 'px;' : '30px;' ) .
                         ( absint( $caption['font_size'] ) ? ' font-size:' .  absint( $caption['font_size'] ) . 'px;' : '' ) .
                         ( absint( $caption['padding'] ) ? ' padding:' .  absint( $caption['padding'] ) . 'px;' : '' ) .
                         ( ! empty( $caption['font_family'] ) ? ' font-family:' . esc_attr( $caption['font_family'] ) . ';' : '' ) .
