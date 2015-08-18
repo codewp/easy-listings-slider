@@ -240,6 +240,7 @@
 				offsety : 250,
 				width : 300,
 				height : 100,
+				line_height : 30,
 				padding : 0,
 				font_size : 20,
 				font_family : 'inherit',
@@ -523,6 +524,7 @@
 				$( 'input[name="els_slider_captions[' + key + '][offsety]"]', captionSpec ).val( this.captionDefaults.offsety );
 				$( 'input[name="els_slider_captions[' + key + '][width]"]', captionSpec ).val( this.captionDefaults.width );
 				$( 'input[name="els_slider_captions[' + key + '][height]"]', captionSpec ).val( this.captionDefaults.height );
+				$( 'input[name="els_slider_captions[' + key + '][line_height]"]', captionSpec ).val( this.captionDefaults.line_height );
 				$( 'input[name="els_slider_captions[' + key + '][padding]"]', captionSpec ).val( this.captionDefaults.padding );
 				$( 'input[name="els_slider_captions[' + key + '][font_size]"]', captionSpec ).val( this.captionDefaults.font_size );
 				$( 'select[name="els_slider_captions[' + key + '][font_family]"]', captionSpec ).val( this.captionDefaults.font_family );
