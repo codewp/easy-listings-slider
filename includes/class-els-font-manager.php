@@ -94,7 +94,7 @@ class ELS_Font_Manager {
 		return apply_filters('els_font_family',
 			array_merge(
 				array(
-					'inherit' => __( 'Use Your Themes', 'els' ),
+					'inherit' => __( 'Inherit', 'els' ),
 					'Sans-Serif' => __( 'Sans-Serif', 'els' ),
 					'Tahoma' => __( 'Tahoma', 'els' ),
 					'Georgia' => __( 'Georgia', 'els' ),
