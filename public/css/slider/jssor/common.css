@@ -1,7 +1,7 @@
 /* styles that are common between themes of the jssor slider. */
 /* Caption styles. */
 div.caption {
-	position: relative;
+	position: absolute;
 	box-sizing: content-box;
 	-moz-box-sizing: content-box;
 	-webkit-box-sizing: content-box;
