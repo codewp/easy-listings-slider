@@ -1,23 +1,8 @@
 /* slider captions */
-#preview_caption .caption-forground {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	padding: 5px;
-}
-
-#preview_caption .caption-background {
-	position: absolute;
-	border-radius: 4px;
-	top: 0;
-  	left: 0;
-	height: 100%;
-	width: 100%;
-	filter: alpha(opacity=60); /* IE */
-	-moz-opacity: 0.6; /* Mozilla */
-	opacity: 0.6;
+#preview_caption div.caption {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
 }
 
 #preview_caption a {
@@ -25,12 +10,6 @@
 	text-decoration: underline;
 }
 
-#preview_caption .caption-forground p {
-	font-size: inherit;
-	font-family: inherit;
-	font-weight: inherit;
-	font-style: inherit;
-}
 /* Slider meta box content */
 .slider-options-panel div.row {
 	font-size: 14px;
