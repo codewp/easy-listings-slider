@@ -2,33 +2,9 @@
 /* Caption styles. */
 div.caption {
 	position: relative;
-}
-
-div.caption .caption-forground {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-div.caption .caption-forground p {
-	font-family: inherit;
-	font-size: inherit;
-	font-weight: inherit;
-	font-style: inherit;
-}
-
-div.caption .caption-background {
-	position: absolute;
-	border-radius: 4px;
-	top: 0;
-  	left: 0;
-	height: 100%;
-	width: 100%;
-	filter: alpha(opacity=60); /* IE */
-	-moz-opacity: 0.6; /* Mozilla */
-	opacity: 0.6;
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
 }
 
 div.caption a {
