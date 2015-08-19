@@ -627,7 +627,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							echo $html->select( array(
 									'name'             => 'els_slider_captions[0][font_family]',
 									'options'          => $fonts,
-									'selected'		   => 'inherit',
+									'selected'		   => 'Tahoma',
 									'show_option_none' => false,
 									'show_option_all'  => false,
 									'class'            => 'els_repeatable_slide_select_field font-family',

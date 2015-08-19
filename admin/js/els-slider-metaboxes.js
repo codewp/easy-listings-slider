@@ -243,7 +243,7 @@
 				line_height : 30,
 				padding : 0,
 				font_size : 20,
-				font_family : 'inherit',
+				font_family : 'Tahoma',
 				font_weight : 'normal',
 				font_style : 'normal',
 				text_align : 'center',
