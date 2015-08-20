@@ -10,6 +10,24 @@
 	text-decoration: underline;
 }
 
+tr.els_repeatable_row {
+    cursor: default;
+}
+
+.els_remove_repeatable {
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    margin: 8px 0 0;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 10px;
+}
+
+.els_remove_repeatable:active, .els_remove_repeatable:hover {
+    background-position: -10px 0 !important;
+}
+
 /* Slider meta box content */
 .slider-options-panel div.row {
 	font-size: 14px;
