@@ -471,10 +471,20 @@
 				if ( showFirstSpec ) {
 					// Showing first caption specification on init.
 					$( '.caption_specification .caption_spec_tabs:first' ).show();
+					// Removing all of active table rows.
+					$( '#els_captions tbody tr.els_repeatable_row' ).removeClass( 'active' );
+					// Setting active to first row.
+					$( '#els_captions tbody tr.els_repeatable_row:first' ).addClass('active');
 				}
 				// Showing selected caption specification.
 				$( '#els_captions tbody tr.els_repeatable_row' ).on('click', function(event) {
 					event.preventDefault();
+
+					// Removing all of active table rows.
+					$( '#els_captions tbody tr.els_repeatable_row' ).removeClass( 'active' );
+					// Setting active to clicked row.
+					$( this ).addClass('active');
+
 					var key = $( this ).data( 'key' ) > 0 ? $( this ).data( 'key' ) : 0;
 					$( '.caption_specification' ).children().hide();
 					$( '.caption_specification #caption_spec_' + key ).show();

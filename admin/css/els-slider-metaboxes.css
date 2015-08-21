@@ -14,6 +14,10 @@ tr.els_repeatable_row {
     cursor: default;
 }
 
+tr.els_repeatable_row.active {
+    background-color: #f5f5f5;
+}
+
 .els_remove_repeatable {
     cursor: pointer;
     display: inline-block;
