@@ -114,37 +114,38 @@
 	 	_CaptionTransitions['FADE'] = { $Duration: 900, $Opacity: 2 };
 
 	 	var options = {
-	 	   $AutoPlay: '1' === data.auto_play ? true : false,           //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
-	 	   $AutoPlayInterval: parseInt( data.auto_play_interval ),     //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
-	 	   $SlideDuration: parseInt( data.slide_duration ),            //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
-	 	   $DragOrientation: parseInt( data.drag_orientation ),        //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-	 	   $UISearchMode: 0,                                   		//[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
-	 	   $Loop: parseInt( data.loop ),
+	 		$FillMode: parseInt( data.fill_mode, 10 ),
+	 	    $AutoPlay: '1' === data.auto_play ? true : false,           //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+	 	    $AutoPlayInterval: parseInt( data.auto_play_interval ),     //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+	 	    $SlideDuration: parseInt( data.slide_duration ),            //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+	 	    $DragOrientation: parseInt( data.drag_orientation ),        //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+	 	    $UISearchMode: 0,                                   		//[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+	 	    $Loop: parseInt( data.loop ),
 
-	 	   $CaptionSliderOptions: {                            		//[Optional] Options which specifies how to animate caption
+	 	    $CaptionSliderOptions: {                            		//[Optional] Options which specifies how to animate caption
 	 	       $Class: $JssorCaptionSlider$,                   		//[Required] Class to create instance to animate caption
 	 	       $CaptionTransitions: _CaptionTransitions,       		//[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
 	 	       $PlayInMode: 1,                                 		//[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
 	 	       $PlayOutMode: 3                                 		//[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
-	 	   },
+	 	    },
 
-	 	   $ThumbnailNavigatorOptions: {
-	 	       $Class: $JssorThumbnailNavigator$,              		//[Required] Class to create thumbnail navigator instance
-	 	       $ChanceToShow: 2,                               		//[Required] 0 Never, 1 Mouse Over, 2 Always
+	 	    $ThumbnailNavigatorOptions: {
+	 	        $Class: $JssorThumbnailNavigator$,              		//[Required] Class to create thumbnail navigator instance
+	 	        $ChanceToShow: 2,                               		//[Required] 0 Never, 1 Mouse Over, 2 Always
 
-	 	       $Loop: parseInt( data.loop ),                   		//[Optional] Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind, default value is 1
-	 	       $SpacingX: 3,                                   		//[Optional] Horizontal space between each thumbnail in pixel, default value is 0
-	 	       $SpacingY: 3,                                   		//[Optional] Vertical space between each thumbnail in pixel, default value is 0
-	 	       $DisplayPieces: 6,                             			//[Optional] Number of pieces to display, default value is 1
-	 	       $ParkingPosition: 253,                          		//[Optional] The offset position to park thumbnail,
+	 	        $Loop: parseInt( data.loop ),                   		//[Optional] Enable loop(circular) of carousel or not, 0: stop, 1: loop, 2 rewind, default value is 1
+	 	        $SpacingX: 3,                                   		//[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+	 	        $SpacingY: 3,                                   		//[Optional] Vertical space between each thumbnail in pixel, default value is 0
+	 	        $DisplayPieces: 6,                             			//[Optional] Number of pieces to display, default value is 1
+	 	        $ParkingPosition: 253,                          		//[Optional] The offset position to park thumbnail,
 
-	 	       $ArrowNavigatorOptions: {
+	 	        $ArrowNavigatorOptions: {
 	 	           $Class: $JssorArrowNavigator$,              		//[Requried] Class to create arrow navigator instance
 	 	           $ChanceToShow: 2,                           		//[Required] 0 Never, 1 Mouse Over, 2 Always
 	 	           $AutoCenter: 2,                             		//[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
 	 	           $Steps: 6                                   		//[Optional] Steps to go for each navigation request, default value is 1
-	 	       }
-	 	   }
+	 	        }
+	 	    }
 	 	};
 
 	 	var jssor_slider = new $JssorSlider$(data.id, options);
