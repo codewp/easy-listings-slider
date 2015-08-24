@@ -114,7 +114,7 @@
 			 _CaptionTransitions['FADE'] = { $Duration: 900, $Opacity: 2 };
 
 			 var options = {
-			 	// $FillMode: 2,
+			 	$FillMode: parseInt( data.fill_mode, 10 ),
 			 	$ArrowKeyNavigation: true,
 			 	$SlideEasing: $JssorEasing$.$EaseOutQuint,
 			 	$MinDragOffsetToSlide: 20,
