@@ -164,15 +164,18 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 					'size' => 'small',
 					'std'  => '480',
 				),
-				'single_page_slider_auto_crop_resize' => array(
-					'id' => 'single_page_slider_auto_crop_resize',
-					'name' => __( 'Slider autocrop resize feature', 'els' ),
-					'desc' => __( 'Automatically crop and resize slider images based on above size in single listing page.', 'els' ),
+				'single_page_slider_fill_mode' => array(
+					'id' => 'single_page_slider_fill_mode',
+					'name' => __( 'Fill mode', 'els' ),
+					'desc' => __( 'How to fill content of slider by images?', 'els' ),
 					'type' => 'radio',
-					'std' => 'disabled',
+					'std' => '0',
 					'options' => array(
-						'enabled'  => __( 'Enabled', 'els' ),
-						'disabled' => __( 'Disabled', 'els' )
+						'0' => __( 'Stretch', 'els' ),
+						'1' => __( 'Contain (keep aspect ratio and put all inside slide)', 'els' ),
+						'2' => __( 'Cover (keep aspect ratio and cover whole slide)', 'els' ),
+						'4' => __( 'Actual size', 'els' ),
+						'5' => __( 'Contain for large image and actual size for small image', 'els' ),
 					)
 				),
 				'single_page_slider_autoplay' => array(
