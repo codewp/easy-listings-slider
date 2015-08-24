@@ -58,6 +58,7 @@ class ELS_Public_Single_Slider {
 			$jssor_slider->theme              = $this->els_settings->get_single_page_slider_theme();
 			$jssor_slider->width              = $this->els_settings->get_single_page_slider_width();
 			$jssor_slider->height             = $this->els_settings->get_single_page_slider_height();
+			$jssor_slider->fill_mode		  = $this->els_settings->get_single_page_slider_fill_mode();
 			$jssor_slider->auto_play          = $this->els_settings->get_single_page_slider_autoplay();
 			$jssor_slider->auto_play_interval = $this->els_settings->get_single_page_slider_autoplay_interval();
 			$jssor_slider->slide_duration     = $this->els_settings->get_single_page_slider_slide_duration();
