@@ -11,3 +11,9 @@ div.caption a {
 	color: #ffffff;
 	text-decoration: underline;
 }
+
+/* slider_container styles */
+div.slider_container img {
+	max-width: none;
+	max-height: none;
+}
