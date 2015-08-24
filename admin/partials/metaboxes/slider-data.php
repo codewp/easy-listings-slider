@@ -73,14 +73,23 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 			</div>
 			<div class="row">
 				<div class="col-label">
-					<label><?php _e( 'Automatically crop and resize slider images based on above size.', 'els' ) ?></label>
+					<label><?php _e( 'Fill mode', 'els' ) ?></label>
 				</div>
 				<div class="col-value">
-					<input type="radio" name="slider_auto_crop_resize" id="slider_auto_crop_resize_off" value="0" <?php checked( $slider->get_auto_crop_resize(), false ) ?>>
-					<label for="slider_auto_crop_resize_off"><?php _e( 'Off', 'els' ) ?></label>
+					<input type="radio" name="slider_fill_mode" id="slider_fill_mode_stretch" value="0" <?php checked( $slider->get_fill_mode(), 0 ) ?> />
+					<label for="slider_fill_mode_stretch"><?php _e( 'Stretch', 'els' ) ?></label>
 					<br/>
-					<input type="radio" name="slider_auto_crop_resize" id="slider_auto_crop_resize_on" value="1" <?php checked( $slider->get_auto_crop_resize(), true ) ?>>
-					<label for="slider_auto_crop_resize_on"><?php _e( 'On', 'els' ) ?></label>
+					<input type="radio" name="slider_fill_mode" id="slider_fill_mode_contain" value="1" <?php checked( $slider->get_fill_mode(), 1 ) ?> />
+					<label for="slider_fill_mode_contain"><?php _e( 'Contain (keep aspect ratio and put all inside slide)', 'els' ) ?></label>
+					<br/>
+					<input type="radio" name="slider_fill_mode" id="slider_fill_mode_cover" value="2" <?php checked( $slider->get_fill_mode(), 2 ) ?> />
+					<label for="slider_fill_mode_cover"><?php _e( 'Cover (keep aspect ratio and cover whole slide)', 'els' ) ?></label>
+					<br/>
+					<input type="radio" name="slider_fill_mode" id="slider_fill_mode_actual_size" value="4" <?php checked( $slider->get_fill_mode(), 4 ) ?> />
+					<label for="slider_fill_mode_actual_size"><?php _e( 'Actual size', 'els' ) ?></label>
+					<br/>
+					<input type="radio" name="slider_fill_mode" id="slider_fill_mode_contain_large" value="5" <?php checked( $slider->get_fill_mode(), 5 ) ?> />
+					<label for="slider_fill_mode_contain_large"><?php _e( 'Contain for large image and actual size for small image', 'els' ) ?></label>
 					<br/>
 				</div>
 			</div>

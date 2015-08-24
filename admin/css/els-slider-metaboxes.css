@@ -54,6 +54,7 @@ tr.els_repeatable_row.active {
     margin-bottom: 9px;
     padding: 10px 10px;
     vertical-align: middle;
+    margin-left: 210px;
 }
 .slider-options-panel input[type="text"], .slider-options-panel input[type="number"], .slider-options-panel input[type="email"], .slider-options-panel input[type="password"], .slider-options-panel select, .slider-options-panel textarea {
 	width: 25%;

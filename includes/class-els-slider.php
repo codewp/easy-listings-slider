@@ -52,7 +52,7 @@ class ELS_Slider {
 	private $container_id;
 	private $width;
 	private $height;
-	private $auto_crop_resize;
+	private $fill_mode;
 	private $auto_play;
 	private $auto_play_interval;
 	private $slide_duration;
@@ -309,19 +309,17 @@ class ELS_Slider {
 	}
 
 	/**
-	 * Getting auto crop resize feature of slider.
+	 * Getting fill mode feature of slider.
 	 *
-	 * @since 1.0.0
-	 * @return boolean
+	 * @since  1.0.0
+	 * @return int
 	 */
-	public function get_auto_crop_resize() {
-		if ( ! isset( $this->auto_crop_resize ) ) {
-			$this->auto_crop_resize = get_post_meta( $this->ID, 'slider_auto_crop_resize', true );
-			// Sanitize the auto_crop_resize.
-			$this->auto_crop_resize = '1' === $this->auto_crop_resize ? true : false;
+	public function get_fill_mode() {
+		if ( ! isset( $this->fill_mode ) ) {
+			$this->fill_mode = get_post_meta( $this->ID, 'slider_fill_mode', true );
 		}
 
-		return $this->auto_crop_resize;
+		return absint( $this->fill_mode );
 	}
 
 	/**
