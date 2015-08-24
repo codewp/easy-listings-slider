@@ -35,6 +35,7 @@ class ELS_Slider_Factory {
 		$jssor_slider->id                 = $slider->get_container_id();
 		$jssor_slider->width              = $slider->get_width();
 		$jssor_slider->height             = $slider->get_height();
+		$jssor_slider->fill_mode		  = $slider->get_fill_mode();
 		$jssor_slider->auto_play          = $slider->get_auto_play();
 		$jssor_slider->loop               = $slider->get_loop();
 		$jssor_slider->auto_play_interval = $slider->get_auto_play_interval();
