@@ -108,13 +108,14 @@ class ELS_Settings {
 	}
 
 	/**
-	 * Getting single listing page slider auto_crop_resize.
+	 * Getting single listing page slider fill mode feature.
 	 *
 	 * @since  1.0.0
-	 * @return boolean
+	 * @return int
 	 */
-	public function get_single_page_slider_auto_crop_resize() {
-		return 'enabled' === $this->plugin_settings['single_page_slider_auto_crop_resize'] ? true : false;
+	public function get_single_page_slider_fill_mode() {
+		return ! empty( $this->plugin_settings['single_page_slider_fill_mode'] ) ?
+			absint( $this->plugin_settings['single_page_slider_fill_mode'] ) : 0;
 	}
 
 	/**
