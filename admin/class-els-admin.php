@@ -86,6 +86,10 @@ class ELS_Admin {
 		 */
 		require_once $this->get_path() . 'class-els-admin-controller.php';
 		/**
+		 * The class responsible for admin editor functionalities.
+		 */
+		require_once $this->get_path() . 'class-els-admin-editor.php';
+		/**
 		 * The class responsible for Post Types related functionalities of the plugin.
 		 */
 		require_once $this->get_path() . 'class-els-admin-post-types.php';
@@ -129,6 +133,8 @@ class ELS_Admin {
 		new ELS_Admin_Notices( $this->loader );
 		// Hooks for preview slider in admin-area.
 		new ELS_Admin_Slider_Preview( $this->loader );
+		// Hooks for admin editor.
+		new ELS_Admin_Editor( $this->loader );
 		// Hooks for plugin admin menus.
 		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
 	}
