@@ -145,6 +145,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-listings.php';
 
 		/**
+		 * Apis that are common between sliders.
+		 */
+		require_once $this->get_path() . 'includes/class-els-sliders.php';
+
+		/**
 		 * The Slider Object class.
 		 */
 		require_once $this->get_path() . 'includes/class-els-slider.php';
