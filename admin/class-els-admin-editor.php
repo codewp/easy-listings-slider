@@ -83,6 +83,16 @@ class ELS_Admin_Editor extends ELS_Admin_Controller {
 		$editor_sliders = $sliders->get_sliders();
 		if ( count( $editor_sliders ) ) {
 			wp_localize_script( 'jquery', 'elsSliders', array( 'sliders' => $editor_sliders ) );
+			?>
+			<style type="text/css">
+				.mce-i-els_shortcode_buttons {
+					background: url("<?php echo $this->get_images_url() ?>els-editor-button.png") no-repeat scroll 0 2px !important;
+					left: 3px;
+				    position: relative !important;
+				    top: -1px;
+				}
+			</style>
+			<?php
 		}
 	}
 
