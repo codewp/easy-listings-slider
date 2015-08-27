@@ -352,18 +352,27 @@
 						$( this ).attr( 'id', id );
 					}
 				});
-				clone.find('div, button').each( function() {
+				clone.find('div, button, a').each( function() {
 					var id = $( this ).prop( 'id' );
 					if ( id && id.match( /caption/ ) ) {
 						id = id.replace( /\d+/g, parseInt( key ) );
 						$( this ).prop( 'id', id ).prop( 'name', id );
 					}
-				});
-				clone.find( 'a' ).each( function() {
-					var href = $( this ).attr( 'href' );
-					if ( href ) {
-						href = href.replace( /\d+/g, parseInt( key ) );
-						$( this ).attr( 'href', href );
+					// Caption editor switch buttons.
+					if ( $( this ).hasClass( 'wp-switch-editor' ) ) {
+						var editorId = $( this ).data( 'wp-editor-id' );
+						if ( editorId ) {
+							editorId = editorId.replace( /\d+/g, parseInt( key ) );
+							$( this ).attr( 'data-wp-editor-id', editorId );
+						}
+					}
+					// Replacing href in <a> tags.
+					if ( 'A' === $( this ).prop( 'tagName' ) ) {
+						var href = $( this ).attr( 'href' );
+						if ( href ) {
+							href = href.replace( /\d+/g, parseInt( key ) );
+							$( this ).attr( 'href', href );
+						}
 					}
 				});
 
