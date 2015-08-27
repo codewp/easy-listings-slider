@@ -270,7 +270,7 @@
 			init : function() {
 				this.add();
 				this.remove();
-				this.showCaptionSpecification( true );
+				this.showCaptionSpecification();
 			},
 
 			/**
@@ -394,7 +394,7 @@
 					// Applying caption editor tinymce to cloned specification textarea.
 					captionEditorView.create( specification_clone.data( 'key' ) );
 					specification_clone.show();
-					ElsCaptionConfiguration.showCaptionSpecification( false );
+					ElsCaptionConfiguration.showCaptionSpecification( specification_clone.data( 'key' ) );
 					// Preview new caption.
 					ElsCaptionConfiguration.captionsPreview( specification_clone.data( 'key' ) );
 				});
@@ -462,27 +462,32 @@
 			 * Show specification of the caption like it's content, offsets, width, etc.
 			 *
 			 * @sice   1.0.0
-			 * @param  boolean showFirstSpec  showing first caption specification or no.
+			 * @param  int captionId Id of caption that should be shown otherwise show first caption.
 			 * @return void
 			 */
-			showCaptionSpecification: function( showFirstSpec ) {
+			showCaptionSpecification: function( captionId ) {
 				// jQuery tabs for caption_spec_tabs.
 				$( '.caption_spec_tabs' ).tabs();
-				if ( showFirstSpec ) {
+				// Removing all of active class from table rows.
+				$( '#els_captions tbody tr.els_repeatable_row' ).removeClass( 'active' );
+				if ( captionId >= 0 ) {
+					// Showing specified caption specification.
+					$( '.caption_specification #caption_spec_' + captionId ).show();
+					// Setting active class to specified caption row.
+					$( '#els_captions tbody tr.els_repeatable_row[data-key="' + captionId + '"]' ).addClass('active');
+				} else {
 					// Showing first caption specification on init.
 					$( '.caption_specification .caption_spec_tabs:first' ).show();
-					// Removing all of active table rows.
-					$( '#els_captions tbody tr.els_repeatable_row' ).removeClass( 'active' );
-					// Setting active to first row.
+					// Setting active class to first row.
 					$( '#els_captions tbody tr.els_repeatable_row:first' ).addClass('active');
 				}
 				// Showing selected caption specification.
 				$( '#els_captions tbody tr.els_repeatable_row' ).on('click', function(event) {
 					event.preventDefault();
 
-					// Removing all of active table rows.
+					// Removing all of active class from table rows.
 					$( '#els_captions tbody tr.els_repeatable_row' ).removeClass( 'active' );
-					// Setting active to clicked row.
+					// Setting active class to clicked row.
 					$( this ).addClass('active');
 
 					var key = $( this ).data( 'key' ) > 0 ? $( this ).data( 'key' ) : 0;
