@@ -34,6 +34,8 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 	 * @return void
 	 */
 	public function output( $post ) {
+		global $wp_version;
+
 		$slider      = new ELS_Slider( $post->ID );
 		$slides      = $slider->get_slides();
 		$attachments = $slide_numbers = array();
@@ -44,8 +46,14 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 			}
 		}
 
-		// Filtering content of captions tinymce editor.
-		add_filter( 'the_editor_content', array( $this, 'filter_caption_editor_content' ), 5 );
+		/**
+		 * Removing default the_editor_content filter in wordpress earlier than 4.3 that
+		 * cause issue in content of captions editors.
+		 */
+		if ( version_compare( $wp_version, '4.3', '<' ) ) {
+			// Filtering content of captions tinymce editor.
+			add_filter( 'the_editor_content', array( $this, 'filter_caption_editor_content' ), 5 );
+		}
 
 		$this->render_view( 'metaboxes.slider-captions', array(
 				'html'                     => ELS_IOC::make( 'html' ),
