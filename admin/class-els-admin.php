@@ -189,10 +189,7 @@ class ELS_Admin {
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/els-admin' . $suffix . '.css', array(), $this->version, 'all' );
-		if ( ! function_exists( 'wp_enqueue_media' ) || version_compare( $wp_version, '3.5', '<' ) ) {
-			wp_enqueue_style( 'thickbox' );
-		}
-
+		wp_enqueue_style( 'thickbox' );
 		// Loading only in els_slider post types.
 		if ( 'els_slider' === $typenow ) {
 			// jQueryUi.
@@ -228,8 +225,8 @@ class ELS_Admin {
 			wp_enqueue_media();
 		} else {
 			wp_enqueue_script( 'media-upload' );
-			wp_enqueue_script( 'thickbox' );
 		}
+		wp_enqueue_script( 'thickbox' );
 
 		// Loading only in els_slider post types.
 		if ( 'els_slider' === $typenow ) {
