@@ -13,6 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var array $caption_transition_types
  * @var array $fonts
  */
+
+global $wp_version;
 ?>
 <div id="els_slider_captions_container">
 	<p>
@@ -119,29 +121,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div id="caption_detail_<?php echo $captions_count ?>">
 							<div class="caption_content">
 								<?php
-								wp_editor( stripslashes( $caption_detail['name'] ), 'caption_editor_' . $captions_count,
-									array(
-										'media_buttons' => false,
-										'textarea_rows' => 5,
-										'textarea_name' => 'els_slider_captions[' . $captions_count . '][name]',
-										'teeny'			=> true,
-										'wpautop'		=> false,
-										'quicktags'		=> array(
-											'buttons' => 'strong,em,link,block,ul,ol,li,close',
-										),
-										'tinymce'		=> array(
-											'setup' => 'function( editor ) {' .
-												'
-												// Preview caption on change of caption content.
-												editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } ),
-												// Preview first caption content on loading page.
-												editor.on( "init", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); if ( 1 === captionId ) { ElsCaptionConfiguration.captionsPreview( captionId ); } } );
-												'
-											. '}',
-											'forced_root_block' => false,
-										)
-									)
+								$editor_args = array(
+									'media_buttons' => false,
+									'textarea_rows' => 5,
+									'textarea_name' => 'els_slider_captions[' . $captions_count . '][name]',
+									'teeny'			=> true,
+									'wpautop'		=> false,
+									'quicktags'		=> array(
+										'buttons' => 'strong,em,link,block,ul,ol,li,close',
+									),
+									'tinymce'       => array(
+										'setup' => 'function( editor ) {' .
+											'
+											// Preview caption on change of caption content.
+											editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } ),
+											// Preview first caption content on loading page.
+											editor.on( "init", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); if ( 1 === captionId ) { ElsCaptionConfiguration.captionsPreview( captionId ); } } );
+											'
+										. '}',
+										'forced_root_block' => false,
+									),
 								);
+								if ( version_compare( $wp_version, '3.9', '<' ) ) {
+									$editor_args['tinymce'] = array(
+										'setup' => 'function( editor ) {' .
+											'
+											// Preview caption on change of caption content.
+											editor.onChange.add( function( ed, l ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } ),
+											// Preview first caption content on loading page.
+											editor.onInit.add( function( ed, l ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); if ( 1 === captionId ) { ElsCaptionConfiguration.captionsPreview( captionId ); } } );
+											'
+										. '}',
+										'forced_root_block' => false,
+									);
+								}
+								wp_editor( stripslashes( $caption_detail['name'] ), 'caption_editor_' . $captions_count, $editor_args );
 								?>
 							</div>
 						</div>
@@ -439,26 +453,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div id="caption_detail_0">
 					<div class="caption_content">
 						<?php
-						wp_editor( '', 'caption_editor_0', array(
-								'media_buttons' => false,
-								'textarea_rows' => 5,
-								'textarea_name' => 'els_slider_captions[0][name]',
-								'teeny'			=> true,
-								'wpautop'		=> false,
-								'quicktags'		=> array(
-									'buttons' => 'strong,em,link,block,ul,ol,li,close',
-								),
-								'tinymce'		=> array(
-									'setup' => 'function( editor ) {' .
-										'
-										// Preview caption on change of caption content.
-										editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );
-										'
-									. '}',
-									'forced_root_block' => false,
-								)
-							)
+						$editor_args = array(
+							'media_buttons' => false,
+							'textarea_rows' => 5,
+							'textarea_name' => 'els_slider_captions[0][name]',
+							'teeny'			=> true,
+							'wpautop'		=> false,
+							'quicktags'		=> array(
+								'buttons' => 'strong,em,link,block,ul,ol,li,close',
+							),
+							'tinymce'		=> array(
+								'setup' => 'function( editor ) {' .
+									'
+									// Preview caption on change of caption content.
+									editor.on( "change", function( e ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );
+									'
+								. '}',
+								'forced_root_block' => false,
+							),
 						);
+						if ( version_compare( $wp_version, '3.9', '<' ) ) {
+							$editor_args['tinymce'] = array(
+								'setup' => 'function( editor ) {' .
+									'
+									// Preview caption on change of caption content.
+									editor.onChange.add( function( ed, l ) { var captionId = jQuery( \'#\' + this.id ).closest( \'div.caption_spec_tabs\' ).data( \'key\' ); ElsCaptionConfiguration.captionsPreview( captionId ); } );
+									'
+								. '}',
+								'forced_root_block' => false,
+							);
+						}
+						wp_editor( '', 'caption_editor_0', $editor_args );
 						?>
 					</div>
 				</div>
