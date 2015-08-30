@@ -113,6 +113,10 @@ class ELS_Admin {
 		 * The class responsible for preview sliders in admin area.
 		 */
 		require_once $this->get_path() . 'class-els-admin-slider-preview.php';
+		/**
+		 * Welcome pages controller of the plugin.
+		 */
+		require_once $this->get_path() . 'class-els-admin-welcome.php';
 	}
 
 	/**
@@ -137,6 +141,8 @@ class ELS_Admin {
 		new ELS_Admin_Editor( $this->loader );
 		// Hooks for plugin admin menus.
 		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
+		// Hooks for welcome pages of the plugin.
+		new ELS_Admin_Welcome( $this->loader );
 	}
 
 	/**

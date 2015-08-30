@@ -30,7 +30,8 @@ class ELS_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+		// Add the transient to redirect
+		set_transient( '_els_activation_redirect', true, 30 );
 	}
 
 }
