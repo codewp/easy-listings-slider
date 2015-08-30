@@ -67,7 +67,8 @@ class ELS_Admin_Post_Types {
 					'has_archive'     => false,
 					'rewrite'         => false,
 					'query_var'       => false,
-					'supports'        => apply_filters( 'els_slider_support', array( 'title' ) )
+					'supports'        => apply_filters( 'els_slider_support', array( 'title' ) ),
+					'menu_icon'		  => 'dashicons-slides',
 				)
 			)
 		);
