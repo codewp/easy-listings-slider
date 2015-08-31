@@ -126,8 +126,11 @@ class ELS_Admin {
 	 * @return void
 	 */
 	public function define_hooks() {
+		// Actions.
 		$this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
+		// Filters.
+		$this->loader->add_filter( 'plugin_row_meta', $this, 'plugin_row_meta_links', 10, 2 );
 
 		// Hooks for post types.
 		new ELS_Admin_Post_types( $this->loader );
@@ -243,6 +246,26 @@ class ELS_Admin {
 		wp_enqueue_script( 'jquery-tiptip', plugin_dir_url( __FILE__ ) . 'js/jquery-tiptip/jquery.tipTip' . $suffix . '.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( 'els-admin-globals', plugin_dir_url( __FILE__ ) . 'js/els-admin-globals' . $suffix . '.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin' . $suffix . '.js', array( 'jquery' ), $this->version, false );
+	}
+
+	/**
+	 * Plugin row meta links
+	 * This function adds additional links below the plugin in admin plugins page.
+	 *
+	 * @since  1.0.0
+	 * @param  array  $links 	The array having default links for the plugin.
+	 * @param  string $file 	The name of the plugin file.
+	 * @return array  $links 	Plugin default links and specific links.
+	 */
+	public function plugin_row_meta_links( $links, $file ) {
+		if ( false !== strpos( $file, 'easy-listings-slider.php' ) ) {
+			$plugin_links = array(
+				'<a href="' . admin_url( 'index.php?page=els-getting-started' ) . '">' . esc_html__( 'Getting Started', 'els' ) . '</a>',
+			);
+			$links = array_merge( $links, $plugin_links );
+		}
+
+		return $links;
 	}
 
 	/**
