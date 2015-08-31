@@ -36,7 +36,13 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 	public function output( $post ) {
 		$this->register_scripts();
 		$slider = new ELS_Slider( $post->ID );
-		$this->render_view( 'metaboxes.slider-data', array( 'slider' => $slider ) );
+		$this->render_view(
+			'metaboxes.slider-data',
+			array(
+				'slider'     => $slider,
+				'images_url' => $this->get_images_url(),
+			)
+		);
 	}
 
 	/**

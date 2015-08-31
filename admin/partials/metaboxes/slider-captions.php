@@ -162,6 +162,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
+									<img class="help_tip" data-tip="<?php _e( 'Caption play in transition type', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 								</div>
 							</div>
 							<div class="row">
@@ -180,6 +181,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										)
 									);
 									?>
+									<img class="help_tip" data-tip="<?php _e( 'Caption play out transition type', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 								</div>
 							</div>
 						</div>
@@ -198,6 +200,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
+									<img class="help_tip" data-tip="<?php _e( 'Controling position of the caption by changing it\'s X offset', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 								</div>
 							</div>
 							<div class="row">
@@ -214,6 +217,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									);
 									echo ' ' . __( 'px', 'els' );
 									?>
+									<img class="help_tip" data-tip="<?php _e( 'Controling position of the caption by changing it\'s Y offset', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 								</div>
 							</div>
 							<div class="row">
@@ -479,6 +483,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							?>
+							<img class="help_tip" data-tip="<?php _e( 'Caption play in transition type', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 						</div>
 					</div>
 					<div class="row">
@@ -497,6 +502,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								)
 							);
 							?>
+							<img class="help_tip" data-tip="<?php _e( 'Caption play out transition type', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 						</div>
 					</div>
 				</div>
@@ -515,6 +521,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
+							<img class="help_tip" data-tip="<?php _e( 'Controling position of the caption by changing it\'s X offset', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 						</div>
 					</div>
 					<div class="row">
@@ -531,6 +538,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							);
 							echo ' ' . __( 'px', 'els' );
 							?>
+							<img class="help_tip" data-tip="<?php _e( 'Controling position of the caption by changing it\'s Y offset', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 						</div>
 					</div>
 					<div class="row">

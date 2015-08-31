@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * @var ELS_Slider $slider
+ * @var string     $images_url
  */
 
 wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
@@ -31,6 +32,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 						}
 						?>
 					</select>
+					<img class="help_tip" data-tip="<?php _e( 'Types of slides that should be shown in the slider', 'els' ) ?>" src="<?php echo $images_url ?>help.png" height="16" width="16" />
 				</div>
 			</div>
 			<div class="row">
@@ -53,6 +55,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 				</div>
 				<div class="col-value">
 					<input type="text" id="slider_container_id" name="slider_container_id" value="<?php echo esc_attr( $slider->get_container_id() ) ?>" />
+					<img class="help_tip" data-tip="<?php _e( 'Slider HTML element id attribute, this field is optional', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 				</div>
 			</div>
 			<div class="row">
@@ -61,6 +64,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 				</div>
 				<div class="col-value">
 					<input type="number" id="slider_width" name="slider_width" value="<?php echo esc_attr( $slider->get_width() ) ?>">
+					<img class="help_tip" data-tip="<?php _e( 'Slider width in pixel', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 				</div>
 			</div>
 			<div class="row">
@@ -69,6 +73,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 				</div>
 				<div class="col-value">
 					<input type="number" id="slider_height" name="slider_height" value="<?php echo esc_attr( $slider->get_height() ) ?>">
+					<img class="help_tip" data-tip="<?php _e( 'Slider height in pixel', 'els' ) ?>" src="<?php echo $images_url ?>help.png" width="16" height="16" />
 				</div>
 			</div>
 			<div class="row">
@@ -91,6 +96,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 					<input type="radio" name="slider_fill_mode" id="slider_fill_mode_contain_large" value="5" <?php checked( $slider->get_fill_mode(), 5 ) ?> />
 					<label for="slider_fill_mode_contain_large"><?php _e( 'Contain for large image and actual size for small image', 'els' ) ?></label>
 					<br/>
+					<p class="description"><?php _e( 'How to fill content of slider with images?', 'els' ) ?></p>
 				</div>
 			</div>
 		</div>
@@ -106,6 +112,7 @@ wp_nonce_field( 'els_save_data', 'els_meta_nonce' );
 					<input type="radio" name="auto_play" id="auto_play_on" value="1" <?php checked( $slider->get_auto_play(), true ) ?>>
 					<label for="auto_play_on"><?php _e( 'On', 'els' ) ?></label>
 					<br/>
+					<p class="description"><?php _e( 'This feature will automatically playes slides inside slider if enabled.', 'els' ) ?></p>
 				</div>
 			</div>
 			<div class="row">

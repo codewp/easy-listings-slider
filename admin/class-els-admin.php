@@ -240,6 +240,7 @@ class ELS_Admin {
 			wp_enqueue_script( 'wp-color-picker' );
 		}
 
+		wp_enqueue_script( 'jquery-tiptip', plugin_dir_url( __FILE__ ) . 'js/jquery-tiptip/jquery.tipTip' . $suffix . '.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( 'els-admin-globals', plugin_dir_url( __FILE__ ) . 'js/els-admin-globals' . $suffix . '.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-admin' . $suffix . '.js', array( 'jquery' ), $this->version, false );
 	}
