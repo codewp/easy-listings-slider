@@ -16,6 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ELS_Admin_Welcome extends ELS_Admin_Controller {
 
 	/**
+	 * Version of the plugin.
+	 *
+	 * @since 1.0.0
+	 * @var   string
+	 */
+	private $plugin_version;
+
+	/**
 	 * @var   string The capability users should have to view the page
 	 *
 	 * @since 1.0.0
@@ -28,7 +36,8 @@ class ELS_Admin_Welcome extends ELS_Admin_Controller {
 	 * @since 1.0.0
 	 * @param ELS_Loader $loader
 	 */
-	public function __construct( ELS_Loader $loader ) {
+	public function __construct( ELS_Loader $loader, $plugin_version ) {
+		$this->plugin_version = $plugin_version;
 		$loader->add_action( 'admin_menu', $this, 'admin_menus' );
 		$loader->add_action( 'admin_init', $this, 'welcome' );
 	}
@@ -52,13 +61,50 @@ class ELS_Admin_Welcome extends ELS_Admin_Controller {
 	}
 
 	/**
+	 * About easy listings slider.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	private function easy_listings_slider() {
+		$this->render_view(
+			'welcome.easy-listings-slider',
+			array( 'plugin_version' => $this->plugin_version )
+		);
+	}
+
+	/**
+	 * Tabs of the welcome.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	private function tabs() {
+		$selected = isset( $_GET['page'] ) ? $_GET['page'] : 'els-getting-started';
+		?>
+		<h2 class="nav-tab-wrapper">
+			<a class="nav-tab <?php echo $selected == 'els-getting-started' ? 'nav-tab-active' : ''; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'els-getting-started' ), 'index.php' ) ) ); ?>">
+				<?php _e( 'Getting Started', 'els' ); ?>
+			</a>
+		</h2>
+		<?php
+	}
+
+	/**
 	 * Renders getting started screen.
 	 *
 	 * @since  1.0.0
 	 * @return void
 	 */
 	public function getting_started_screen() {
-		$this->render_view( 'welcome.getting-started' );
+		echo '<div class="wrap about-wrap">';
+		$this->easy_listings_slider();
+		$this->tabs();
+		$this->render_view(
+			'welcome.getting-started',
+			array( 'images_url' => $this->get_images_url() )
+		);
+		echo '</div>';
 	}
 
 	/**

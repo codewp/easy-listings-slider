@@ -145,7 +145,7 @@ class ELS_Admin {
 		// Hooks for plugin admin menus.
 		$this->menu_manager = new ELS_Admin_Menu( $this->loader );
 		// Hooks for welcome pages of the plugin.
-		new ELS_Admin_Welcome( $this->loader );
+		new ELS_Admin_Welcome( $this->loader, $this->version );
 	}
 
 	/**
