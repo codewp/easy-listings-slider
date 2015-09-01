@@ -40,6 +40,7 @@ class ELS_Admin_Welcome extends ELS_Admin_Controller {
 		$this->plugin_version = $plugin_version;
 		$loader->add_action( 'admin_menu', $this, 'admin_menus' );
 		$loader->add_action( 'admin_init', $this, 'welcome' );
+		$loader->add_action( 'wp_ajax_send_subscribe_email', $this, 'send_subscribe_email' );
 	}
 
 	/**
@@ -91,6 +92,53 @@ class ELS_Admin_Welcome extends ELS_Admin_Controller {
 	}
 
 	/**
+	 * Subscribe view.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	private function subscribe() {
+		if ( ! get_option( '_els_subscribe', false ) ) {
+			$this->render_view( 'welcome.subscribe' );
+		}
+	}
+
+	/**
+	 * Send subscription email.
+	 *
+	 * @since  1.0.0
+	 * @return void
+	 */
+	public function send_subscribe_email() {
+		if ( isset( $_POST['subscribe_nonce'] ) && wp_verify_nonce( $_POST['subscribe_nonce'], 'subscribe_email_send' ) ) {
+			if ( isset( $_POST['email'] ) && is_email( $_POST['email'] ) &&
+				isset( $_POST['name'] ) && strlen( trim( $_POST['name'] ) ) ) {
+				$response = wp_remote_post( 'https://fast-hollows-4459.herokuapp.com/send',
+					array(
+						'method'      => 'POST',
+						'timeout'     => 45,
+						'redirection' => 5,
+						'httpversion' => '1.0',
+						'blocking'    => true,
+						'headers'     => array(),
+						'body'        => array( 'name' => trim( $_POST['name'] ), 'email' => $_POST['email'], 'plugin' => 'easy-listings-slider' ),
+						'cookies'     => array()
+					)
+				);
+				if ( is_wp_error( $response ) ) {
+					die( json_encode( array( 'success' => '0', 'message' => __( 'Some error occurred in subscription.', 'els' ) ) ) );
+				} else {
+					// Setting subscription to true in order to doesn't show subscribe popup again.
+					update_option( '_els_subscribe', true );
+					die( json_encode( array( 'success' => '1', 'message' => __( 'Thank you for subscription.', 'els' ) ) ) );
+				}
+			} else {
+				die( json_encode( array( 'success' => '0', 'message' => __( 'Please validate entered name and email address.', 'els' ) ) ) );
+			}
+		}
+	}
+
+	/**
 	 * Renders getting started screen.
 	 *
 	 * @since  1.0.0
@@ -100,6 +148,7 @@ class ELS_Admin_Welcome extends ELS_Admin_Controller {
 		echo '<div class="wrap about-wrap">';
 		$this->easy_listings_slider();
 		$this->tabs();
+		$this->subscribe();
 		$this->render_view(
 			'welcome.getting-started',
 			array( 'images_url' => $this->get_images_url() )

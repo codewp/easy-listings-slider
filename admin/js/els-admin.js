@@ -179,6 +179,129 @@
 	 	    'delay' : 200
 	 	} );
 
+	 	// Subscribe.
+	 	var subscribe = {
+
+	 		/**
+	 		 * Initialize.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @return void
+	 		 */
+	 		init : function() {
+	 			this.openPopup();
+	 			this.closePopup();
+	 			this.subscribe();
+	 		},
+
+	 		/**
+	 		 * Opening subscribe popup.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @return void
+	 		 */
+	 		openPopup : function() {
+	 			$('[data-popup=popup-1]').fadeIn('slow');
+	 		},
+
+	 		/**
+	 		 * Closing subscribe popup.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @return void
+	 		 */
+	 		closePopup : function() {
+	 			$('[data-popup-close]').on('click', function(e)  {
+	 			    var targeted_popup_class = jQuery(this).attr('data-popup-close');
+	 			    $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+
+	 			    e.preventDefault();
+	 			});
+	 		},
+
+	 		/**
+	 		 * Subscription.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @return void
+	 		 */
+	 		subscribe : function() {
+	 			$('#subscribe').click(function(event) {
+	 				var validator = false;
+	 				if ( ! jQuery.trim( jQuery( '#name' ).val() ) ) {
+	 					jQuery( '#name' ).addClass('error-field');
+	 					validator = true;
+	 				} else {
+	 					jQuery( '#name' ).removeClass( 'error-field' );
+	 				}
+
+	 				if ( ! subscribe.validateEmail( $('#email').val() ) ) {
+	 					jQuery( '#email' ).addClass('error-field');
+	 					validator = true;
+	 				} else {
+	 					jQuery( '#email' ).removeClass( 'error-field' );
+	 				}
+
+	 				if ( ! validator ) {
+	 					subscribe.showMessage( 'Please wait...', 0 );
+	 					// Sending email.
+	 					$.ajax({
+	 						url: ajaxurl,
+	 						type: 'POST',
+	 						dataType: 'json',
+	 						data: {
+	 							action : 'send_subscribe_email',
+	 							subscribe_nonce : elsAdminData.subscribe_nonce,
+	 							name: jQuery.trim( jQuery( '#name' ).val() ),
+	 							email: $('#email').val()
+	 						},
+	 					})
+	 					.done(function( response ) {
+	 						subscribe.showMessage( response.message, response.success );
+	 						$('[data-popup=popup-1]').delay( 2500 ).fadeOut('slow');
+	 					})
+	 					.fail(function( response ) {
+	 						subscribe.showMessage( 'Some error occurred in subscription.', 0 );
+	 					});
+	 				}
+	 			});
+	 		},
+
+	 		/**
+	 		 * Validating email address.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @param  string email
+	 		 * @return boolean
+	 		 */
+	 		validateEmail : function( email ) {
+	 			var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	 			return regex.test( email );
+	 		},
+
+	 		/**
+	 		 * Showing information message on top of the popup.
+	 		 *
+	 		 * @since  1.0.0
+	 		 * @param  string message
+	 		 * @param  int type
+	 		 * @return void
+	 		 */
+	 		showMessage : function( message, type ) {
+		    	jQuery( '#popup-message' ).css( 'padding', '3px' );
+		    	jQuery( '#popup-message' ).html('');
+		    	jQuery('#popup-message' ).html( message );
+		    	jQuery( '#popup-message' ).show();
+		    	if ( 1 == type ) {
+		    		jQuery( '#popup-message' ).css( 'border', '1px solid rgb(60, 221, 60)' );
+		    	} else {
+		    		jQuery( '#popup-message' ).css( 'border', '1px solid rgb(221, 60, 91)' );
+		    	}
+		    }
+
+	 	};
+	 	subscribe.init();
+
 	 });
 
 })( jQuery );

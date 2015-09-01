@@ -222,3 +222,143 @@
     text-align: center;
     max-width: 150px;
 }
+
+/* Subscribe Styles */
+
+/* Outer */
+.popup {
+    width:100%;
+    height:100%;
+    display:none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    background:rgba(0,0,0,0.75);
+}
+
+/* Inner */
+.popup-inner {
+    max-width:700px;
+    width:90%;
+    padding:40px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+    /*box-shadow:0px 2px 6px rgba(0,0,0,1);*/
+    border-radius:3px;
+    background: rgb(21, 173, 212);
+    color: #fff;
+}
+
+/* Close Button */
+.popup-close {
+    width:30px;
+    height:30px;
+    padding-top:4px;
+    display:inline-block;
+    position:absolute;
+    top:0px;
+    right:0px;
+    transition:ease 0.25s all;
+    -webkit-transform:translate(50%, -50%);
+    transform:translate(50%, -50%);
+    border-radius:1000px;
+    background:rgba(0,0,0,0.8);
+    font-family:Arial, Sans-Serif;
+    font-size:20px;
+    text-align:center;
+    line-height:100%;
+    color:#fff;
+}
+
+.popup-close:hover {
+    -webkit-transform:translate(50%, -50%) rotate(180deg);
+    transform:translate(50%, -50%) rotate(180deg);
+    background:rgba(0,0,0,1);
+    text-decoration:none;
+}
+
+.popup-inner input[type="text"].error-field, .popup-inner input[type="email"].error-field {
+    border-color: red;
+    background-color: #F6D3D3;
+}
+
+.popup-inner input[type="email"], .popup-inner input[type="text"] {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) inset;
+    box-sizing: border-box;
+    font-family: Georgia,Times,"Times New Roman",serif;
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    transition: border-color 0s ease 0s;
+    width: 100%;
+}
+
+input.popup-input[type="text"], input.popup-input[type="email"] {
+    border-color: transparent;
+}
+
+.popup-inner input[type="email"]:focus, .popup-inner input[type="text"]:focus {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) inset, 0 0 5px rgba(0, 0, 0, 0.7);
+    outline: medium none;
+}
+
+.popup-inner h2 {
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    font-family: "Helvetica Neue","Segoe UI",Arial,sans-serif;
+    text-rendering: optimizelegibility;
+}
+
+.popup-inner p {
+    font-size: 1.125rem;
+    line-height: 1.55556;
+    margin-bottom: 1.5rem;
+    font-family: Georgia,Times,"Times New Roman",serif;
+}
+
+.popup-inner input, .popup-inner label, .popup-inner select {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* #Emerald Flat Button
+==================================================*/
+.emerald-flat-button {
+  position: relative;
+  vertical-align: top;
+  width: 40%;
+  height: 60px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #2ecc71;
+  border: 0;
+  border-bottom: 2px solid #28be68;
+  cursor: pointer;
+  box-shadow: inset 0 -2px #28be68;
+  margin-right: auto;
+  margin-left: auto;
+}
+.emerald-flat-button:active {
+  top: 1px;
+  outline: none;
+  box-shadow: none;
+}
+input[type=button]#subscribe {
+    float: left;
+    margin-left: 5%;
+}
+input[type=button]#close {
+    margin-right: 5%;
+}
