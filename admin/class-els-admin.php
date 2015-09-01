@@ -131,6 +131,8 @@ class ELS_Admin {
 		$this->loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
 		// Filters.
 		$this->loader->add_filter( 'plugin_row_meta', $this, 'plugin_row_meta_links', 10, 2 );
+		// Rate us on wordpress.org.
+		$this->loader->add_filter( 'admin_footer_text', $this, 'rate_us' );
 
 		// Hooks for post types.
 		new ELS_Admin_Post_types( $this->loader );
@@ -175,6 +177,11 @@ class ELS_Admin {
 
 		// Slider type admin page.
 		if ( 'els_slider' === $typenow ) {
+			$return = true;
+		}
+
+		// Welcome pages of the plugin.
+		if ( 'dashboard_page_els-getting-started' === $screen->id ) {
 			$return = true;
 		}
 
@@ -266,6 +273,25 @@ class ELS_Admin {
 		}
 
 		return $links;
+	}
+
+	/**
+	 * Add rating links to the admin dashboard
+	 *
+	 * @since  1.0.0
+	 * @param  string $footer_text The existing footer text
+	 * @return string
+	 */
+	public function rate_us( $footer_text ) {
+		if ( ! $this->is_admin_page() ) {
+			return $footer_text;
+		}
+
+		$rate_text = sprintf( __( 'Thank you for using <strong>Easy Listings Slider</strong>! Please <a href="%1$s" target="_blank">rate us</a> on <a href="%1$s" target="_blank">WordPress.org</a>', 'els' ),
+			'https://wordpress.org/support/view/plugin-reviews/easy-listings-slider?filter=5#postform'
+		);
+
+		return str_replace( '</span>', '', $footer_text ) . ' | ' . $rate_text . '</span>';
 	}
 
 	/**
