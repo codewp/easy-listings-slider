@@ -31,13 +31,8 @@ class ELS_Public_Single_Slider {
 	 * @param ELS_Loader $loader
 	 */
 	public function __construct( ELS_Loader $loader ) {
-		global $epl_settings;
-		$display_gallery = 0;
-		if ( ! empty( $epl_settings ) && isset( $epl_settings['display_single_gallery'] ) ) {
-			$display_gallery = $epl_settings['display_single_gallery'];
-		}
 		$this->els_settings = ELS_IOC::make( 'settings' );
-		if ( 1 == $display_gallery && $this->els_settings->get_slider_in_single_page() ) {
+		if ( $this->els_settings->get_slider_in_single_page() ) {
 			if ( remove_action( 'epl_property_gallery', 'epl_property_gallery' ) ) {
 				// Adding action for displaying gallery in slider.
 				$loader->add_action( 'epl_property_gallery', $this, 'display_single_listing_slider' );
