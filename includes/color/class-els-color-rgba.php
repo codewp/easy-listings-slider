@@ -51,8 +51,8 @@ class ELS_Color_RGBA {
 	 * @return string
 	 */
 	public function __toString() {
-		if ( ! empty( $this->r ) && ! empty( $this->g ) &&
-			! empty( $this->b ) && ! empty( $this->a ) ) {
+		if ( ! is_null( $this->r ) && ! is_null( $this->g ) &&
+			! is_null( $this->b ) && ! is_null( $this->a ) ) {
 			return 'rgba(' . $this->r . ',' . $this->g . ',' . $this->b . ',' . $this->a . ')';
 		}
 

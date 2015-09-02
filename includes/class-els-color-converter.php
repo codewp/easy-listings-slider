@@ -55,8 +55,8 @@ class ELS_Color_Converter {
 	 * @return string
 	 */
 	public function rgba_to_hex( ELS_Color_RGBA $rgba ) {
-		if ( ! empty( $rgba->get_r() ) && ! empty( $rgba->get_g() ) &&
-			! empty( $rgba->get_b() ) ) {
+		if ( null !== $rgba->get_r() && null !== $rgba->get_g() &&
+			null !== $rgba->get_b() ) {
 			$hex = '#';
 			$hex .= str_pad( dechex( $rgba->get_r() ), 2, 0, STR_PAD_LEFT );
 			$hex .= str_pad( dechex( $rgba->get_g() ), 2, 0, STR_PAD_LEFT );
