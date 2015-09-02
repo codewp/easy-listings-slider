@@ -46,7 +46,7 @@ class ELS_Admin_Slider_Preview {
 	 * @return void
 	 */
 	public function preview() {
-		$slider = absint( $_GET['slider'] );
+		$slider = ! empty( $_GET['slider'] ) ? absint( $_GET['slider'] ) : 0;
 		if ( $slider && 'els_slider' === get_post_type( $slider ) ) {
 			$slider       = new ELS_Slider( $slider );
 			$jssor_slider = ELS_IOC::make( 'slider_factory' )->get_jssor_slider( $slider );
