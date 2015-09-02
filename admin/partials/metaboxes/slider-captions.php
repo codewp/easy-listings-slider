@@ -474,7 +474,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div class="col-value">
 							<?php
 							echo $html->select( array(
-									'name'             => 'els_slider_captions[' . $captions_count . '][play_in_transition_type]',
+									'name'             => 'els_slider_captions[0][play_in_transition_type]',
 									'options'          => $caption_transition_types,
 									'selected'		   => '*',
 									'show_option_none' => null,
@@ -493,7 +493,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div class="col-value">
 							<?php
 							echo $html->select( array(
-									'name'             => 'els_slider_captions[' . $captions_count . '][play_out_transition_type]',
+									'name'             => 'els_slider_captions[0][play_out_transition_type]',
 									'options'          => $caption_transition_types,
 									'selected'		   => '*',
 									'show_option_none' => null,
