@@ -401,8 +401,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</div>
 								<div class="col-value">
 									<?php
-									$color = $color_converter->rgba_to_hex( $caption_detail['color'] );
-									$color = strlen( $color ) ? $color : '#000000';
+									$color = '#000000';
+									if ( ! empty( $caption_detail['color'] ) ) {
+										$color = $color_converter->rgba_to_hex( $caption_detail['color'] );
+									}
 									echo $html->color_picker( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][color]',
 											'value' => esc_attr( $color ),
@@ -418,9 +420,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 								</div>
 								<div class="col-value">
 									<?php
+									$background_color = '';
+									if ( ! empty( $caption_detail['background_color'] ) ) {
+										$background_color = $color_converter->rgba_to_hex( $caption_detail['background_color'] );
+									}
 									echo $html->color_picker( array(
 											'name'  => 'els_slider_captions[' . $captions_count . '][background_color]',
-											'value' => esc_attr( $color_converter->rgba_to_hex( $caption_detail['background_color'] ) ),
+											'value' => esc_attr( $background_color ),
 											'class' => 'els_repeatable_text_field',
 										)
 									);
