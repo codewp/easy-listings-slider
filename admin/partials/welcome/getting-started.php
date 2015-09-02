@@ -54,9 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<h3><?php _e( 'Single Listing Gallery Slider', 'els' );?></h3>
 	<div class="feature-section">
 		<h4><?php _e( 'How to enable single listing gallery slider', 'els' ) ?></h4>
-		<img src="<?php echo esc_url( $images_url ) ?>welcome/image-gallery.png" class="els-welcome-screenshots" />
-		<p><?php printf( __( 'First of all you should go to <a href="%s">Easy Property Listings Settings</a> and check that is <strong>Automatically display image gallery</strong> feature enabled or not, for displaying slider in single listing page this feature should be enabled.', 'els' ), admin_url( 'admin.php?page=epl-settings' ) ) ?></p>
-		<p><?php printf( __( 'After you should go to <a href="%s">Easy Listings Slider Settings</a> and check that is <strong>Display slider in single listing page</strong> feature enabled. By default this feature is enabled by <strong>Easy Listings Slider</strong>.', 'els' ), admin_url( 'edit.php?post_type=els_slider&page=els-settings' ) ) ?></p>
+		<p><?php printf( __( 'Go to <a href="%s">Easy Listings Slider Settings</a> and check that is <strong>Display slider in single listing page</strong> feature enabled. By default this feature is enabled by <strong>Easy Listings Slider</strong>.', 'els' ), admin_url( 'edit.php?post_type=els_slider&page=els-settings' ) ) ?></p>
 		<h4><?php _e( 'How to add gallery images to single listing page slider', 'els' ) ?></h4>
 		<img src="<?php echo esc_url( $images_url ) ?>welcome/listing-gallery.png" class="els-welcome-screenshots" />
 		<p><?php _e( 'After activating Easy Listings Slider a new metabox will add to Listings page as shown in the above image. By means of this metabox you can add images to listing gallery and Easy Listings Slider will show this gallery as slider in single listing page.', 'els' ) ?></p>
