@@ -71,7 +71,8 @@ class ELS_Settings {
 	 * @return boolean
 	 */
 	public function get_slider_in_single_page() {
-		return 'disabled' === $this->plugin_settings['slider_in_single_page'] ? false : true;
+		return isset( $this->plugin_settings['slider_in_single_page'] ) &&
+			'disabled' === $this->plugin_settings['slider_in_single_page'] ? false : true;
 	}
 
 	/**
@@ -125,7 +126,8 @@ class ELS_Settings {
 	 * @return boolean
 	 */
 	public function get_single_page_slider_autoplay() {
-		return 'disabled' === $this->plugin_settings['single_page_slider_autoplay'] ? false : true;
+		return isset( $this->plugin_settings['single_page_slider_autoplay'] ) &&
+			'disabled' === $this->plugin_settings['single_page_slider_autoplay'] ? false : true;
 	}
 
 	/**
