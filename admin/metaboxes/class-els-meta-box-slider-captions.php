@@ -87,40 +87,43 @@ class ELS_Meta_Box_Slider_Captions extends ELS_Admin_Controller {
 			$caption_transition_types = array_keys( $caption_transition_types );
 
 			foreach ( $_POST['els_slider_captions'] as $caption ) {
-				$sanitized_caption                 = array();
+				$sanitized_caption         = array();
 				// Detail fields.
-				$sanitized_caption['name']         = wp_kses_post( $caption['name'] );
-				// Transition fields.
-				if ( in_array( $caption['play_in_transition_type'], $caption_transition_types ) ) {
-					$sanitized_caption['play_in_transition_type'] = $caption['play_in_transition_type'];
-				} else {
-					$sanitized_caption['play_in_transition_type'] = $caption_transition_types[0];
-				}
-
-				if ( in_array( $caption['play_out_transition_type'], $caption_transition_types ) ) {
-					$sanitized_caption['play_out_transition_type'] = $caption['play_out_transition_type'];
-				} else {
-					$sanitized_caption['play_out_transition_type'] = $caption_transition_types[0];
-				}
-				// Style fields.
-				$sanitized_caption['slide_number']     = absint( $caption['slide_number'] );
-				$sanitized_caption['offsetx']          = (int) $caption['offsetx'];
-				$sanitized_caption['offsety']          = (int) $caption['offsety'];
-				$sanitized_caption['width']            = absint( $caption['width'] );
-				$sanitized_caption['height']           = absint( $caption['height'] );
-				$sanitized_caption['line_height']	   = absint( $caption['line_height'] ) > 8 ? absint( $caption['line_height'] ) : 30;
-				$sanitized_caption['padding']          = absint( $caption['padding'] );
-				$sanitized_caption['font_size']        = absint( $caption['font_size'] ) > 0 ? absint( $caption['font_size'] ) : 20;
-				$sanitized_caption['font_family']	   = sanitize_text_field( $caption['font_family'] );
-				$sanitized_caption['font_weight']	   = in_array( $caption['font_weight'], array( 'normal', 100, 200, 300, 400, 500, 600, 700, 800, 900 ) ) ? $caption['font_weight'] : 'normal';
-				$sanitized_caption['font_style']	   = in_array( $caption['font_style'], array( 'normal', 'italic' ) ) ? $caption['font_style'] : 'normal';
-				$sanitized_caption['text_align']       = in_array( $caption['text_align'], array( 'left', 'center', 'right' ) ) ? $caption['text_align'] : 'center';
-				$sanitized_caption['color']            = $validator->validate_color( $caption['color'] ) ? $caption['color'] : '#000000';
-				$sanitized_caption['color']			   = $color_converter->hex_to_rgba( $sanitized_caption['color'] );
-				$sanitized_caption['background_color'] = $validator->validate_color( $caption['background_color'] ) ? $caption['background_color'] : '';
-				$sanitized_caption['background_color'] = $color_converter->hex_to_rgba( $sanitized_caption['background_color'], 60 );
-
+				$sanitized_caption['name'] = ! empty( $caption['name'] ) ? wp_kses_post( $caption['name'] ) : '';
 				if ( strlen( $sanitized_caption['name'] ) ) {
+					// Transition fields.
+					if ( ! empty ( $caption['play_in_transition_type'] ) && in_array( $caption['play_in_transition_type'], $caption_transition_types ) ) {
+						$sanitized_caption['play_in_transition_type'] = $caption['play_in_transition_type'];
+					} else {
+						$sanitized_caption['play_in_transition_type'] = $caption_transition_types[0];
+					}
+
+					if ( ! empty( $caption['play_out_transition_type'] ) && in_array( $caption['play_out_transition_type'], $caption_transition_types ) ) {
+						$sanitized_caption['play_out_transition_type'] = $caption['play_out_transition_type'];
+					} else {
+						$sanitized_caption['play_out_transition_type'] = $caption_transition_types[0];
+					}
+					// Style fields.
+					$sanitized_caption['slide_number']     = isset( $caption['slide_number'] ) ? absint( $caption['slide_number'] ) : 0;
+					$sanitized_caption['offsetx']          = isset( $caption['offsetx'] ) ? (int) $caption['offsetx'] : 250;
+					$sanitized_caption['offsety']          = isset( $caption['offsety'] ) ? (int) $caption['offsety'] : 250;
+					$sanitized_caption['width']            = ! empty( $caption['width'] ) ? absint( $caption['width'] ) : 300;
+					$sanitized_caption['height']           = ! empty( $caption['height'] ) ? absint( $caption['height'] ) : 100;
+					$sanitized_caption['line_height']	   = ! empty( $caption['line_height'] ) && absint( $caption['line_height'] ) > 8 ? absint( $caption['line_height'] ) : 30;
+					$sanitized_caption['padding']          = isset( $caption['padding'] ) ? (int) $caption['padding'] : 0;
+					$sanitized_caption['font_size']        = ! empty( $caption['font_size'] ) && absint( $caption['font_size'] ) > 0 ? absint( $caption['font_size'] ) : 20;
+					$sanitized_caption['font_family']	   = ! empty( $caption['font_family'] ) ? sanitize_text_field( $caption['font_family'] ) : 'Tahoma';
+					$sanitized_caption['font_weight']	   = ! empty( $caption['font_weight'] ) && in_array( $caption['font_weight'], array( 'normal', 100, 200, 300, 400, 500, 600, 700, 800, 900 ) ) ? $caption['font_weight'] : 'normal';
+					$sanitized_caption['font_style']	   = ! empty( $caption['font_style'] ) && in_array( $caption['font_style'], array( 'normal', 'italic' ) ) ? $caption['font_style'] : 'normal';
+					$sanitized_caption['text_align']       = ! empty( $caption['text_align'] ) && in_array( $caption['text_align'], array( 'left', 'center', 'right' ) ) ? $caption['text_align'] : 'center';
+					$sanitized_caption['color']            = ! empty( $caption['color'] ) && $validator->validate_color( $caption['color'] ) ? $caption['color'] : '#000000';
+					$sanitized_caption['color']			   = $color_converter->hex_to_rgba( $sanitized_caption['color'] );
+					$sanitized_caption['background_color'] = ! empty( $caption['background_color'] ) && $validator->validate_color( $caption['background_color'] ) ? $caption['background_color'] : '';
+					if ( ! empty( $sanitized_caption['background_color'] ) ) {
+						$sanitized_caption['background_color'] = $color_converter->hex_to_rgba( $sanitized_caption['background_color'], 60 );
+					}
+
+					// Adding current caption to captions that should be save.
 					$captions[ $sanitized_caption['slide_number'] ][] = $sanitized_caption;
 				}
 			}
