@@ -168,8 +168,9 @@ class ELS_Admin {
 		$return = false;
 		$screen = get_current_screen();
 
-		$epl_active_post_types = array_keys( epl_get_active_post_types() );
+		$epl_active_post_types = epl_get_active_post_types();
 		if ( count( $epl_active_post_types ) )  {
+			$epl_active_post_types = array_keys( epl_get_active_post_types() );
 			if ( in_array( $typenow, $epl_active_post_types ) ) {
 				$return = true;
 			}
