@@ -1,114 +1,65 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+=== Easy Listings Slider ===
+Contributors: c0dezer0
+Donate link: http://codewp.github.io/
+Tags: easy property listings, epl, easy property listings extension, easy property listings extensions, easy property listings slider, featured listings slider, epl extension, epl extensions, epl slider, epl featured listings slider, property listings, property management, real estate, real estate connected, property, listings, rental, commercial, business, rural, land, residential, property listings, property management, realtor, broker, australia, wp-property, wp property, wp rentals, wp-realestate, wp real estate, property, slider, easy listings slider, els, jssor, jssor slider, wp slider, wp-slider
+Requires at least: 3.9
+Tested up to: 4.3
+Stable tag: 1.0.0 Beta
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Easy to use and advanced slider extension for Easy Property Listings Wordpress plugin.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+Easy Listings Slider is an easy to use, advanced and free slider extension for Easy Property Listings which allows site owners to add sliders to their site. Also this plugin allows to creating sliders from listings like creating sliders for featured listings.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+This extension also can shows slider by means of listing gallery in single listing page.
 
-A few notes about the sections above:
+Requires [Easy Property Listings version 1.3 and above](https://wordpress.org/plugins/easy-property-listings/)
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+Features of the plugin include:
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* Shortcode for sliders.
+* Slider in the single listing page.
+* Adds gallery metabox to listings.
+* Slider for featured listings.
+* Slider for specific listings.
+* Built in documentation and how to use.
+* Cross browser support.
+* Fully Responsive.
+* Responsive at realtime, scale smoothly with no delay.
+* Best performance slider.
+* Auto Play with Timing Options.
+* Captions support with effects/transitions.
+* Unlimited captions.
+* Vertical and Horizontal Direction Navigation.
+* Multiple sliders in one page.
+* Arrow key navitation, navigate slider by click keyboard arrow left/right
+* Ability to customize slider size.
+* Compatible with Easy Property Listings version 1.3 and above.
+* A fast and efficient plugin written using WordPress standards.
+* Extremely user friendly admin panel.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
-
-== Frequently Asked Questions ==
-
-= A question that someone might have =
-
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+1. Upload `easy-listings-slider` to the `/wp-content/plugins/` directory.
+2. Activate `easy-property-listings` in your wordpress site if it is not activated already.
+3. Activate `easy-listings-slider` through the 'Plugins' menu in WordPress.
+4. After activating this plugin getting-started page will shown and explains how to use the plugin in no time.
+5. For access getting-started page there is a link for this page in Wordpress plugins page under Easy Listings Slider plugin.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Sliders overview
+2. Slider configuration
+3. Slider captions
+4. Slider preview
+5. Single listing page slider settings
+6. Single listing page slider
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= 1.0.0 Beta =
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+* Beta release of the plugin.
