@@ -1,6 +1,6 @@
 === Easy Listings Slider ===
 Contributors: c0dezer0
-Donate link: http://codewp.github.io/
+Donate link: http://codewp.github.io/easy-listings-slider
 Tags: easy property listings, epl, easy property listings extension, easy property listings extensions, easy property listings slider, featured listings slider, epl extension, epl extensions, epl slider, epl featured listings slider, property listings, property management, real estate, real estate connected, property, listings, rental, commercial, business, rural, land, residential, property listings, property management, realtor, broker, australia, wp-property, wp property, wp rentals, wp-realestate, wp real estate, property, slider, easy listings slider, els, jssor, jssor slider, wp slider, wp-slider
 Requires at least: 3.9
 Tested up to: 4.3

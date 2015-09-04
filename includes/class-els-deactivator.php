@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://example.com
+ * @link       http://codewp.github.io/easy-listings-slider
  * @since      1.0.0
  *
  * @package    Easy_Listings_Slider

@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://codewp.github.io/
+ * @link              http://codewp.github.io/easy-listings-slider
  * @since             1.0.0
  * @package           Easy_Listings_Slider
  *
  * @wordpress-plugin
  * Plugin Name:       Easy Listings Slider
- * Plugin URI:        http://codewp.github.io/
+ * Plugin URI:        http://codewp.github.io/easy-listings-slider
  * Description:       Easy to use and advanced slider extension for Easy Property Listings plugin.
  * Version:           1.0.0 Beta
  * Author:            Taher Atashbar
- * Author URI:        http://codewp.github.io/
+ * Author URI:        http://codewp.github.io/easy-listings-slider
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       els

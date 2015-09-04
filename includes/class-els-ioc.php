@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Inversion of control for plugin.
  *
- * @link
+ * @link       http://codewp.github.io/easy-listings-slider
  * @since      1.0.0
  *
  * @package    Easy_Listings_Slider
