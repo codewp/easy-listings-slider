@@ -54,7 +54,11 @@ class ELS_Meta_Box_Slider_Data extends ELS_Admin_Controller {
 	private function register_scripts() {
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		// Registering scripts.
-		wp_enqueue_script( 'els-slider-metaboxes', $this->get_js_url() . 'els-slider-metaboxes' . $suffix . '.js',
+		/**
+		 * Do not use $suffix for below script because it has global window variable
+		 * that used in php files for adding some functionality to captions editor.
+		 */
+		wp_enqueue_script( 'els-slider-metaboxes', $this->get_js_url() . 'els-slider-metaboxes.js',
 			array( 'jquery-ui-tabs' ), false, true );
 		wp_localize_script( 'els-slider-metaboxes', 'els_slider',
 			array(
