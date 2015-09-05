@@ -51,7 +51,7 @@ if ( 1 === (int) $data['print_scripts'] ) {
                 echo '<div>';
                 echo wp_get_attachment_image( (int) $data['image_ids'][ $i ], 'large', false, array( 'u' => 'image' ) );
                 // output captions that should be shown in all of slides.
-                if ( count( $data['captions'][0] ) ) {
+                if ( ! empty( $data['captions'][0] ) ) {
                     foreach ( $data['captions'][0] as $caption ) {
                         echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) .
                             '" t2="' . esc_attr( $caption['play_out_transition_type'] ) .
@@ -74,7 +74,7 @@ if ( 1 === (int) $data['print_scripts'] ) {
                     }
                 }
                 // output captions that related to this slide.
-                if ( count( $data['captions'][ $i + 1 ] ) ) {
+                if ( ! empty( $data['captions'][ $i + 1 ] ) ) {
                     foreach ( $data['captions'][ $i + 1 ] as $caption ) {
                         echo '<div class="caption" u="caption" t="' . esc_attr( $caption['play_in_transition_type'] ) .
                             '" t2="' . esc_attr( $caption['play_out_transition_type'] ) .
