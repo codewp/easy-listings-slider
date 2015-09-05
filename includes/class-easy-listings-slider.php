@@ -170,6 +170,11 @@ class Easy_Listings_Slider {
 		require_once $this->get_path() . 'includes/class-els-color-converter.php';
 
 		/**
+		 * Base controller class of the plugin.
+		 */
+		require_once $this->get_path() . 'includes/class-els-controller.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once $this->get_path() . 'admin/class-els-admin.php';

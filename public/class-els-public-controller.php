@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author     Taher Atashbar <taher.atashbar@gmail.com>
  */
 
-class ELS_Public_Controller {
+class ELS_Public_Controller extends ELS_Controller {
 
 	/**
 	 * Rendering requested view.
@@ -25,19 +25,32 @@ class ELS_Public_Controller {
 	public function render_view( $view, array $variables = array() ) {
 		$view = trim( $view );
 		if ( strlen( $view ) ) {
-			if ( count( $variables ) ) {
-				extract( $variables, EXTR_OVERWRITE );
-			}
 			if ( strpos( $view, '.' ) !== false ) {
 				$view = str_replace( '.', '/', $view );
 			}
-			$path = plugin_dir_path( __FILE__ ) . 'partials/' . $view . '.php';
-			if ( file_exists( $path ) ) {
-				include $path;
-			} else {
-				echo 'File not found.';
-			}
+			$this->get_template_part( $view, null, true, $variables );
 		}
+	}
+
+	/**
+	 * Returns the template directory name.
+	 * Themes can filter this by using the els_public_templates_dir filter.
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public function get_theme_template_dir_name() {
+		return trailingslashit( apply_filters( 'els_public_templates_dir', 'els_templates/public' ) );
+	}
+
+	/**
+	 * Returns the path to the ELS admin templates directory
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	public function get_templates_dir() {
+		return plugin_dir_path( __FILE__ ) . 'partials';
 	}
 
 }
