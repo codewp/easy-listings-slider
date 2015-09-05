@@ -49,6 +49,20 @@ Features of the plugin include:
 4. After activating this plugin getting-started page will shown and explains how to use the plugin in no time.
 5. For access getting-started page there is a link for this page in Wordpress plugins page under Easy Listings Slider plugin.
 
+== Frequently Asked Questions ==
+
+= Where can I find Easy Listings Slider documentation and user guides? =
+
+After activating Easy Listings Slider a getting started page will shown to guide you how to use Easy Listings Slider for creating sliders, also if you want to access to getting started page twice time there is a link for this page in Wordpress plugins page under Easy Listings Slider plugin.
+
+= Will Easy Listings Slider work with my theme? =
+
+Easy Listings Slider works with any theme, including the default WordPress themes.
+
+= Where can I report bugs? =
+
+Bugs can be reported in [Easy Listings Slider Issues Page](https://github.com/codewp/easy-listings-slider/issues).
+
 == Screenshots ==
 
 1. Sliders overview
