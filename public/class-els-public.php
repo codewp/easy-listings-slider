@@ -130,8 +130,6 @@ class ELS_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/els-public.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -152,8 +150,6 @@ class ELS_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/els-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 
