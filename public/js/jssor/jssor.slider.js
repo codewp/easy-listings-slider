@@ -3830,6 +3830,45 @@ var $JssorCaptionSlider$ = window.$JssorCaptionSlider$ = function (container, ca
         var captionParentWidth = $Jssor$.$CssWidth(captionParent);
         var captionParentHeight = $Jssor$.$CssHeight(captionParent);
 
+        // captionItem Padding, Margin and Border properties.
+        var captionItemPaddingLeft   = parseFloat( captionItem.style['padding-left'] ) ? parseFloat( captionItem.style['padding-left'] ) : 0,
+            captionItemPaddingRight  = parseFloat( captionItem.style['padding-right'] ) ? parseFloat( captionItem.style['padding-right'] ) : 0,
+            captionItemPaddingTop    = parseFloat( captionItem.style['padding-top'] ) ? parseFloat( captionItem.style['padding-top'] ) : 0,
+            captionItemPaddingBottom = parseFloat( captionItem.style['padding-bottom'] ) ? parseFloat( captionItem.style['padding-bottom'] ) : 0,
+            captionItemMarginLeft    = parseFloat( captionItem.style['margin-left'] ) ? parseFloat( captionItem.style['margin-left'] ) : 0,
+            captionItemMarginRight   = parseFloat( captionItem.style['margin-right'] ) ? parseFloat( captionItem.style['margin-right'] ) : 0,
+            captionItemMarginTop     = parseFloat( captionItem.style['margin-top'] ) ? parseFloat( captionItem.style['margin-top'] ) : 0,
+            captionItemMarginBottom  = parseFloat( captionItem.style['margin-bottom'] ) ? parseFloat( captionItem.style['margin-bottom'] ) : 0,
+            captionItemBorderLeft    = parseFloat( captionItem.style['border-left-width']) ? parseFloat( captionItem.style['border-left-width'] ) : 0,
+            captionItemBorderRight   = parseFloat( captionItem.style['border-right-width']) ? parseFloat( captionItem.style['border-right-width'] ) : 0,
+            captionItemBorderTop     = parseFloat( captionItem.style['border-top-width']) ? parseFloat( captionItem.style['border-top-width'] ) : 0,
+            captionItemBorderBottom  = parseFloat( captionItem.style['border-bottom-width']) ? parseFloat( captionItem.style['border-bottom-width'] ) : 0;
+
+        // Adding margin to width of captionItem
+        if ( captionItemMarginLeft || captionItemMarginRight ) {
+            captionItemWidth += captionItemMarginLeft + captionItemMarginRight;
+        }
+        // Adding margin to height of captionItem
+        if ( captionItemMarginTop || captionItemMarginBottom ) {
+            captionItemHeight += captionItemMarginTop + captionItemMarginBottom;
+        }
+        // Adding border to width of captionItem
+        if ( captionItemBorderLeft || captionItemBorderRight ) {
+            captionItemWidth += captionItemBorderLeft + captionItemBorderRight;
+        }
+        // Adding border to height of captionItem
+        if ( captionItemBorderTop || captionItemBorderBottom ) {
+            captionItemHeight += captionItemBorderTop + captionItemBorderBottom;
+        }
+        // Adding padding to width of captionItem
+        if ( captionItemPaddingLeft || captionItemPaddingRight ) {
+            captionItemWidth += captionItemPaddingLeft + captionItemPaddingRight;
+        }
+        // Adding padding to height of captionItem
+        if ( captionItemPaddingTop || captionItemPaddingBottom ) {
+            captionItemHeight += captionItemPaddingTop + captionItemPaddingBottom;
+        }
+
         var fromStyles = {};
         var difStyles = {};
         var scaleClip = transition.$ScaleClip || 1;
