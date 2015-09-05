@@ -1,0 +1,995 @@
+# Copyright (C) 2015 Easy Listings Slider
+# This file is distributed under the same license as the Easy Listings Slider package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Easy Listings Slider 1.0.0 Beta\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/easy-listings-"
+"slider\n"
+"POT-Creation-Date: 2015-09-05 21:14:34+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/class-els-admin-menu.php:68
+msgid "Easy Listings Slider Settings"
+msgstr ""
+
+#: admin/class-els-admin-menu.php:69
+msgid "Settings"
+msgstr ""
+
+#: admin/class-els-admin-meta-boxes.php:70
+msgid "Listing Gallery"
+msgstr ""
+
+#: admin/class-els-admin-meta-boxes.php:74
+msgid "Slider Data"
+msgstr ""
+
+#: admin/class-els-admin-meta-boxes.php:76
+#: admin/partials/welcome/getting-started.php:20
+msgid "Slider Slides"
+msgstr ""
+
+#: admin/class-els-admin-meta-boxes.php:78
+#: admin/partials/welcome/getting-started.php:24
+msgid "Slider Captions"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:49
+msgid "Sliders"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:50
+msgid "Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:51
+msgctxt "Admin menu name"
+msgid "Sliders"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:52
+msgid "Add Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:53
+msgid "Add New Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:54
+msgid "Edit"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:55
+msgid "Edit Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:56
+msgid "New Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:57
+#: admin/class-els-admin-post-types.php:58
+msgid "View Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:59
+msgid "Search Sliders"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:60
+msgid "No Sliders found"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:61
+msgid "No Sliders found in trash"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:62
+msgid "Parent Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:87
+#: admin/partials/welcome/subscribe.php:14
+msgid "Name"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:88
+msgid "Shortcode"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:89
+msgid "Slides"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:90
+msgid "Type"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:91
+msgid "Action"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:92
+msgid "Date"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:135
+msgid "Preview Slider"
+msgstr ""
+
+#: admin/class-els-admin-post-types.php:136
+msgid "Preview"
+msgstr ""
+
+#: admin/class-els-admin-settings-html-elements.php:25
+msgid ""
+"The callback function used for the <strong>%s</strong> setting is missing."
+msgstr ""
+
+#: admin/class-els-admin-slider-preview.php:37
+msgid "Slider Preview"
+msgstr ""
+
+#: admin/class-els-admin-welcome.php:56 admin/class-els-admin-welcome.php:57
+msgid "Getting started"
+msgstr ""
+
+#: admin/class-els-admin-welcome.php:88 admin/class-els-admin.php:272
+msgid "Getting Started"
+msgstr ""
+
+#: admin/class-els-admin-welcome.php:129
+msgid "Some error occurred in subscription."
+msgstr ""
+
+#: admin/class-els-admin-welcome.php:133
+msgid "Thank you for subscription."
+msgstr ""
+
+#: admin/class-els-admin-welcome.php:136
+msgid "Please validate entered name and email address."
+msgstr ""
+
+#: admin/class-els-admin.php:292
+msgid ""
+"Thank you for using <strong>Easy Listings Slider</strong>! Please <a href="
+"\"%1$s\" target=\"_blank\">rate us</a> on <a href=\"%1$s\" target=\"_blank"
+"\">WordPress.org</a>"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:61
+#: admin/partials/metaboxes/slider-data.php:18
+msgid "General"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:129
+msgid "Display slider in single listing page"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:130
+msgid "This option will shows the slider in single listing page if enabled."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:134
+#: admin/menus/class-els-admin-settings-menu.php:188
+msgid "Enabled"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:135
+#: admin/menus/class-els-admin-settings-menu.php:189
+msgid "Disabled"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:140
+msgid "Theme of single page slider"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:141
+msgid "Single listing page slider theme"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:145
+#: includes/class-els-slider.php:253
+msgid "Thumbnail"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:146
+#: includes/class-els-slider.php:254
+msgid "Full Width"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:147
+#: includes/class-els-slider.php:255
+msgid "Introduction"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:153
+msgid "Width of single page slider"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:154
+msgid "Single listing page slider width in pixels."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:161
+msgid "Height of single page slider"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:162
+msgid "Single listing page slider height in pixels."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:169
+#: admin/partials/metaboxes/slider-data.php:81
+msgid "Fill mode"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:170
+msgid "How to fill content of slider by images?"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:174
+#: admin/partials/metaboxes/slider-data.php:85
+msgid "Stretch"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:175
+#: admin/partials/metaboxes/slider-data.php:88
+msgid "Contain (keep aspect ratio and put all inside slide)"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:176
+#: admin/partials/metaboxes/slider-data.php:91
+msgid "Cover (keep aspect ratio and cover whole slide)"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:177
+#: admin/partials/metaboxes/slider-data.php:94
+msgid "Actual size"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:178
+#: admin/partials/metaboxes/slider-data.php:97
+msgid "Contain for large image and actual size for small image"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:183
+#: admin/partials/metaboxes/slider-data.php:106
+msgid "Autoplay"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:184
+msgid ""
+"This feature will automatically playes slides if enabled in single listing "
+"page."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:194
+#: admin/partials/metaboxes/slider-data.php:120
+msgid "Autoplay interval"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:195
+msgid "Interval of autoplay in single listing page."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:202
+#: admin/partials/metaboxes/slider-data.php:128
+msgid "Slide duration"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:203
+msgid "Duration of slide in single listing page."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:210
+msgid "Single listing page slider loop"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:211
+msgid "Slider loop type in single listing page."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:215
+#: admin/partials/metaboxes/slider-data.php:140
+msgid "Stop"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:216
+#: admin/partials/metaboxes/slider-data.php:141
+msgid "Loop"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:217
+#: admin/partials/metaboxes/slider-data.php:142
+msgid "Rewind"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:222
+msgid "Single listing page drag orientation"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:223
+msgid "Drag orientation type in single listing page."
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:227
+#: admin/partials/metaboxes/slider-data.php:152
+msgid "No drag"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:228
+#: admin/partials/metaboxes/slider-data.php:153
+msgid "Horizental"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:229
+#: admin/partials/metaboxes/slider-data.php:154
+msgid "Vertical"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:230
+#: admin/partials/metaboxes/slider-data.php:155
+msgid "Either"
+msgstr ""
+
+#: admin/menus/class-els-admin-settings-menu.php:295
+msgid "Settings updated."
+msgstr ""
+
+#: admin/metaboxes/class-els-meta-box-slider-captions.php:145
+msgid "Random"
+msgstr ""
+
+#: admin/metaboxes/class-els-meta-box-slider-captions.php:146
+msgid "No"
+msgstr ""
+
+#: admin/metaboxes/class-els-meta-box-slider-data.php:65
+msgid "Add Listings to Slider"
+msgstr ""
+
+#: admin/partials/listings-list/empty.php:14
+msgid "There is not any listing to show."
+msgstr ""
+
+#: admin/partials/listings-list/filter.php:23
+#: admin/partials/listings-list/filter.php:27
+#: admin/partials/listings-list/filter.php:35
+msgid "All"
+msgstr ""
+
+#: admin/partials/listings-list/filter.php:24
+msgid "Featured"
+msgstr ""
+
+#: admin/partials/listings-list/filter.php:42
+msgid "Filter"
+msgstr ""
+
+#: admin/partials/listings-list/filter.php:47
+#: admin/partials/metaboxes/slider-slides.php:39
+msgid "Add to slider"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:24
+#: admin/partials/listings-list/list.php:111
+msgid "Select All"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:27
+#: admin/partials/listings-list/list.php:114
+msgid "Image"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:28
+#: admin/partials/listings-list/list.php:115
+msgid "Title"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:29
+#: admin/partials/listings-list/list.php:116
+msgid "Listing Details"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:30
+#: admin/partials/listings-list/list.php:117
+msgid "Status"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:40
+msgid "Select"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:73
+msgid "Beds"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:74
+msgid "Baths"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:80
+msgid "Room"
+msgstr ""
+
+#: admin/partials/listings-list/list.php:82
+msgid "Rooms"
+msgstr ""
+
+#: admin/partials/metaboxes/listing-gallery.php:30
+#: admin/partials/metaboxes/listing-gallery.php:43
+#: admin/partials/metaboxes/slider-slides.php:25
+#: admin/partials/metaboxes/slider-slides.php:39
+#: admin/partials/metaboxes/slider-slides.php:44
+msgid "Delete image"
+msgstr ""
+
+#: admin/partials/metaboxes/listing-gallery.php:30
+#: admin/partials/metaboxes/listing-gallery.php:44
+#: admin/partials/metaboxes/slider-slides.php:25
+#: admin/partials/metaboxes/slider-slides.php:40
+#: admin/partials/metaboxes/slider-slides.php:44
+msgid "Delete"
+msgstr ""
+
+#: admin/partials/metaboxes/listing-gallery.php:42
+msgid "Add Images to Listing Gallery"
+msgstr ""
+
+#: admin/partials/metaboxes/listing-gallery.php:43
+msgid "Add to gallery"
+msgstr ""
+
+#: admin/partials/metaboxes/listing-gallery.php:44
+msgid "Add listing gallery images"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:19
+msgid "Captions preview"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:26
+msgid "Slider captions:"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:32
+msgid "Caption Type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:33
+msgid "Slide number"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:47
+#: admin/partials/metaboxes/slider-captions.php:72
+msgid "Text"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:95
+msgid "Add New Caption"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:102
+msgid "Caption specification:"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:115
+#: admin/partials/metaboxes/slider-captions.php:445
+msgid "Content"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:116
+#: admin/partials/metaboxes/slider-captions.php:446
+msgid "Transition"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:117
+#: admin/partials/metaboxes/slider-captions.php:447
+msgid "Style"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:151
+#: admin/partials/metaboxes/slider-captions.php:478
+msgid "Play in transition type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:165
+#: admin/partials/metaboxes/slider-captions.php:492
+msgid "Caption play in transition type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:170
+#: admin/partials/metaboxes/slider-captions.php:497
+msgid "Play out transition type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:184
+#: admin/partials/metaboxes/slider-captions.php:511
+msgid "Caption play out transition type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:191
+#: admin/partials/metaboxes/slider-captions.php:518
+msgid "OffsetX"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:201
+#: admin/partials/metaboxes/slider-captions.php:218
+#: admin/partials/metaboxes/slider-captions.php:236
+#: admin/partials/metaboxes/slider-captions.php:253
+#: admin/partials/metaboxes/slider-captions.php:270
+#: admin/partials/metaboxes/slider-captions.php:287
+#: admin/partials/metaboxes/slider-captions.php:304
+#: admin/partials/metaboxes/slider-captions.php:528
+#: admin/partials/metaboxes/slider-captions.php:545
+#: admin/partials/metaboxes/slider-captions.php:563
+#: admin/partials/metaboxes/slider-captions.php:580
+#: admin/partials/metaboxes/slider-captions.php:597
+#: admin/partials/metaboxes/slider-captions.php:614
+#: admin/partials/metaboxes/slider-captions.php:631
+msgid "px"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:203
+#: admin/partials/metaboxes/slider-captions.php:530
+msgid "Controling position of the caption by changing it's X offset"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:208
+#: admin/partials/metaboxes/slider-captions.php:535
+msgid "OffsetY"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:220
+#: admin/partials/metaboxes/slider-captions.php:547
+msgid "Controling position of the caption by changing it's Y offset"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:225
+#: admin/partials/metaboxes/slider-captions.php:552
+msgid "Width"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:242
+#: admin/partials/metaboxes/slider-captions.php:569
+msgid "Height"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:259
+#: admin/partials/metaboxes/slider-captions.php:586
+msgid "Line height"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:276
+#: admin/partials/metaboxes/slider-captions.php:603
+msgid "Padding"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:293
+#: admin/partials/metaboxes/slider-captions.php:620
+msgid "Font size"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:310
+#: admin/partials/metaboxes/slider-captions.php:637
+msgid "Font family"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:328
+#: admin/partials/metaboxes/slider-captions.php:655
+msgid "Font weight"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:335
+#: admin/partials/metaboxes/slider-captions.php:364
+#: admin/partials/metaboxes/slider-captions.php:662
+#: admin/partials/metaboxes/slider-captions.php:691
+msgid "Normal"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:357
+#: admin/partials/metaboxes/slider-captions.php:684
+msgid "Font style"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:365
+#: admin/partials/metaboxes/slider-captions.php:692
+msgid "Italic"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:378
+#: admin/partials/metaboxes/slider-captions.php:705
+msgid "Text align"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:385
+#: admin/partials/metaboxes/slider-captions.php:712
+msgid "Left"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:386
+#: admin/partials/metaboxes/slider-captions.php:713
+msgid "Center"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:387
+#: admin/partials/metaboxes/slider-captions.php:714
+msgid "Right"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:400
+#: admin/partials/metaboxes/slider-captions.php:727
+msgid "Color"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-captions.php:419
+#: admin/partials/metaboxes/slider-captions.php:742
+msgid "Background color"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:19
+msgid "Navigation"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:24
+msgid "Slider type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:35
+msgid "Types of slides that should be shown in the slider"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:40
+msgid "Slider theme"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:54
+msgid "Slider container id"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:58
+msgid "Slider HTML element id attribute, this field is optional"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:63
+msgid "Slider width"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:67
+msgid "Slider width in pixel"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:72
+msgid "Slider height"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:76
+msgid "Slider height in pixel"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:99
+msgid "How to fill content of slider with images?"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:110
+msgid "Off"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:113
+msgid "On"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:115
+msgid "This feature will automatically playes slides inside slider if enabled."
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:136
+msgid "Loop type"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-data.php:148
+msgid "Drag orientation"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-slides.php:38
+msgid "Add Images to Slider"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-slides.php:42
+msgid "Add Images"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-slides.php:43
+#: includes/class-els-slider.php:222
+msgid "Listings"
+msgstr ""
+
+#: admin/partials/metaboxes/slider-slides.php:46
+msgid "Add Listings"
+msgstr ""
+
+#: admin/partials/welcome/easy-listings-slider.php:13
+msgid "Welcome to Easy Listings Slider %s"
+msgstr ""
+
+#: admin/partials/welcome/easy-listings-slider.php:16
+msgid ""
+"Thank you for updating to the latest version! Easy Listings Slider %s is "
+"ready to make beautiful sliders for your real estate website!"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:12
+msgid ""
+"Use the tips below to get started using Easy Listings Slider. You will be up "
+"and running in no time!"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:14
+msgid "Creating Your First Slider"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:17
+msgid "<a href=\"%s\">Sliders &rarr; Add Slider</a>"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:18
+msgid ""
+"The Sliders menu is your access point for all aspects of your Easy Listings "
+"Slider, slider creation and setup. To create your first slider, simply click "
+"Add Slider and then fill out the slider details."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:22
+msgid ""
+"You can add images and listings images to slider as slides from slides "
+"metabox as shown in the image, please note that for adding listings images "
+"to slider you should choose slider type as ( Listings or Listings And "
+"Images ) from slider general settings."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:26
+msgid ""
+"You can add captions for slides from Slider Captions metabox, also as shown "
+"in above image you can preview each of captions on creation or by clicking "
+"on it from captions table."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:28
+msgid ""
+"For adding new caption, you can click on add new caption button as shown in "
+"below image. From captions table you can select each caption slide by "
+"clicking on Slide number select box and selecting desired slide number so "
+"this caption will show on selected slide or you can select All to showing "
+"caption on all of slides."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:32
+msgid "Caption Specification"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:33
+msgid ""
+"As shown in above image you can set specification of each caption by "
+"choosing it from captions table. In caption specification section you can "
+"set text content of caption and it's transitions and styles."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:36
+msgid "How to preview sliders after creating them"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:40
+msgid ""
+"After creating slider, you can preview it from <a href=\"%s\">Easy Listings "
+"Slider sliders page</a>. For preview each slider you can click on Preview "
+"button to preview it as shown in above image."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:43
+msgid "How to add slider to pages"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:45
+msgid "After creating slider, you can add it to page by one of below methods"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:46
+msgid "Method One"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:48
+msgid ""
+"In Wordpress %s and above a button will adds to pages editor as shown in "
+"above image and you can see and select your created sliders and it will adds "
+"to page content."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:49
+msgid "Method two"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:51
+msgid ""
+"You can copy slider shortcode and paste it inside pages content. Slider "
+"shortcode is shown above image inside rectangle."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:54
+msgid "Single Listing Gallery Slider"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:56
+msgid "How to enable single listing gallery slider"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:57
+msgid ""
+"Go to <a href=\"%s\">Easy Listings Slider Settings</a> and check that is "
+"<strong>Display slider in single listing page</strong> feature enabled. By "
+"default this feature is enabled by <strong>Easy Listings Slider</strong>."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:58
+msgid "How to add gallery images to single listing page slider"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:60
+msgid ""
+"After activating Easy Listings Slider a new metabox will add to Listings "
+"page as shown in the above image. By means of this metabox you can add "
+"images to listing gallery and Easy Listings Slider will show this gallery as "
+"slider in single listing page."
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:61
+msgid "Settings of single listing page slider"
+msgstr ""
+
+#: admin/partials/welcome/getting-started.php:63
+msgid ""
+"You can set settings of slider in single listing page like it's width, "
+"height, theme, autoplay and etc by referring to <a href=\"%s\">Easy Listings "
+"Slider Settings</a> page."
+msgstr ""
+
+#: admin/partials/welcome/subscribe.php:12
+msgid "Subscribe via email"
+msgstr ""
+
+#: admin/partials/welcome/subscribe.php:13
+msgid ""
+"Subscribe for getting our update news and news about our free plugins for "
+"Easy Property Listings and your real estate website."
+msgstr ""
+
+#: admin/partials/welcome/subscribe.php:15
+msgid "Email"
+msgstr ""
+
+#: admin/partials/welcome/subscribe.php:16
+msgid "Subscribe"
+msgstr ""
+
+#: admin/partials/welcome/subscribe.php:17
+msgid "Close"
+msgstr ""
+
+#: includes/class-els-font-manager.php:97
+msgid "Inherit"
+msgstr ""
+
+#: includes/class-els-font-manager.php:98
+msgid "Sans-Serif"
+msgstr ""
+
+#: includes/class-els-font-manager.php:99
+msgid "Tahoma"
+msgstr ""
+
+#: includes/class-els-font-manager.php:100
+msgid "Georgia"
+msgstr ""
+
+#: includes/class-els-font-manager.php:101
+msgid "Comic Sans MS"
+msgstr ""
+
+#: includes/class-els-font-manager.php:102
+msgid "Arial"
+msgstr ""
+
+#: includes/class-els-font-manager.php:103
+msgid "Lucida Grande"
+msgstr ""
+
+#: includes/class-els-font-manager.php:104
+msgid "Times New Roman"
+msgstr ""
+
+#: includes/class-els-html-elements.php:40
+msgctxt "all dropdown items"
+msgid "All"
+msgstr ""
+
+#: includes/class-els-html-elements.php:41
+msgctxt "no dropdown items"
+msgid "None"
+msgstr ""
+
+#: includes/class-els-listings.php:46
+msgid "Current"
+msgstr ""
+
+#: includes/class-els-listings.php:47
+msgid "Withdrawn"
+msgstr ""
+
+#: includes/class-els-listings.php:48
+msgid "Off Market"
+msgstr ""
+
+#: includes/class-els-listings.php:50
+msgid "Sold"
+msgstr ""
+
+#: includes/class-els-listings.php:54
+msgid "Leased"
+msgstr ""
+
+#: includes/class-els-slider.php:120
+msgid "Can't get property %s"
+msgstr ""
+
+#: includes/class-els-slider.php:221
+msgid "Images"
+msgstr ""
+
+#: includes/class-els-slider.php:223
+msgid "Listings And Images"
+msgstr ""
+
+#: includes/class-epl-extension-activation.php:39
+msgid "Easy Property Listings Extension"
+msgstr ""
+
+#: includes/class-epl-extension-activation.php:74
+msgid "activate it"
+msgstr ""
+
+#: includes/class-epl-extension-activation.php:77
+msgid "install it"
+msgstr ""
+
+#: includes/class-epl-extension-activation.php:80
+msgid " requires Easy Property Listings! Please %s to continue!"
+msgstr ""
+
+#: public/class-els-public-jssor-slider.php:109
+msgid "Slider has not images to show"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Easy Listings Slider"
+msgstr ""
+
+#. #-#-#-#-#  easy-listings-slider.pot (Easy Listings Slider 1.0.0 Beta)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  easy-listings-slider.pot (Easy Listings Slider 1.0.0 Beta)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://codewp.github.io/easy-listings-slider"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Easy to use and advanced slider extension for Easy Property Listings plugin."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Taher Atashbar"
+msgstr ""
