@@ -8,18 +8,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Thumbnail theme of jssor slider.
  *
- * @var array $data
+ * @var array  $data
  * @var string $js_url
  * @var string $css_url
  * @var string $images_url
  */
 
+// Use minified libraries if SCRIPT_DEBUG is turned off
+$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 // Registering scripts
-wp_enqueue_script( 'jssor-thumbnail-slider', $js_url . 'slider/jssor/thumbnail.js', array( 'jquery' ), false, true );
+wp_enqueue_script( 'jssor-thumbnail-slider', $js_url . 'slider/jssor/thumbnail' . $suffix . '.js', array( 'jquery' ), false, true );
 wp_localize_script( 'jssor-thumbnail-slider', 'data', $data );
 // Registering styles
-wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common.css' );
-wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail.css' );
+wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common' . $suffix . '.css' );
+wp_enqueue_style( 'jssor-thumbnail-slider', $css_url . 'slider/jssor/thumbnail' . $suffix . '.css' );
 /**
  * Printing scripts when scripts should be printed manually
  * And admin-header.php does not loaded.
