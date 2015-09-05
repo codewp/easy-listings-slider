@@ -8,18 +8,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Introduction theme of jssor slider.
  *
- * @var array $data
+ * @var array  $data
  * @var string $js_url
  * @var string $css_url
  * @var string $images_url
  */
 
+// Use minified libraries if SCRIPT_DEBUG is turned off
+$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 // Registering scripts
-wp_enqueue_script( 'jssor-introduction-slider', $js_url . 'slider/jssor/introduction.js', array( 'jquery' ), false, true );
+wp_enqueue_script( 'jssor-introduction-slider', $js_url . 'slider/jssor/introduction' . $suffix . '.js', array( 'jquery' ), false, true );
 wp_localize_script( 'jssor-introduction-slider', 'data', $data );
 // Registering styles
-wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common.css' );
-wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduction.css' );
+wp_enqueue_style( 'jssor-slider-common-style', $css_url . 'slider/jssor/common' . $suffix . '.css' );
+wp_enqueue_style( 'jssor-introduction-slider', $css_url . 'slider/jssor/introduction' . $suffix . '.css' );
 /**
  * Printing scripts when scripts should be printed manually
  * And admin-header.php does not loaded.
