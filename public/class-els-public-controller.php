@@ -53,4 +53,44 @@ class ELS_Public_Controller extends ELS_Controller {
 		return plugin_dir_path( __FILE__ ) . 'partials';
 	}
 
+	/**
+	 * Getting public-side js directory url.
+	 *
+	 * @since 1.0.0
+	 * @return string url of js directory.
+	 */
+	protected function get_js_url() {
+		return plugin_dir_url( __FILE__ ) . 'js/';
+	}
+
+	/**
+	 * Getting public-side css directory url.
+	 *
+	 * @since 1.0.0
+	 * @return string url of css directory
+	 */
+	protected function get_css_url() {
+		return plugin_dir_url( __FILE__ ) . 'css/';
+	}
+
+	/**
+	 * Getting public-side images directory url.
+	 *
+	 * @since 1.0.0
+	 * @return string url of images directory
+	 */
+	protected function get_images_url() {
+		return plugin_dir_url( __FILE__ ) . 'images/';
+	}
+
+	/**
+	 * Getting path of public area.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
+	protected function get_path() {
+		return plugin_dir_path( __FILE__ );
+	}
+
 }
