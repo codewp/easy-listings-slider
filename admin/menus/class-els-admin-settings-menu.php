@@ -255,6 +255,8 @@ class ELS_Admin_Settings_Menu extends ELS_Admin_Controller {
 			return $input;
 		}
 
+		parse_str( $_POST['_wp_http_referer'], $referrer );
+
 		$settings = $this->get_registered_settings();
 		$tab      = isset( $referrer['tab'] ) ? $referrer['tab'] : 'general';
 
