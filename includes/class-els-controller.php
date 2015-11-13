@@ -43,7 +43,7 @@ abstract class ELS_Controller {
 		// Setup possible parts
 		$templates = array();
 		if ( isset( $name ) ) {
-			$templates[] = $slug . '/' . $name . '.php';
+			$templates[] = $slug . '-' . $name . '.php';
 		}
 		$templates[] = $slug . '.php';
 
