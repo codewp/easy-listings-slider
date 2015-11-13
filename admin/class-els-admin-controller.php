@@ -59,7 +59,7 @@ class ELS_Admin_Controller extends ELS_Controller {
 	 * @since 1.0.0
 	 * @return string url of js directory.
 	 */
-	protected function get_js_url() {
+	public function get_js_url() {
 		return plugin_dir_url( __FILE__ ) . 'js/';
 	}
 
@@ -69,7 +69,7 @@ class ELS_Admin_Controller extends ELS_Controller {
 	 * @since 1.0.0
 	 * @return string url of css directory
 	 */
-	protected function get_css_url() {
+	public function get_css_url() {
 		return plugin_dir_url( __FILE__ ) . 'css/';
 	}
 
@@ -79,7 +79,7 @@ class ELS_Admin_Controller extends ELS_Controller {
 	 * @since 1.0.0
 	 * @return string url of images directory
 	 */
-	protected function get_images_url() {
+	public function get_images_url() {
 		return plugin_dir_url( __FILE__ ) . 'images/';
 	}
 
@@ -89,7 +89,7 @@ class ELS_Admin_Controller extends ELS_Controller {
 	 * @since 1.0.0
 	 * @return string
 	 */
-	protected function get_path() {
+	public function get_path() {
 		return plugin_dir_path( __FILE__ );
 	}
 
