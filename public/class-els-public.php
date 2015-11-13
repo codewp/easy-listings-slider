@@ -64,6 +64,7 @@ class ELS_Public {
 		$this->loader      = $loader;
 
 		$this->load_dependencies();
+		$this->define_globals();
 	}
 
 	/**
@@ -191,6 +192,16 @@ class ELS_Public {
 	 */
 	public function get_path() {
 		return plugin_dir_path( __FILE__ );
+	}
+
+	/**
+	 * Defining objects that should be accessed globally.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	private function define_globals() {
+		ELS_IOC::bind( 'els_public_controller', new ELS_Public_Controller() );
 	}
 
 }
