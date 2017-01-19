@@ -30,7 +30,11 @@ class ELS_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+		// Delete when this is Asana active free plugin.
+		$asana_plugin = get_option( 'asana_active_free_plugin', '' );
+		if ( 'easy-listings-slider' === $asana_plugin ) {
+			delete_option( 'asana_active_free_plugin' );
+		}
 	}
 
 }

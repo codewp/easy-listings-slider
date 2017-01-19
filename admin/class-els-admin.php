@@ -206,6 +206,7 @@ class ELS_Admin {
 		$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/els-admin' . $suffix . '.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'els_admin_notices', plugin_dir_url( __FILE__ ) . 'css/els-admin-notices' . $suffix . '.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'thickbox' );
 		// Loading only in els_slider post types.
 		if ( 'els_slider' === $typenow ) {

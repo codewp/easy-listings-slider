@@ -30,6 +30,12 @@ class ELS_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+		// Setting Asana Free Active Plugin.
+		$asana_plugin = get_option( 'asana_active_free_plugin', '' );
+		if ( empty( $asana_plugin ) ) {
+			update_option( 'asana_active_free_plugin', 'easy-listings-slider' );
+		}
+
 		// Add the transient to redirect
 		set_transient( '_els_activation_redirect', true, 30 );
 	}
