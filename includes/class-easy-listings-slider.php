@@ -6,7 +6,7 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://codewp.github.io/easy-listings-slider
+ * @link       http://www.asanaplugins.com/
  * @since      1.0.0
  *
  * @package    Easy_Listings_Slider
@@ -69,7 +69,7 @@ class Easy_Listings_Slider {
 	public function __construct() {
 
 		$this->plugin_name = 'easy-listings-slider';
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 
 		$this->load_dependencies();
 		$this->define_globals();

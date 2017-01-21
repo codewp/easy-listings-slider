@@ -3,7 +3,7 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       http://codewp.github.io/easy-listings-slider
+ * @link       http://www.asanaplugins.com/
  * @since      1.0.0
  *
  * @package    Easy_Listings_Slider
