@@ -10,6 +10,10 @@ This extension also can shows slider by means of listing gallery in single listi
 
 Requires [Easy Property Listings version 1.3 and above](https://wordpress.org/plugins/easy-property-listings/)
 
+**[Advanced Extensions For Easy Property Listings](http://www.asanaplugins.com/products/?utm_source=wordpress_org&utm_campaign=easy-listings-slider&utm_medium=link)**
+
+[Premium Support](https://asanaplugins.freshdesk.com/support/tickets/new)
+
 Features of the plugin include:
 
 * Shortcode for sliders.
@@ -27,7 +31,7 @@ Features of the plugin include:
 * Unlimited captions.
 * Vertical and Horizontal Direction Navigation.
 * Multiple sliders in one page.
-* Arrow key navitation, navigate slider by click keyboard arrow left/right
+* Arrow key navigation, navigate slider by click keyboard arrow left/right
 * Ability to customize slider size.
 * Compatible with Easy Property Listings version 1.3 and above.
 * A fast and efficient plugin written using WordPress standards.
@@ -65,6 +69,10 @@ Bugs can be reported in [Easy Listings Slider Issues Page](https://github.com/co
 6. Single listing page slider
 
 == Changelog ==
+
+= 1.0.1 = 
+
+* Official release of the plugin.
 
 = 1.0.0 Beta =
 

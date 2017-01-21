@@ -3,7 +3,7 @@ Contributors: c0dezer0
 Donate link: http://www.asanaplugins.com/
 Tags: easy property listings, epl, easy property listings extension, easy property listings extensions, easy property listings slider, featured listings slider, epl extension, epl extensions, epl slider, epl featured listings slider, property listings, property management, real estate, real estate connected, property, listings, rental, commercial, business, rural, land, residential, property listings, property management, realtor, broker, australia, wp-property, wp property, wp rentals, wp-realestate, wp real estate, property, slider, easy listings slider, els, jssor, jssor slider, wp slider, wp-slider
 Requires at least: 3.9
-Tested up to: 4.3
+Tested up to: 4.7.1
 Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,6 +17,10 @@ Easy Listings Slider is an easy to use, advanced and free slider extension for E
 This extension also can shows slider by means of listing gallery in single listing page.
 
 Requires [Easy Property Listings version 1.3 and above](https://wordpress.org/plugins/easy-property-listings/)
+
+**[Advanced Extensions For Easy Property Listings](http://www.asanaplugins.com/products/?utm_source=wordpress_org&utm_campaign=easy-listings-slider&utm_medium=link)**
+
+[Premium Support](https://asanaplugins.freshdesk.com/support/tickets/new)
 
 Features of the plugin include:
 
@@ -35,7 +39,7 @@ Features of the plugin include:
 * Unlimited captions.
 * Vertical and Horizontal Direction Navigation.
 * Multiple sliders in one page.
-* Arrow key navitation, navigate slider by click keyboard arrow left/right
+* Arrow key navigation, navigate slider by click keyboard arrow left/right
 * Ability to customize slider size.
 * Compatible with Easy Property Listings version 1.3 and above.
 * A fast and efficient plugin written using WordPress standards.
@@ -73,6 +77,10 @@ Bugs can be reported in [Easy Listings Slider Issues Page](https://github.com/co
 6. Single listing page slider
 
 == Changelog ==
+
+= 1.0.1 =
+
+* Official release of the plugin.
 
 = 1.0.0 Beta =
 
